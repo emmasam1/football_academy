@@ -7,10 +7,39 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  // THEME (PERSISTENT)
+  /* ================= SCROLL DETECTION ================= */
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  /* ==================================================== */
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+
+      // CLOSE drawer when switching back to desktop
+      if (!mobile) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  /* ================= THEME ================= */
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") !== "light";
   });
@@ -26,8 +55,8 @@ const Navbar = () => {
       return next;
     });
   };
+  /* ========================================= */
 
-  // MENU ITEMS (KEYS = ROUTES)
   const menuItems = [
     { key: "/", label: "Home" },
     { key: "/about", label: "About Club" },
@@ -38,20 +67,32 @@ const Navbar = () => {
   ];
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       <motion.header
-        key={darkMode ? "dark" : "light"}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.35 }}
-        className="text-white relative z-50"
+        className={`z-50 ${
+          scrolled ? "fixed top-0 left-0 w-full" : "relative"
+        }`}
       >
-        {/* 80% CENTERED BAR */}
-        <div className="w-[80%] mx-auto h-16 flex items-center justify-between bg-[#252625] px-3">
-          {/* Logo */}
+        {/* ===== NAV CONTAINER ===== */}
+        <motion.div
+          animate={{
+            width: scrolled ? "100%" : "80%",
+            borderRadius: scrolled ? "0px" : "6px",
+          }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="
+            mx-auto h-16
+            flex items-center justify-between
+            bg-[#252625]
+            px-4
+          "
+        >
+          {/* LOGO */}
           <div
-            className="font-bold tracking-wide cursor-pointer"
+            className="font-bold tracking-wide cursor-pointer text-white"
             onClick={() => navigate("/")}
           >
             ⚽ SOCCERCLUB
@@ -60,6 +101,7 @@ const Navbar = () => {
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center gap-4">
             <Menu
+              key={isMobile ? "mobile-hidden" : "desktop-menu"}
               mode="horizontal"
               selectedKeys={[location.pathname]}
               onClick={(e) => navigate(e.key)}
@@ -68,11 +110,10 @@ const Navbar = () => {
               className="bg-transparent! uppercase tracking-wide"
             />
 
-            {/* THEME TOGGLE */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
-              className="text-lg ml-4"
+              className="text-lg ml-4 text-white"
             >
               {darkMode ? <SunOutlined /> : <MoonOutlined />}
             </motion.button>
@@ -84,29 +125,53 @@ const Navbar = () => {
               type="text"
               icon={darkMode ? <SunOutlined /> : <MoonOutlined />}
               onClick={toggleTheme}
-              className="text-white"
+              className="text-white!"
             />
-
             <Hamburger toggled={open} toggle={setOpen} size={20} />
           </div>
-        </div>
+        </motion.div>
 
         {/* MOBILE DRAWER */}
         <Drawer
-          placement="right"
+          placement="left"
           open={open}
           onClose={() => setOpen(false)}
-          className="dark:bg-black"
+          mask={false}
+          closable={false}
+          getContainer={false}
+          destroyOnClose
+          width={0}
         >
-          <Menu
-            mode="vertical"
-            selectedKeys={[location.pathname]}
-            onClick={(e) => {
-              navigate(e.key);
-              setOpen(false);
-            }}
-            items={menuItems}
-          />
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                key="mobile-nav"
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="
+          fixed top-0 left-0 h-screen
+          w-[50vw]
+          bg-[#252625]
+          text-[#9DAAAA]!
+          z-40
+          p-6
+        "
+              >
+                <Menu
+                  mode="vertical"
+                  selectedKeys={[location.pathname]}
+                  onClick={(e) => {
+                    navigate(e.key);
+                    setOpen(false);
+                  }}
+                  items={menuItems}
+                  className="bg-transparent! uppercase tracking-wide! text-xs! text-[#9DAAAA]!"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Drawer>
       </motion.header>
     </AnimatePresence>
