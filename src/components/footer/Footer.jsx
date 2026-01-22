@@ -73,7 +73,7 @@ const Footer = () => {
   return (
     <div className="bg-[url('../../../public/images/footerBg.jpg')] bg-cover bg-center lg:px-20 sm:px-10 md:px-10">
       {/* Sponsors */}
-      <div className="">
+      <div className="pt-8">
         <h3 className="text-3xl">Our Sponsors</h3>
         <div className="h-0.5 w-16 bg-orange-600 mt-4" />
 
@@ -127,7 +127,7 @@ const Footer = () => {
       </div>
       <div className="bg-[#1B1F20]">
         <p className="text-white text-xs px-10 py-6">
-          Copyright © 2022. All rights reserved.
+          © {new Date().getFullYear()} All rights reserved.
         </p>
       </div>
     </div>
@@ -135,4 +135,3 @@ const Footer = () => {
 };
 
 export default Footer;
-//bg-[#19220A]

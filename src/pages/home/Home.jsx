@@ -328,7 +328,7 @@ const Home = () => {
                       <img
                         src={smallImg[index]?.image}
                         alt="thumb"
-                        className="w-16 h-12 object-cover border-2 border-[#25282c] group-hover:border-orange-600 transition-colors"
+                        className="w-20 h-15 object-cover border-2 border-[#25282c] group-hover:border-orange-600 transition-colors"
                       />
 
                       <div>

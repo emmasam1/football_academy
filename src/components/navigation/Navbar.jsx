@@ -59,8 +59,21 @@ const Navbar = () => {
 
   const menuItems = [
     { key: "/", label: "Home" },
-    { key: "/about", label: "About Club" },
-    { key: "/team", label: "Team" },
+
+    {
+      key: "/about",
+      label: "About Club",
+    },
+
+    {
+      key: "/team",
+      label: "Team",
+      children: [
+        { key: "/team/players", label: "Players" },
+        { key: "/team/coaches", label: "Coaches" },
+      ],
+    },
+
     { key: "/blog", label: "Blog" },
     { key: "/gallery", label: "Gallery" },
     { key: "/contact", label: "Contacts" },
@@ -107,7 +120,14 @@ const Navbar = () => {
               onClick={(e) => navigate(e.key)}
               items={menuItems}
               theme="dark"
-              className="bg-transparent! uppercase tracking-wide"
+              className="
+    bg-transparent!
+    uppercase
+    tracking-wide
+    border-none!
+    [&_.ant-menu-item]:px-4
+    [&_.ant-menu-submenu-title]:px-4
+  "
             />
 
             <motion.button
@@ -127,7 +147,12 @@ const Navbar = () => {
               onClick={toggleTheme}
               className="text-white!"
             />
-            <Hamburger toggled={open} toggle={setOpen} size={20} />
+            <Hamburger
+              toggled={open}
+              toggle={setOpen}
+              size={17}
+              duration={0.8}
+            />
           </div>
         </motion.div>
 
@@ -160,14 +185,24 @@ const Navbar = () => {
         "
               >
                 <Menu
-                  mode="vertical"
+                  mode="inline"
                   selectedKeys={[location.pathname]}
                   onClick={(e) => {
                     navigate(e.key);
                     setOpen(false);
                   }}
                   items={menuItems}
-                  className="bg-transparent! uppercase tracking-wide! text-xs! text-[#9DAAAA]!"
+                  className="
+    bg-transparent!
+    border-none!
+    uppercase
+    tracking-wide
+    text-xs
+    [&_.ant-menu-item]:py-3
+    [&_.ant-menu-submenu-title]:py-3
+    [&_.ant-menu-item]:text-[#9DAAAA]
+    [&_.ant-menu-submenu-title]:text-[#9DAAAA]
+  "
                 />
               </motion.div>
             )}

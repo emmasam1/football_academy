@@ -3,15 +3,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navigation/Navbar";
 import Home from "./pages/home/Home";
 import Footer from "./components/footer/Footer";
+import About from "./pages/about/About";
+import ScrollToTop from "./components/gotoTop/ScrollToTop";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />   
       <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<div>About Club</div>} />
+        <Route path="/about" element={<About />} />
         <Route path="/team" element={<div>Team</div>} />
         <Route path="/blog" element={<div>Blog</div>} />
         <Route path="/gallery" element={<div>Gallery</div>} />

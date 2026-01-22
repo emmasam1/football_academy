@@ -61,6 +61,11 @@ button:focus-visible {
   }
 }
 
+.ant-menu-submenu-arrow {
+  color: #9DAAAA !important;
+}
+
+
 /* REMOVE DEFAULT BORDER */
 .ant-menu-horizontal {
   border-bottom: none !important;
