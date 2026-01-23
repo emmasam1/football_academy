@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiCheckCircle } from 'react-icons/fi';
-import { FaFutbol, FaRunning, FaBullseye, FaUserFriends } from 'react-icons/fa';
+import { FaFutbol, FaRunning, FaBullseye, FaUserFriends  } from 'react-icons/fa';
+import { GiWhistle, GiAwareness  } from "react-icons/gi";
 
 const Program = () => {
   const fadeInUp = {
@@ -19,14 +20,14 @@ const Program = () => {
   const programs = [
     { title: "Technical Skills", icon: <FaFutbol />, img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800" },
     { title: "Speed Training", icon: <FaRunning />, img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800" },
-    { title: "Tactical Awareness", icon: <FaBullseye />, img: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1600" },
+    { title: "Tactical Awareness", icon: <GiAwareness />, img: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1600" },
     { title: "Physical Conditioning", icon: <FaBullseye />, img: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=800" },
     { title: "Mental Strength", icon: <FaBullseye />, img: "https://images.unsplash.com/photo-1518604666860-9ed391f76460?q=80&w=800" },
-    { title: "Team Play", icon: <FaUserFriends />, img: "https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?q=80&w=800" },
+    { title: "Team Play", icon: <FaUserFriends />, img: "/images/teamplay.jpeg" },
   ];
 
   return (
-    <div className="bg-white font-sans overflow-hidden">
+    <div className="bg-[#FEFEFE] font-sans overflow-hidden">
       
       {/* HERO SECTION */}
       <section className="relative h-[40vh] flex items-center justify-center text-white text-center px-6">
@@ -83,7 +84,7 @@ const Program = () => {
                     <h3 className="text-xl font-bold text-slate-900 uppercase tracking-tight">{prog.title}</h3>
                     <p className="text-gray-400 text-xs mt-2 leading-relaxed">Habitasse sociosqu senectus platea sem dictum pretium nullam</p>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[#2141a5] group-hover:bg-[#2141a5] group-hover:text-white transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-[#252625] group-hover:bg-[#252625] group-hover:text-white transition-all duration-300">
                     <FiArrowUpRight size={18} />
                   </div>
                 </div>
@@ -103,7 +104,7 @@ const Program = () => {
       {/* MENTORS SECTION - FULL WIDTH FLUSH RIGHT */}
       <section 
         className="relative min-h-[550px] flex items-end justify-end bg-cover bg-center"
-        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1600')` }}
+        style={{ backgroundImage: `url("../../../../public/images/bg_bannerArea.jpg"` }}
       >
         <div className="absolute inset-0 bg-black/20" />
         
