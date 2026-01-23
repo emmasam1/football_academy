@@ -130,7 +130,7 @@ const Home = () => {
         <div
           className='
       absolute inset-0 -top-16
-      bg-[url("../../../public/images/hero.jpg")]
+      bg-[url("/images/hero.jpg")]
       bg-cover bg-center
       z-0
     '
@@ -179,7 +179,7 @@ const Home = () => {
         <div>
           <div
             className='
-            bg-[url("../../../public/images/bg_bannerArea.jpg")]
+            bg-[url("/images/bg_bannerArea.jpg")]
             py-16 md:py-20
             bg-fixed bg-cover bg-center
             flex justify-center items-center
@@ -227,7 +227,7 @@ const Home = () => {
                 <div className="space-y-6">
                   <div className="flex gap-4">
                     <img
-                      src="public/images/small_img_2.jpg"
+                      src="/images/small_img_2.jpg"
                       alt="Player"
                       className="w-1/2 h-32 object-cover border-4 border-[#25282c]"
                     />
@@ -238,7 +238,7 @@ const Home = () => {
                   </div>
                   <div className="flex gap-4">
                     <img
-                      src="public/images/small_img_3.jpg"
+                      src="/images/small_img_3.jpg"
                       alt="Soccer"
                       className="w-1/2 h-32 object-cover border-4 border-[#25282c]"
                     />
