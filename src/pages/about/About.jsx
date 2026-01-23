@@ -114,7 +114,7 @@ const About = () => {
 
       {/* ================= ABOUT ================= */}
       <section className="bg-[#323437] py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-10">
           {/* TOP GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT */}
@@ -233,7 +233,7 @@ const About = () => {
                 return (
                   <div
                     key={index}
-                    className="bg-[#1f2124] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition"
+                    className="bg-[#1f2124] overflow-hidden shadow-lg hover:shadow-xl transition"
                   >
                     {/* IMAGE */}
                     <img
@@ -261,8 +261,8 @@ const About = () => {
       </section>
 
       {/* ================= FAQ & STATS ================= */}
-      <section className="bg-white py-16 md:py-8 ">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-white py-16 md:py-8">
+        <div className="max-w-7xl mx-auto px-10">
           {/* STATS */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 text-center border-b pb-4 border-gray-200">
             {stats.map((stat, index) => (

@@ -7,18 +7,19 @@ import About from "./pages/about/About";
 import ScrollToTop from "./components/gotoTop/ScrollToTop";
 import ProgramsPage from "./pages/programs/ProgramsPage";
 import Footers from "./components/footer/Footers";
+import Coaches from "./pages/coaches/Coaches";
+import Team from "./pages/team/Team";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <ScrollToTop />   
+      <ScrollToTop />
       <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<div>Team</div>} />
-         <Route path="/program" element={<ProgramsPage />} />
         <Route path="/blog" element={<div>Blog</div>} />
         <Route path="/gallery" element={<div>Gallery</div>} />
         <Route path="/contact" element={<div>Contacts</div>} />
