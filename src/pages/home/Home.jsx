@@ -282,7 +282,7 @@ const Home = () => {
         </div>
       </section> */}
 
-      <div className="">
+      <div className="relative -top-16 ">
         {/* Slider */}
         <div className=" bg-[#323437] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
           {/* relative wrapper REQUIRED for arrows */}
@@ -346,7 +346,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#1A1D21] p-10 md:p-20 text-white">
+        <div className="bg-[#1A1D21] p-10 text-white">
           <div className="max-w-7xl mx-auto">
             <Row gutter={[48, 40]}>
               {/* Column 1: Welcome */}
