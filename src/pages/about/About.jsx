@@ -107,7 +107,7 @@ const About = () => {
   return (
     <div>
       {/* ================= HERO ================= */}
-      <section className="relative h-screen w-full">
+      <section className="relative h-[40vh] w-full">
         <div className='absolute inset-0 -top-16 bg-[url("/images/hero.jpg")] bg-cover bg-center' />
         <div className="relative z-10 h-full" />
       </section>
