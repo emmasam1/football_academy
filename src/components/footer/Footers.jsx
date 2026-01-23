@@ -6,7 +6,7 @@ const Footers = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#252625] text-white pt-16 pb-8 px-6 md:px-12 lg:px-24">
+    <footer className="bg-[#1C1F42] text-white pt-16 pb-8 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
         
         {/* Brand Section - Occupies full width on mobile, 1 col on desktop */}
@@ -66,7 +66,7 @@ const Footers = () => {
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-md transition-colors text-sm flex items-center justify-center gap-2"
+              className="w-full bg-[#405BF2]! hover:bg-blue-700 text-white font-medium py-2 rounded-md transition-colors text-sm flex items-center justify-center gap-2"
             >
               GET SMART UPDATES
             </motion.button>
