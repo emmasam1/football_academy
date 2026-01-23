@@ -21,19 +21,19 @@ import small_img_4 from "../../../public/images/small_img_4.jpg";
 
 const heroSlides = [
   {
-    image: "/images/hero.jpg",
+    image: "/images/teamplay-dark.jpeg",
     title: "Join the Football League Today",
     subtitle: "Compete with the Best. Develop Your Skills.",
     cta: "Register Now",
   },
   {
-    image: "/images/hero-slide2.jpg",
+    image: "/images/aboutImg1-dark.jpeg",
     title: "Train Like a Pro",
     subtitle: "Expert Coaches. Structured Development.",
     cta: "Learn More",
   },
   {
-    image: "/images/hero-slide3.jpg",
+    image: "/images/hero-dark.jpeg",
     title: "Unleash Your Potential",
     subtitle: "Become a Confident, Disciplined Athlete.",
     cta: "Get Started",
@@ -164,7 +164,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="-top-16 relative w-full overflow-hidden h-[90vh] sm:h-[85vh] md:h-[80vh]">
+      <div className="-top-16 relative w-full overflow-hidden h-[90vh] sm:h-[85vh] md:h-[90vh]">
         <AnimatePresence mode="wait">
           {heroSlides.map(
             (slide, index) =>
@@ -232,23 +232,41 @@ const Home = () => {
           <ChevronRightIcon className="h-6 w-6 text-white" />
         </button> */}
 
-        {/* Dots */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3">
-          {heroSlides.map((_, i) => (
-            <div
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-3 h-3 rounded-full cursor-pointer ${
-                current === i ? "bg-white" : "bg-gray-400"
-              }`}
-            />
-          ))}
+        {/* Line Dots + Slide Number */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md px-6">
+          {/* Slide number */}
+          <div className="flex justify-between items-center text-white text-sm mb-3">
+            <span className="font-semibold">
+              {String(current + 1).padStart(2, "0")}
+            </span>
+            <span className="opacity-60">
+              {String(heroSlides.length).padStart(2, "0")}
+            </span>
+          </div>
+
+          {/* Lines */}
+          <div className="flex gap-3">
+            {heroSlides.map((_, i) => (
+              <div
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`
+          flex-1 bg-white! rounded-none! transition-all duration-500 cursor-pointer h-0.6
+          ${
+            current === i
+              ? "bg-orange-500 h-1"
+              : "bg-white/40 hover:bg-white/70"
+          }
+        `}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-screen w-full">
-        {/* Background image (absolute) */}
+      {/* <section className="relative h-screen w-full">
+ 
         <div
           className='
       absolute inset-0 -top-16
@@ -258,14 +276,11 @@ const Home = () => {
     '
         />
 
-        {/* Optional overlay */}
-        {/* <div className="absolute inset-0 bg-black/40 z-0" /> */}
-
-        {/* Hero content (if any later) */}
+    
         <div className="relative z-10 h-full flex items-center justify-center text-white">
-          {/* Hero text/buttons can live here */}
+        
         </div>
-      </section>
+      </section> */}
 
       <div className="">
         {/* Slider */}
