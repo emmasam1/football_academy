@@ -108,7 +108,7 @@ const About = () => {
     <div>
       {/* ================= HERO ================= */}
       <section className="relative h-screen w-full">
-        <div className='absolute inset-0 -top-16 bg-[url("../../../public/images/hero.jpg")] bg-cover bg-center' />
+        <div className='absolute inset-0 -top-16 bg-[url("/images/hero.jpg")] bg-cover bg-center' />
         <div className="relative z-10 h-full" />
       </section>
 
@@ -227,7 +227,7 @@ const About = () => {
         </div>
       </section>
           {/* COACHES GRID */}
-          <div className="mt-20 bg-[url('../../../public/images/teamplay-dark.jpeg')] bg-cover bg-center px-10 py-20">
+          <div className="mt-20 bg-[url('/images/teamplay-dark.jpeg')] bg-cover bg-center px-10 py-20">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {coaches.map((coach, index) => {
                 const { name, role, image, experience, bio } = coach;
