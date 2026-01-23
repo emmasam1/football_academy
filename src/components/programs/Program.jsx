@@ -27,7 +27,7 @@ const Program = () => {
   ];
 
   return (
-    <div className="bg-[#FEFEFE] font-sans overflow-hidden">
+    <div className="bg-[#FEFEFE] font-sans overflow-hidden relative -top-16">
       
       {/* HERO SECTION */}
       <section className="relative h-[40vh] flex items-center justify-center text-white text-center px-6">

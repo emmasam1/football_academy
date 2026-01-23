@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -15,6 +18,27 @@ import small_img_1 from "../../../public/images/small_img_1.jpg";
 import small_img_2 from "../../../public/images/small_img_2.jpg";
 import small_img_3 from "../../../public/images/small_img_3.jpg";
 import small_img_4 from "../../../public/images/small_img_4.jpg";
+
+const heroSlides = [
+  {
+    image: "/images/teamplay-dark.jpeg",
+    title: "Join the Football League Today",
+    subtitle: "Compete with the Best. Develop Your Skills.",
+    cta: "Register Now",
+  },
+  {
+    image: "/images/aboutImg1-dark.jpeg",
+    title: "Train Like a Pro",
+    subtitle: "Expert Coaches. Structured Development.",
+    cta: "Learn More",
+  },
+  {
+    image: "/images/hero-dark.jpeg",
+    title: "Unleash Your Potential",
+    subtitle: "Become a Confident, Disciplined Athlete.",
+    cta: "Get Started",
+  },
+];
 
 const { Title, Text, Link } = Typography;
 
@@ -58,6 +82,22 @@ const PrevArrow = ({ onClick }) => {
 /* ================================================ */
 
 const Home = () => {
+  const [current, setCurrent] = useState(0);
+
+  const nextSlide = () =>
+    setCurrent((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
+
+  const prevSlide = () =>
+    setCurrent((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 7000); // 7 seconds
+
+    return () => clearInterval(interval);
+  }, [current]);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -124,9 +164,109 @@ const Home = () => {
 
   return (
     <div>
+      <div className="-top-16 relative w-full overflow-hidden h-[90vh] sm:h-[85vh] md:h-[90vh]">
+        <AnimatePresence mode="wait">
+          {heroSlides.map(
+            (slide, index) =>
+              index === current && (
+                <motion.div
+                  key={index}
+                  className="absolute inset-0 w-full h-full"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div
+                    className="w-full h-full bg-cover bg-center"
+                    style={{ backgroundImage: `url(${slide.image})` }}
+                  />
+
+                  <div className="absolute inset-0 bg-black/50"></div>
+
+                  <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 text-white">
+                    <motion.h1
+                      className="text-3xl md:text-5xl font-bold mb-4"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      {slide.title}
+                    </motion.h1>
+
+                    <motion.p
+                      className="text-lg md:text-2xl mb-6 max-w-xl"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {slide.subtitle}
+                    </motion.p>
+
+                    <motion.button
+                      className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-md font-semibold w-fit"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      {slide.cta}
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ),
+          )}
+        </AnimatePresence>
+
+        {/* Controls */}
+        {/* <button
+          onClick={prevSlide}
+          className="absolute left-5 top-1/2 -translate-y-1/2 bg-black/40 p-2 rounded-full"
+        >
+          <ChevronLeftIcon className="h-6 w-6 text-white" />
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/40 p-2 rounded-full"
+        >
+          <ChevronRightIcon className="h-6 w-6 text-white" />
+        </button> */}
+
+        {/* Line Dots + Slide Number */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md px-6">
+          {/* Slide number */}
+          <div className="flex justify-between items-center text-white text-sm mb-3">
+            <span className="font-semibold">
+              {String(current + 1).padStart(2, "0")}
+            </span>
+            <span className="opacity-60">
+              {String(heroSlides.length).padStart(2, "0")}
+            </span>
+          </div>
+
+          {/* Lines */}
+          <div className="flex gap-3">
+            {heroSlides.map((_, i) => (
+              <div
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`
+          flex-1 bg-white! rounded-none! transition-all duration-500 cursor-pointer h-0.6
+          ${
+            current === i
+              ? "bg-orange-500 h-1"
+              : "bg-white/40 hover:bg-white/70"
+          }
+        `}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative h-screen w-full">
-        {/* Background image (absolute) */}
+      {/* <section className="relative h-screen w-full">
+ 
         <div
           className='
       absolute inset-0 -top-16
@@ -136,16 +276,13 @@ const Home = () => {
     '
         />
 
-        {/* Optional overlay */}
-        {/* <div className="absolute inset-0 bg-black/40 z-0" /> */}
-
-        {/* Hero content (if any later) */}
+    
         <div className="relative z-10 h-full flex items-center justify-center text-white">
-          {/* Hero text/buttons can live here */}
+        
         </div>
-      </section>
+      </section> */}
 
-      <div className="">
+      <div className="relative -top-16 ">
         {/* Slider */}
         <div className=" bg-[#323437] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
           {/* relative wrapper REQUIRED for arrows */}
@@ -209,7 +346,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#1A1D21] p-10 md:p-20 text-white">
+        <div className="bg-[#1A1D21] p-10 text-white">
           <div className="max-w-7xl mx-auto">
             <Row gutter={[48, 40]}>
               {/* Column 1: Welcome */}

@@ -71,7 +71,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-[url('../../../public/images/footerBg.jpg')] bg-cover bg-center lg:px-20 sm:px-10 md:px-10">
+    <div className="bg-[url('/images/footerBg.jpg')] bg-cover bg-center lg:px-20 sm:px-10 md:px-10">
       {/* Sponsors */}
       <div className="pt-8">
         <h3 className="text-3xl">Our Sponsors</h3>
