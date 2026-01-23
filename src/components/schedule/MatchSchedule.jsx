@@ -28,7 +28,7 @@ const MatchSchedule = () => {
   };
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen font-sans">
+    <div className="bg-[#f8fafc] min-h-screen font-sans relative -top-16">
       <AnimatePresence mode="wait">
         {view === 'list' ? (
           <motion.div
