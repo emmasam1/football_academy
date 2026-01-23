@@ -93,9 +93,8 @@ const MatchSchedule = () => {
               <div className="relative z-20 text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Schedule</h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
-                  <span className="text-gray-400">Home</span>
+                  <span className="text-gray-400">Schedule</span>
                   <span className="text-red-600">/</span>
-                  <span>Schedule</span>
                 </div>
               </div>
             </section>
@@ -161,16 +160,25 @@ const MatchSchedule = () => {
             <section className="relative h-[45vh] flex items-center justify-center text-white">
               <div className="absolute inset-0 bg-black/70 z-10" />
               <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1600')` }} />
-              <button onClick={() => setView('list')} className="absolute top-6 left-4 md:top-10 md:left-10 z-30 flex items-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest text-white/80 hover:text-white transition-colors bg-white/10 px-4 py-2 rounded-full backdrop-blur-md">
-                <FiChevronLeft size={18} /> Back
-              </button>
               <div className="relative z-20 text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Matches Details</h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-sm font-bold uppercase tracking-widest">
-                  <span className="text-gray-400">Home</span> <span className="text-red-600">/</span> <span>Details</span>
+                  <span className="text-gray-400">Schedule</span> <span className="text-red-600">/</span> <span>Details</span>
                 </div>
               </div>
             </section>
+
+            <div className="max-w-7xl mx-auto px-6 pt-10">
+                <button 
+                    onClick={() => setView('list')} 
+                    className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] cursor-pointer text-slate-900 hover:text-blue-900 transition-colors group"
+                >
+                    <div className="bg-slate-100 p-2 rounded-full group-hover:bg-red-50 transition-colors">
+                        <FiChevronLeft size={20} />
+                    </div>
+                    Back to Schedule
+                </button>
+            </div>
 
             {/* MATCH CONTENT */}
             <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
