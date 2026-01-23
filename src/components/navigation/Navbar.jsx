@@ -82,6 +82,7 @@ const Navbar = () => {
     //   ],
     // },
      { key: "/program", label: "Programs" },
+      { key: "/schedule", label: "Match Schedule" },
     { key: "/blog", label: "Blog" },
     { key: "/gallery", label: "Gallery" },
     { key: "/contact", label: "Contacts" },
@@ -107,17 +108,33 @@ const Navbar = () => {
           className="
             mx-auto h-16
             flex items-center justify-between
-            bg-[#252625]
+            bg-[#1C1F42]
             px-4
           "
         >
           {/* LOGO */}
-          <div
+          {/* <div
             className="font-bold tracking-wide cursor-pointer text-white"
             onClick={() => navigate("/")}
           >
-            ⚽ JOSENIHO
-          </div>
+            <img src="/images/logo.png" alt="Joseninho Logo" />
+          </div> */}
+          <div
+        onClick={() => navigate("/")}
+        className="flex items-center cursor-pointer select-none"
+      >
+        <img
+          src="/images/logo2.jpeg"
+          alt="Joseninho Logo"
+          className="
+            h-10 
+            w-auto 
+            object-contain 
+            md:h-12 
+            lg:h-14
+          "
+        />
+      </div>
 
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center gap-4">
