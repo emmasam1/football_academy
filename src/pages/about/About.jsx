@@ -108,27 +108,27 @@ const About = () => {
     <div>
       {/* ================= HERO ================= */}
       <section className="relative h-screen w-full">
-        <div className='absolute inset-0 -top-16 bg-[url("../../../public/images/hero.jpg")] bg-cover bg-center' />
+        <div className='absolute inset-0 -top-16 bg-[url("/images/hero.jpg")] bg-cover bg-center' />
         <div className="relative z-10 h-full" />
       </section>
 
       {/* ================= ABOUT ================= */}
-      <section className="bg-[#323437] py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-10">
           {/* TOP GRID */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
             {/* LEFT */}
-            <div>
+            <div className="bg-blue-50 p-5">
               <span className="inline-block mb-4 text-xs uppercase tracking-wide text-orange-500 border border-orange-500/30 px-3 py-1">
                 Who we are
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight text-black mb-6">
                 Dedicated football professionals shaping confident, disciplined,
                 and skilled athletes
               </h2>
 
-              <p className="text-gray-300 max-w-xl">
+              <p className="max-w-xl text-black text-justify">
                 Joseninho Kids Football League is a vibrant kids football
                 initiative nestled in the heart of Abuja, where we are
                 passionate about nurturing, developing, and celebrating the
@@ -140,7 +140,7 @@ const About = () => {
                 teamwork.
               </p>
 
-              <p className="text-gray-300 max-w-xl mt-5 mb-10">
+              <p className="text-black text-justify max-w-xl mt-5 mb-10">
                 Joseninho Kids Football League promises an exhilarating and
                 fulfilling experience for every participant. Our program
                 harmoniously combines skill development with the values of
@@ -205,12 +205,12 @@ const About = () => {
                 Meet our coach
               </span>
 
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">
                 Meet our coaches shaping modern football excellence
               </h3>
             </div>
             <div>
-              <p className="text-gray-300 mb-6 max-w-xl">
+              <p className="text-black mb-6 max-w-xl">
                 We’ve compiled the most common questions to help you understand
                 our process, services, and how we deliver results.
               </p>
@@ -224,8 +224,10 @@ const About = () => {
             </div>
           </div>
 
+        </div>
+      </section>
           {/* COACHES GRID */}
-          <div className="mt-20">
+          <div className="mt-20 bg-[url('/images/teamplay-dark.jpeg')] bg-cover bg-center px-10 py-20">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {coaches.map((coach, index) => {
                 const { name, role, image, experience, bio } = coach;
@@ -257,8 +259,6 @@ const About = () => {
               })}
             </div>
           </div>
-        </div>
-      </section>
 
       {/* ================= FAQ & STATS ================= */}
       <section className="bg-white py-16 md:py-8">
