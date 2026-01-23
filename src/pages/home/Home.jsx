@@ -204,7 +204,7 @@ const Home = () => {
                     </motion.p>
 
                     <motion.button
-                      className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-md font-semibold w-fit"
+                      className="bg-[#2141a5]  px-6 py-3 font-semibold w-fit"
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.7 }}
