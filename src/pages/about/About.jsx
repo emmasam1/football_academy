@@ -12,28 +12,28 @@ const About = () => {
     {
       name: "Coach Samuel Adeyemi",
       role: "Head Coach",
-      image: "/images/coach1.jpg",
+      image: "https://www.cafonline.com/media/juxpueoo/eric-sekou-chelle-coach-of-nigeria.jpg",
       experience: "12 Years Experience",
       bio: "UEFA-certified coach focused on player development, discipline, and tactical intelligence.",
     },
     {
       name: "Coach Ibrahim Musa",
       role: "Assistant Coach",
-      image: "/images/coach2.jpg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmtoIEwOUGdTf7X8Yqztn2KLJhuQn0ZahaTA&s",
       experience: "8 Years Experience",
       bio: "Specialist in youth fitness, agility training, and match preparation.",
     },
     {
       name: "Coach Daniel Okonkwo",
       role: "Technical Coach",
-      image: "/images/coach3.jpg",
+      image: "/images/coach.jpeg",
       experience: "10 Years Experience",
       bio: "Expert in ball control, passing accuracy, and modern football techniques.",
     },
     {
       name: "Coach Emmanuel Bello",
       role: "Goalkeeper Coach",
-      image: "/images/coach4.jpg",
+      image: "https://www.thesportstuff.in/cdn/shop/articles/Jose-Mourinho-Best-Manager-of-all-time_1200x1200.jpg?v=1589775578",
       experience: "9 Years Experience",
       bio: "Former professional goalkeeper training young keepers with confidence and focus.",
     },
@@ -217,7 +217,7 @@ const About = () => {
 
               <Button
                 type="primary"
-                className="bg-[#FB5724]! hover:bg-[#e04e20]! rounded-none px-8 h-11"
+                className="bg-[#2141a5]!  rounded-none! px-8 h-11"
               >
                 Contact Us
               </Button>
