@@ -73,7 +73,15 @@ const Navbar = () => {
         { key: "/team/coaches", label: "Coaches" },
       ],
     },
-
+    // {
+    //   key: "/program",
+    //   label: "Programs",
+    //   children: [
+    //     { key: "/program/program", label: "Programs" },
+    //     { key: "/program/training", label: "Tranining" },
+    //   ],
+    // },
+     { key: "/program", label: "Programs" },
     { key: "/blog", label: "Blog" },
     { key: "/gallery", label: "Gallery" },
     { key: "/contact", label: "Contacts" },
@@ -108,7 +116,7 @@ const Navbar = () => {
             className="font-bold tracking-wide cursor-pointer text-white"
             onClick={() => navigate("/")}
           >
-            ⚽ SOCCERCLUB
+            ⚽ JOSENIHO
           </div>
 
           {/* DESKTOP MENU */}
@@ -121,13 +129,13 @@ const Navbar = () => {
               items={menuItems}
               theme="dark"
               className="
-    bg-transparent!
-    uppercase
-    tracking-wide
-    border-none!
-    [&_.ant-menu-item]:px-4
-    [&_.ant-menu-submenu-title]:px-4
-  "
+            bg-transparent!
+            uppercase
+            tracking-wide
+            border-none!
+            [&_.ant-menu-item]:px-4
+            [&_.ant-menu-submenu-title]:px-4
+          "
             />
 
             <motion.button
