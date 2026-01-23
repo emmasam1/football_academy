@@ -104,7 +104,7 @@ const Program = () => {
       {/* MENTORS SECTION - FULL WIDTH FLUSH RIGHT */}
       <section 
         className="relative min-h-[550px] flex items-end justify-end bg-cover bg-center"
-        style={{ backgroundImage: `url("../../../../public/images/bg_bannerArea.jpg"` }}
+        style={{ backgroundImage: `url("/images/bg_bannerArea.jpg"` }}
       >
         <div className="absolute inset-0 bg-black/20" />
         
@@ -145,7 +145,7 @@ const Program = () => {
                 ))}
               </div>
 
-              <div className="w-full md:w-48 bg-gradient-to-b from-[#2e1065] to-[#1e1b4b] text-white p-6 flex flex-col items-center justify-center text-center shadow-xl">
+              <div className="w-full md:w-48 bg-gradient-to-br from-[#991b1b] to-[#1e3a8a] text-white p-6 flex flex-col items-center justify-center text-center shadow-xl">
                   <div className="w-12 h-12 bg-[#dc2626] flex items-center justify-center mb-4 shadow-lg">
                     <FaFutbol size={24} className="text-white" />
                   </div>

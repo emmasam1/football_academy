@@ -112,12 +112,28 @@ const Navbar = () => {
           "
         >
           {/* LOGO */}
-          <div
+          {/* <div
             className="font-bold tracking-wide cursor-pointer text-white"
             onClick={() => navigate("/")}
           >
-            ⚽ JOSENIHO
-          </div>
+            <img src="/images/logo.png" alt="Joseninho Logo" />
+          </div> */}
+          <div
+  onClick={() => navigate("/")}
+  className="flex items-center cursor-pointer select-none"
+>
+  <img
+    src="/images/logo2.jpeg"
+    alt="Joseninho Logo"
+    className="
+      h-10 
+      w-auto 
+      object-contain 
+      md:h-12 
+      lg:h-14
+    "
+  />
+</div>
 
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center gap-4">
