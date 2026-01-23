@@ -57,11 +57,11 @@ const Footers = () => {
           <div className="space-y-3">
             <input 
               type="text" placeholder="Name" 
-              className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2 text-sm focus:outline-none"
             />
             <input 
               type="email" placeholder="Email" 
-              className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2 text-sm focus:outline-none"
             />
             <motion.button 
               whileHover={{ scale: 1.02 }}
