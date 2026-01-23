@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -15,6 +18,27 @@ import small_img_1 from "../../../public/images/small_img_1.jpg";
 import small_img_2 from "../../../public/images/small_img_2.jpg";
 import small_img_3 from "../../../public/images/small_img_3.jpg";
 import small_img_4 from "../../../public/images/small_img_4.jpg";
+
+const heroSlides = [
+  {
+    image: "/images/hero.jpg",
+    title: "Join the Football League Today",
+    subtitle: "Compete with the Best. Develop Your Skills.",
+    cta: "Register Now",
+  },
+  {
+    image: "/images/hero-slide2.jpg",
+    title: "Train Like a Pro",
+    subtitle: "Expert Coaches. Structured Development.",
+    cta: "Learn More",
+  },
+  {
+    image: "/images/hero-slide3.jpg",
+    title: "Unleash Your Potential",
+    subtitle: "Become a Confident, Disciplined Athlete.",
+    cta: "Get Started",
+  },
+];
 
 const { Title, Text, Link } = Typography;
 
@@ -58,6 +82,22 @@ const PrevArrow = ({ onClick }) => {
 /* ================================================ */
 
 const Home = () => {
+  const [current, setCurrent] = useState(0);
+
+  const nextSlide = () =>
+    setCurrent((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
+
+  const prevSlide = () =>
+    setCurrent((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 7000); // 7 seconds
+
+    return () => clearInterval(interval);
+  }, [current]);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -124,6 +164,88 @@ const Home = () => {
 
   return (
     <div>
+      <div className="-top-16 relative w-full overflow-hidden h-[90vh] sm:h-[85vh] md:h-[80vh]">
+        <AnimatePresence mode="wait">
+          {heroSlides.map(
+            (slide, index) =>
+              index === current && (
+                <motion.div
+                  key={index}
+                  className="absolute inset-0 w-full h-full"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div
+                    className="w-full h-full bg-cover bg-center"
+                    style={{ backgroundImage: `url(${slide.image})` }}
+                  />
+
+                  <div className="absolute inset-0 bg-black/50"></div>
+
+                  <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 text-white">
+                    <motion.h1
+                      className="text-3xl md:text-5xl font-bold mb-4"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      {slide.title}
+                    </motion.h1>
+
+                    <motion.p
+                      className="text-lg md:text-2xl mb-6 max-w-xl"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {slide.subtitle}
+                    </motion.p>
+
+                    <motion.button
+                      className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-md font-semibold w-fit"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      {slide.cta}
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ),
+          )}
+        </AnimatePresence>
+
+        {/* Controls */}
+        {/* <button
+          onClick={prevSlide}
+          className="absolute left-5 top-1/2 -translate-y-1/2 bg-black/40 p-2 rounded-full"
+        >
+          <ChevronLeftIcon className="h-6 w-6 text-white" />
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/40 p-2 rounded-full"
+        >
+          <ChevronRightIcon className="h-6 w-6 text-white" />
+        </button> */}
+
+        {/* Dots */}
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3">
+          {heroSlides.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer ${
+                current === i ? "bg-white" : "bg-gray-400"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-screen w-full">
         {/* Background image (absolute) */}
