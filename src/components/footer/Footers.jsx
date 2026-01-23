@@ -6,7 +6,7 @@ const Footers = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0f172a] text-white pt-16 pb-8 px-6 md:px-12 lg:px-24">
+    <footer className="bg-[#252625] text-white pt-16 pb-8 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
         
         {/* Brand Section - Occupies full width on mobile, 1 col on desktop */}
