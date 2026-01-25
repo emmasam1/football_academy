@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { motion, AnimatePresence } from "framer-motion";
+import { Table } from "antd";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 import "slick-carousel/slick/slick.css";
@@ -53,7 +54,7 @@ const NextArrow = ({ onClick }) => {
         z-20 bg-[#1f2226]
         w-10 h-10 mr-10
         flex items-center justify-center
-        cursor-pointer hover:bg-orange-600 transition
+        cursor-pointer hover:bg-[#1C1F42]! transition
 
       "
     >
@@ -72,7 +73,7 @@ const PrevArrow = ({ onClick }) => {
         z-20 bg-[#1f2226]
         w-10 h-10 ml-10
         flex items-center justify-center
-        cursor-pointer hover:bg-orange-600 transition
+        cursor-pointer hover:bg-[#1C1F42]! transition
       "
     >
       <LeftOutlined />
@@ -97,6 +98,153 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, [current]);
+
+  const fixtures = [
+    {
+      id: 1,
+      stadium: "Central Olympic Stadium",
+      date: "April 02, 2019",
+      home: { name: "Istanbul", logo: "/images/club1.png" },
+      away: { name: "Italy FC.", logo: "/images/club2.png" },
+      bg: "/images/bg-mc3.jpeg",
+    },
+    {
+      id: 2,
+      stadium: "Central Olympic Stadium",
+      date: "April 02, 2019",
+      home: { name: "Rayal FC", logo: "/images/club3.png" },
+      away: { name: "Italy FC.", logo: "/images/club4.png" },
+      bg: "/images/bg-mc3.jpeg",
+    },
+    {
+      id: 3,
+      stadium: "Central Olympic Stadium",
+      date: "April 02, 2019",
+      home: { name: "DC Unfo.", logo: "/images/club1.png" },
+      away: { name: "Italy FC.", logo: "/images/club4.png" },
+      bg: "/images/bg-mc3.jpeg",
+    },
+    {
+      id: 4,
+      stadium: "Central Olympic Stadium",
+      date: "April 02, 2019",
+      home: { name: "Istanbul", logo: "/images/club1.png" },
+      away: { name: "Italy FC.", logo: "/images/club2.png" },
+      bg: "/images/bg-mc3.jpeg",
+    },
+  ];
+
+  const results = [
+    { id: 1, score: "1 - 2" },
+    { id: 2, score: "2 - 0" },
+    { id: 3, score: "1 - 0" },
+    { id: 4, score: "1 - 0" },
+    { id: 5, score: "1 - 0" },
+  ];
+
+  const leagueTable = [
+    { id: 1, club: "France FC", logo: "/logos/france.png", w: 13, d: 1, l: 61 },
+    {
+      id: 2,
+      club: "France FC",
+      logo: "/logos/france.png",
+      w: 12,
+      d: 20,
+      l: 61,
+    },
+    {
+      id: 3,
+      club: "France FC",
+      logo: "/logos/france.png",
+      w: 25,
+      d: 36,
+      l: 61,
+    },
+    {
+      id: 4,
+      club: "France FC",
+      logo: "/logos/france.png",
+      w: 10,
+      d: 15,
+      l: 61,
+    },
+    {
+      id: 5,
+      club: "France FC",
+      logo: "/logos/france.png",
+      w: 18,
+      d: 22,
+      l: 61,
+    },
+  ];
+
+  const schedule = [
+    {
+      id: 1,
+      date: "Nov 10, 2022",
+      event: "Royal FC vs GS FC",
+      time: "12:00",
+      venue: "GST Stadium",
+    },
+    {
+      id: 2,
+      date: "Nov 11, 2022",
+      event: "Royal FC vs GS FC",
+      time: "14:00",
+      venue: "GST Stadium",
+    },
+    {
+      id: 3,
+      date: "Nov 12, 2022",
+      event: "Royal FC vs GS FC",
+      time: "14:30",
+      venue: "GST Stadium",
+    },
+    {
+      id: 4,
+      date: "Nov 14, 2022",
+      event: "Royal FC vs GS FC",
+      time: "15:30",
+      venue: "GST Stadium",
+    },
+    {
+      id: 5,
+      date: "Nov 15, 2022",
+      event: "Royal FC vs GS FC",
+      time: "19:30",
+      venue: "GST Stadium",
+    },
+    {
+      id: 6,
+      date: "Nov 16, 2022",
+      event: "Royal FC vs GS FC",
+      time: "20:00",
+      venue: "GST Stadium",
+    },
+  ];
+
+  const leagueColumns = [
+    {
+      title: "Club",
+      dataIndex: "club",
+      render: (_, record) => (
+        <div className="flex items-center gap-3">
+          <img src={record.logo} alt="" className="h-8 w-8 object-contain" />
+          <span className="font-medium">{record.club}</span>
+        </div>
+      ),
+    },
+    { title: "W", dataIndex: "w", sorter: (a, b) => a.w - b.w },
+    { title: "D", dataIndex: "d", sorter: (a, b) => a.d - b.d },
+    { title: "L", dataIndex: "l", sorter: (a, b) => a.l - b.l },
+  ];
+
+  const scheduleColumns = [
+    { title: "Date", dataIndex: "date" },
+    { title: "Event", dataIndex: "event" },
+    { title: "Time", dataIndex: "time" },
+    { title: "Venue", dataIndex: "venue" },
+  ];
 
   const settings = {
     infinite: true,
@@ -162,107 +310,106 @@ const Home = () => {
     { image: small_img_4 },
   ];
 
+  const textContainer = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.4,
+      },
+    },
+  };
+
+  const textItem = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+  
   return (
     <div>
       <div className="-top-16 relative w-full overflow-hidden h-[90vh] sm:h-[85vh] md:h-[90vh]">
-        <AnimatePresence mode="wait">
-          {heroSlides.map(
-            (slide, index) =>
-              index === current && (
+      <AnimatePresence>
+        {heroSlides.map(
+          (slide, index) =>
+            index === current && (
+              <motion.div
+                key={index}
+                className="absolute inset-0 w-full h-full"
+                initial={{ opacity: 0.9, x: "100%" }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0.9, x: "-100%" }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+              >
+                {/* Background */}
+                <div
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url(${slide.image})` }}
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/50" />
+
+                {/* Content */}
                 <motion.div
-                  key={index}
-                  className="absolute inset-0 w-full h-full"
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 text-white"
+                  variants={textContainer}
+                  initial="hidden"
+                  animate="show"
                 >
-                  <div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${slide.image})` }}
-                  />
+                  <motion.h1
+                    variants={textItem}
+                    className="text-3xl md:text-5xl font-bold mb-4"
+                  >
+                    {slide.title}
+                  </motion.h1>
 
-                  <div className="absolute inset-0 bg-black/50"></div>
+                  <motion.p
+                    variants={textItem}
+                    className="text-lg md:text-2xl mb-6 max-w-xl"
+                  >
+                    {slide.subtitle}
+                  </motion.p>
 
-                  <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 text-white">
-                    <motion.h1
-                      className="text-3xl md:text-5xl font-bold mb-4"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      {slide.title}
-                    </motion.h1>
-
-                    <motion.p
-                      className="text-lg md:text-2xl mb-6 max-w-xl"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      {slide.subtitle}
-                    </motion.p>
-
-                    <motion.button
-                      className="bg-[#2141a5]  px-6 py-3 font-semibold w-fit"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 }}
-                    >
-                      {slide.cta}
-                    </motion.button>
-                  </div>
+                  <motion.button
+                    variants={textItem}
+                    className="bg-[#1C1F42] px-6 py-3 font-semibold w-fit"
+                  >
+                    {slide.cta}
+                  </motion.button>
                 </motion.div>
-              ),
-          )}
-        </AnimatePresence>
+              </motion.div>
+            )
+        )}
+      </AnimatePresence>
 
-        {/* Controls */}
-        {/* <button
-          onClick={prevSlide}
-          className="absolute left-5 top-1/2 -translate-y-1/2 bg-black/40 p-2 rounded-full"
-        >
-          <ChevronLeftIcon className="h-6 w-6 text-white" />
-        </button>
+      {/* Indicators */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md px-6">
+        <div className="flex justify-between items-center text-white text-sm mb-3">
+          <span className="font-semibold">
+            {String(current + 1).padStart(2, "0")}
+          </span>
+          <span className="opacity-60">
+            {String(heroSlides.length).padStart(2, "0")}
+          </span>
+        </div>
 
-        <button
-          onClick={nextSlide}
-          className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/40 p-2 rounded-full"
-        >
-          <ChevronRightIcon className="h-6 w-6 text-white" />
-        </button> */}
-
-        {/* Line Dots + Slide Number */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md px-6">
-          {/* Slide number */}
-          <div className="flex justify-between items-center text-white text-sm mb-3">
-            <span className="font-semibold">
-              {String(current + 1).padStart(2, "0")}
-            </span>
-            <span className="opacity-60">
-              {String(heroSlides.length).padStart(2, "0")}
-            </span>
-          </div>
-
-          {/* Lines */}
-          <div className="flex gap-3">
-            {heroSlides.map((_, i) => (
-              <div
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`
-          flex-1 bg-white! rounded-none! transition-all duration-500 cursor-pointer h-0.6
-          ${
-            current === i
-              ? "bg-orange-500 h-1"
-              : "bg-white/40 hover:bg-white/70"
-          }
-        `}
-              />
-            ))}
-          </div>
+        <div className="flex gap-3">
+          {heroSlides.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`flex-1 cursor-pointer transition-all duration-500
+                ${current === i ? "bg-orange-500 h-1" : "bg-white/40 h-0.5"}
+              `}
+            />
+          ))}
         </div>
       </div>
+    </div>
 
       {/* Hero Section */}
       {/* <section className="relative h-screen w-full">
@@ -281,10 +428,138 @@ const Home = () => {
         
         </div>
       </section> */}
+      <section className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* LEFT: FIXTURES */}
+          <div className="lg:col-span-3">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold">Fixtures & Results</h2>
+              <button className="bg-[#1C1F42]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
+                All Matches →
+              </button>
+            </div>
 
-      <div className="relative -top-16 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {fixtures.map((match) => (
+                <div
+                  key={match.id}
+                  className="relative h-56 rounded-xl overflow-hidden text-white"
+                >
+                  <img
+                    src={match.bg}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/60" />
+
+                  <div className="relative z-10 h-full flex flex-col justify-between p-5">
+                    <div className="text-center">
+                      <h3 className="font-semibold">{match.stadium}</h3>
+                      <p className="text-sm text-gray-200">{match.date}</p>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col items-center gap-2">
+                        <img src={match.home.logo} className="h-18" />
+                        <span className="text-sm">{match.home.name}</span>
+                      </div>
+
+                      <span className="text-lg font-bold">VS</span>
+
+                      <div className="flex flex-col items-center gap-2">
+                        <img src={match.away.logo} className="h-18" />
+                        <span className="text-sm">{match.away.name}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT: LATEST RESULTS */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold">Latest Results</h3>
+              <span className="text-white cursor-pointer bg-[#1C1F42] px-3">
+                ↗
+              </span>
+            </div>
+
+            <div className="bg-white rounded-xl shadow p-4 space-y-4">
+              {results.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center justify-between border-b last:border-none pb-3 last:pb-0"
+                >
+                  <div className="flex items-center gap-2">
+                    <img src="/images/clublog1.png" className="h-6" />
+                    <span className="text-sm font-medium">Italy FC.</span>
+                  </div>
+
+                  <span className="text-red-600 font-bold">{item.score}</span>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">Italy FC.</span>
+                    <img src="/images/clublog2.png" className="h-6" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 py-20">
+        <h2 className="text-2xl font-bold mb-5">League Table & Schedule</h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* LEAGUE TABLE */}
+          <div className="bg-white rounded-xl shadow">
+            <div className="bg-[#1C1F42] text-white px-6 py-4  font-semibold">
+              Serie A
+            </div>
+
+            <Table
+              columns={scheduleColumns}
+              dataSource={schedule}
+              rowKey="id"
+              size="small"
+              pagination={false}
+              scroll={{ y: 260 }}
+              className="px-4"
+            />
+
+            <div className="px-6 py-4 text-sm text-gray-500">
+              Showing 1 to {schedule.length} of {schedule.length} entries
+            </div>
+          </div>
+
+          {/* SCHEDULE */}
+          <div className="bg-white rounded-xl shadow">
+            <div className="bg-[#1C1F42] text-white px-6 py-4 font-semibold">
+              Serie A
+            </div>
+            <Table
+              columns={leagueColumns}
+              dataSource={leagueTable}
+              rowKey="id"
+              size="small"
+              pagination={false}
+              scroll={{ y: 260 }}
+              className="px-4"
+            />
+
+            <div className="px-6 py-4 text-sm text-gray-500">
+              Showing 1 to {leagueTable.length} of {leagueTable.length} entries
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="">
         {/* Slider */}
-        <div className=" bg-[#323437] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
+        <div className=" bg-[#1C1F42] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
           {/* relative wrapper REQUIRED for arrows */}
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 overflow-hidden">
             <Slider {...settings}>
@@ -302,7 +577,7 @@ const Home = () => {
                       {slide.description}
                     </p>
 
-                    <Button className="mt-auto bg-[#1C1F26]! text-[#949aa7]! border-none! hover:bg-[#FB5724]! hover:text-white! rounded-none! px-5! text-sm">
+                    <Button className="mt-auto bg-[#1C1F26]! text-[#949aa7]! border-none! hover:bg-[#1C1F42]! hover:text-white! rounded-none! px-5! text-sm">
                       details
                     </Button>
                   </div>

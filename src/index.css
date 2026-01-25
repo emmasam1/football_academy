@@ -96,3 +96,27 @@ button:focus-visible {
   height: 2px;
   background: white;
 }
+
+/* ONLY ACTIVE / OPEN PANEL */
+.ant-collapse-item-active > .ant-collapse-header {
+  background-color: #1C1F42 !important;
+  color: #ffffff !important;
+}
+
+/* OPEN PANEL CONTENT */
+.ant-collapse-item-active > .ant-collapse-content {
+  background-color: #1C1F42 !important;
+  color: #ffffff !important;
+}
+
+/* Text inside content */
+.ant-collapse-item-active
+  .ant-collapse-content-box {
+  color: #ffffff !important;
+}
+
+/* Optional: smooth transition */
+.ant-collapse-header,
+.ant-collapse-content {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

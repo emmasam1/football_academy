@@ -12,14 +12,16 @@ const About = () => {
     {
       name: "Coach Samuel Adeyemi",
       role: "Head Coach",
-      image: "https://www.cafonline.com/media/juxpueoo/eric-sekou-chelle-coach-of-nigeria.jpg",
+      image:
+        "https://www.cafonline.com/media/juxpueoo/eric-sekou-chelle-coach-of-nigeria.jpg",
       experience: "12 Years Experience",
       bio: "UEFA-certified coach focused on player development, discipline, and tactical intelligence.",
     },
     {
       name: "Coach Ibrahim Musa",
       role: "Assistant Coach",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmtoIEwOUGdTf7X8Yqztn2KLJhuQn0ZahaTA&s",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmtoIEwOUGdTf7X8Yqztn2KLJhuQn0ZahaTA&s",
       experience: "8 Years Experience",
       bio: "Specialist in youth fitness, agility training, and match preparation.",
     },
@@ -33,7 +35,8 @@ const About = () => {
     {
       name: "Coach Emmanuel Bello",
       role: "Goalkeeper Coach",
-      image: "https://www.thesportstuff.in/cdn/shop/articles/Jose-Mourinho-Best-Manager-of-all-time_1200x1200.jpg?v=1589775578",
+      image:
+        "https://www.thesportstuff.in/cdn/shop/articles/Jose-Mourinho-Best-Manager-of-all-time_1200x1200.jpg?v=1589775578",
       experience: "9 Years Experience",
       bio: "Former professional goalkeeper training young keepers with confidence and focus.",
     },
@@ -201,7 +204,7 @@ const About = () => {
           {/* ================= BOTTOM ================= */}
           <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block mb-4 text-xs uppercase tracking-wide text-orange-500 border border-orange-500/30 px-3 py-1">
+              <span className="inline-block mb-4 text-xs uppercase tracking-wide text-[#1C1F42] border border-[#1C1F42]-500/30 px-3 py-1">
                 Meet our coach
               </span>
 
@@ -223,42 +226,41 @@ const About = () => {
               </Button>
             </div>
           </div>
-
         </div>
       </section>
-          {/* COACHES GRID */}
-          <div className="mt-20 bg-[url('/images/teamplay-dark.jpeg')] bg-cover bg-center px-10 py-20">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {coaches.map((coach, index) => {
-                const { name, role, image, experience, bio } = coach;
+      {/* COACHES GRID */}
+      <div className="mt-20 bg-[url('/images/teamplay-dark.jpeg')] bg-cover bg-center px-10 py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {coaches.map((coach, index) => {
+            const { name, role, image, experience, bio } = coach;
 
-                return (
-                  <div
-                    key={index}
-                    className="bg-[#1f2124] overflow-hidden shadow-lg hover:shadow-xl transition"
-                  >
-                    {/* IMAGE */}
-                    <img
-                      src={image}
-                      alt={name}
-                      className="w-full h-56 object-cover"
-                    />
+            return (
+              <div
+                key={index}
+                className="bg-[#1f2124] overflow-hidden shadow-lg hover:shadow-xl transition"
+              >
+                {/* IMAGE */}
+                <img
+                  src={image}
+                  alt={name}
+                  className="w-full h-56 object-cover"
+                />
 
-                    {/* CONTENT */}
-                    <div className="p-5 text-white">
-                      <h4 className="text-lg font-semibold">{name}</h4>
-                      <p className="text-sm text-orange-500">{role}</p>
-                      <p className="text-xs text-gray-400 mt-1">{experience}</p>
+                {/* CONTENT */}
+                <div className="p-5 text-white">
+                  <h4 className="text-lg font-semibold">{name}</h4>
+                  <p className="text-sm text-orange-500">{role}</p>
+                  <p className="text-xs text-gray-400 mt-1">{experience}</p>
 
-                      <p className="text-sm text-gray-300 mt-3 line-clamp-3">
-                        {bio}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+                  <p className="text-sm text-gray-300 mt-3 line-clamp-3">
+                    {bio}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
       {/* ================= FAQ & STATS ================= */}
       <section className="bg-white py-16 md:py-8">
@@ -266,7 +268,10 @@ const About = () => {
           {/* STATS */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 text-center border-b pb-4 border-gray-200">
             {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center gap-2 border-r border-gray-200 last:border-0 pr-4 md:pr-0">
+              <div
+                key={index}
+                className="flex flex-col items-center gap-2 border-r border-gray-200 last:border-0 pr-4 md:pr-0"
+              >
                 <div className="text-orange-500 text-2xl">{stat.icon}</div>
                 <h4 className="text-2xl font-bold text-gray-900">
                   {stat.value}
@@ -298,9 +303,19 @@ const About = () => {
 
           {/* FAQ GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Collapse accordion items={faqsLeft} className="bg-white" />
+            <Collapse
+              accordion
+              items={faqsLeft}
+              bordered={false}
+              expandIconPosition="end"
+            />
 
-            <Collapse accordion items={faqsRight} className="bg-white" />
+            <Collapse
+              accordion
+              items={faqsRight}
+              bordered={false}
+              expandIconPosition="end"
+            />
           </div>
         </div>
       </section>
