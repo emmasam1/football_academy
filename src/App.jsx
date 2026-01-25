@@ -10,6 +10,9 @@ import Footers from "./components/footer/Footers";
 import Coaches from "./pages/coaches/Coaches";
 import Team from "./pages/team/Team";
 import Schedule from "./pages/schedule/Schedule";
+import PlayersInfo from "./pages/players/PlayersInfo";
+import Mediapage from "./pages/media/Mediapage";
+import Blogpage from "./pages/blog/Blogpage";
 
 const App = () => {
   return (
@@ -23,11 +26,13 @@ const App = () => {
 
         <Route path="/team" element={<Team />}>
           <Route path="coaches" element={<Coaches />} />
+          <Route path="players" element={<PlayersInfo />} />
+           <Route path="media" element={<Mediapage />} />
         </Route>
 
          <Route path="/program" element={<ProgramsPage />} />
          <Route path="/schedule" element={<Schedule />} />
-        <Route path="/blog" element={<div>Blog</div>} />
+        <Route path="/blog" element={<Blogpage />} />
         <Route path="/gallery" element={<div>Gallery</div>} />
         <Route path="/contact" element={<div>Contacts</div>} />
       </Routes>

@@ -1,13 +1,11 @@
-
-
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUpRight, FiChevronLeft, FiPlay, FiX } from 'react-icons/fi';
+import { FiArrowUpRight, FiChevronLeft, FiPlay, FiX, FiMapPin } from 'react-icons/fi';
 
 const MatchSchedule = () => {
   const [view, setView] = useState('list');
   const [selectedMatch, setSelectedMatch] = useState(null);
-  const [entriesPerPage, setEntriesPerPage] = useState(10);
+  const [entriesPerPage, setEntriesPerPage] = useState(5);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const scheduleData = [
@@ -23,7 +21,9 @@ const MatchSchedule = () => {
       teamALogo: "https://cdn-icons-png.flaticon.com/512/197/197626.png", 
       teamBLogo: "https://cdn-icons-png.flaticon.com/512/197/197560.png",
       youtubeId: "qujOZH8y3r8", 
-      channelUrl: "https://www.youtube.com/@premierleague" 
+      channelUrl: "https://www.youtube.com/@premierleague",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.734533038676!2d7.4815!3d9.0765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0a4731885f81%3A0x868b139a341b520!2sAbuja%20National%20Stadium!5e0!3m2!1sen!2sng!4v1710000000000!5m2!1sen!2sng",
+      officials: { referee: "Jone Due", assistant: "Parrow Smath", timekeepers: ["Petter Tell", "Gomes Tell"] }
     },
     { 
       id: 2, 
@@ -37,36 +37,42 @@ const MatchSchedule = () => {
       teamALogo: "https://cdn-icons-png.flaticon.com/512/197/197626.png", 
       teamBLogo: "https://cdn-icons-png.flaticon.com/512/824/824748.png",
       youtubeId: "qujOZH8y3r8",
-      channelUrl: "https://www.youtube.com/@FIFA"
+      channelUrl: "https://www.youtube.com/@FIFA",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.734533038676!2d7.4815!3d9.0765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0a4731885f81%3A0x868b139a341b520!2sAbuja%20National%20Stadium!5e0!3m2!1sen!2sng!4v1710000000000!5m2!1sen!2sng",
+      officials: { referee: "Mike Dean", assistant: "Gary Beswick", timekeepers: ["John Moss", "Andre Marriner"] }
     },
     { 
       id: 3, 
-      date: "Dec 01, 2026", 
+      date: "Dec 01, 2026",
       teamA: "Young Milano", 
       teamB: "Amawonda", 
-      time: "19:00", 
+      time: "19:00",
       league: "Youth League", 
       season: "2026", 
-      venue: "Goal project", 
+      venue: "Goal project",
       teamALogo: "https://cdn-icons-png.flaticon.com/512/197/197626.png", 
       teamBLogo: "https://cdn-icons-png.flaticon.com/512/197/197560.png",
       youtubeId: "qujOZH8y3r8", 
-      channelUrl: "https://www.youtube.com/@premierleague" 
+      channelUrl: "https://www.youtube.com/@premierleague",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.734533038676!2d7.4815!3d9.0765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0a4731885f81%3A0x868b139a341b520!2sAbuja%20National%20Stadium!5e0!3m2!1sen!2sng!4v1710000000000!5m2!1sen!2sng",
+      officials: { referee: "Sarah Smith", assistant: "Linda Brown", timekeepers: ["Emma Johnson", "Olivia Williams"] },
     },
-    { 
-      id: 4, 
-      date: "Dec 05, 2026", 
-      teamA: "Warriors FC", 
-      teamB: "Supreme FC", 
-      time: "19:00", 
-      league: "Youth Cup", 
-      season: "2026", 
-      venue: "Turf Arena", 
-      teamALogo: "https://cdn-icons-png.flaticon.com/512/197/197626.png", 
+    {
+      id: 4,
+      date: "Dec 05, 2026",
+      teamA: "Warriors FC",
+      teamB: "Supreme FC",
+      time: "19:00",
+      league: "Youth Cup",
+      season: "2026",
+      venue: "Turf Arena",
+      teamALogo: "https://cdn-icons-png.flaticon.com/512/197/197626.png",
       teamBLogo: "https://cdn-icons-png.flaticon.com/512/824/824748.png",
       youtubeId: "qujOZH8y3r8",
-      channelUrl: "https://www.youtube.com/@FIFA"
-    },
+      channelUrl: "https://www.youtube.com/@FIFA",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.734533038676!2d7.4815!3d9.0765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0a4731885f81%3A0x868b139a341b520!2sAbuja%20National%20Stadium!5e0!3m2!1sen!2sng!4v1710000000000!5m2!1sen!2sng",
+      officials: { referee: "David Miller", assistant: "Chris Taylor", timekeepers: ["James Wilson", "Robert Moore"] }
+    }
   ];
 
   const displayedData = useMemo(() => {
@@ -88,8 +94,8 @@ const MatchSchedule = () => {
           <motion.div key="list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             {/* HERO SECTION */}
             <section className="relative h-[30vh] md:h-[40vh] flex items-center justify-center text-white">
-              <div className="absolute inset-0 bg-black/60 z-10" />
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1600')` }} />
+              {/* <div className="absolute inset-0 bg-black/60 z-10" /> */}
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }} />
               <div className="relative z-20 text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Schedule</h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
@@ -104,6 +110,8 @@ const MatchSchedule = () => {
               <div className="mb-6 flex items-center gap-2 text-slate-500 font-bold text-sm">
                 <span>Show</span>
                 <select value={entriesPerPage} onChange={(e) => setEntriesPerPage(Number(e.target.value))} className="bg-white border border-slate-200 rounded px-2 py-1 outline-none cursor-pointer">
+                    <option value={2}>2</option>
+                    <option value={5}>5</option>
                     <option value={10}>10</option>
                     <option value={25}>25</option>
                     <option value={50}>50</option>
@@ -111,7 +119,6 @@ const MatchSchedule = () => {
                 <span>entries</span>
               </div>
 
-              {/* Responsive Container: overflow-x-auto allows horizontal scrolling on mobile */}
               <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden rounded-sm border border-slate-100">
                 <div className="overflow-x-auto w-full">
                   <table className="w-full text-left border-collapse min-w-[800px]">
@@ -140,7 +147,7 @@ const MatchSchedule = () => {
                           <td className="py-5 px-6 whitespace-nowrap">
                             <button 
                               onClick={() => handleMatchClick(match.id)} 
-                              className="bg-[#1C1F42]! text-white font-black px-5 py-3 flex items-center gap-2 rounded-none! transition-all uppercase text-[10px] tracking-widest hover:bg-red-600 whitespace-nowrap"
+                              className="bg-[#1C1F42] text-white font-black px-5 py-3 flex items-center gap-2 transition-all uppercase text-[10px] tracking-widest hover:bg-blue-900 whitespace-nowrap cursor-pointer"
                             >
                               View Match Info <FiArrowUpRight />
                             </button>
@@ -151,15 +158,14 @@ const MatchSchedule = () => {
                   </table>
                 </div>
               </div>
-              <p className="mt-4 text-xs text-slate-400 italic md:hidden">Scroll table horizontally to view more details →</p>
             </section>
           </motion.div>
         ) : (
           <motion.div key="details" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }}>
             {/* DETAILS HERO */}
             <section className="relative h-[45vh] flex items-center justify-center text-white">
-              <div className="absolute inset-0 bg-black/70 z-10" />
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1600')` }} />
+              {/* <div className="absolute inset-0 bg-black/70 z-10" /> */}
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }} />
               <div className="relative z-20 text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Matches Details</h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-sm font-bold uppercase tracking-widest">
@@ -180,10 +186,9 @@ const MatchSchedule = () => {
                 </button>
             </div>
 
-            {/* MATCH CONTENT */}
-            <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+            {/* ABOUT MATCH CONTENT */}
+            <section className="py-16 px-6 max-w-7xl mx-auto border-b border-slate-100">
               <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
                  <div>
                    <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tighter uppercase">About Match Details</h2>
                    <p className="text-slate-500 leading-[1.8] text-lg mb-10">
@@ -193,10 +198,10 @@ const MatchSchedule = () => {
                     href={selectedMatch.channelUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex bg-[#1C1F42] text-white! px-12 py-5 font-black uppercase tracking-widest text-sm rounded hover:bg-blue-900 hover: text-white! shadow-xl transition-all items-center gap-3"
+                    className="inline-flex bg-[#1C1F42] text-white px-12 py-5 font-black uppercase tracking-widest text-sm rounded hover:bg-blue-900 shadow-xl transition-all items-center gap-3"
                   >
                     Stream Now <FiArrowUpRight size={20} />
-                   </a>
+                  </a>
                  </div>
 
                 {/* VERSUS BOX / VIDEO PLAYER */}
@@ -216,7 +221,7 @@ const MatchSchedule = () => {
                                     <div className="px-2 md:px-4 text-center">
                                         <button 
                                             onClick={() => setIsVideoPlaying(true)}
-                                            className="w-12 h-12 md:w-16 md:h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-600/40 hover:scale-110 transition-transform mb-2"
+                                            className="w-12 h-12 md:w-16 md:h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-600/40 hover:scale-110 transition-transform mb-2 cursor-pointer"
                                         >
                                             <FiPlay size={20} fill="currentColor" />
                                         </button>
@@ -228,32 +233,64 @@ const MatchSchedule = () => {
                                     </div>
                                 </motion.div>
                             ) : (
-                                <motion.div 
-                                    key="video"
-                                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                                    className="relative w-full h-full bg-black"
-                                >
-                                    <button 
-                                        onClick={() => setIsVideoPlaying(false)}
-                                        className="absolute top-2 right-2 z-50 bg-red-600 text-white p-1 rounded-full hover:bg-white hover:text-red-600 transition-colors"
-                                    >
+                                <motion.div key="video" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative w-full h-full bg-black">
+                                    <button onClick={() => setIsVideoPlaying(false)} className="absolute top-2 right-2 z-50 bg-red-600 text-white p-1 rounded-full hover:bg-white hover:text-red-600 transition-colors">
                                         <FiX size={20} />
                                     </button>
-                                    <iframe
-                                        width="100%"
-                                        height="100%"
-                                        src={`https://www.youtube.com/embed/${selectedMatch.youtubeId}?autoplay=1&controls=1`}
-                                        title="YouTube video player"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
+                                    <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${selectedMatch.youtubeId}?autoplay=1`} frameBorder="0" allowFullScreen></iframe>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                     </div>
                 </div>
               </div>
+            </section>
+
+            {/* MATCH LOCATION SECTION */}
+            <section className="py-16 px-6 max-w-7xl mx-auto">
+                <h2 className="text-4xl font-black text-[#1C1F42] mb-8 tracking-tighter uppercase flex items-center gap-3">
+                   Stadium Location
+                </h2>
+                <div className="w-full h-[400px] bg-slate-200 rounded-sm overflow-hidden shadow-lg border border-slate-100">
+                    <iframe 
+                        title="map"
+                        src={selectedMatch.mapUrl}
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        allowFullScreen="" 
+                        loading="lazy"
+                    ></iframe>
+                </div>
+            </section>
+
+            {/* MATCH OFFICIALS SECTION */}
+            <section className="py-16 px-6 max-w-7xl mx-auto pb-32">
+                <h2 className="text-4xl font-black text-[#1C1F42] mb-8 tracking-tighter uppercase">Official</h2>
+                <div className="bg-white shadow-xl overflow-hidden rounded-sm border border-slate-100">
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-center border-collapse">
+                            <thead>
+                                <tr className="bg-[#1C1F42] text-white uppercase text-xs font-black tracking-widest">
+                                    <th className="py-5 px-6">Referee</th>
+                                    <th className="py-5 px-6">Assistant Referee</th>
+                                    <th className="py-5 px-6">Timekeepers</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-slate-700 font-bold text-sm">
+                                <tr>
+                                    <td className="py-6 px-6">{selectedMatch.officials.referee}</td>
+                                    <td className="py-6 px-6">{selectedMatch.officials.assistant}</td>
+                                    <td className="py-6 px-6">
+                                        {selectedMatch.officials.timekeepers.map((tk, idx) => (
+                                            <div key={idx} className="mb-1 last:mb-0">{tk}</div>
+                                        ))}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </section>
           </motion.div>
         )}

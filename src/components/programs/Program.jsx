@@ -104,7 +104,7 @@ const Program = () => {
       {/* MENTORS SECTION - FULL WIDTH FLUSH RIGHT */}
       <section 
         className="relative min-h-[550px] flex items-end justify-end bg-cover bg-center"
-        style={{ backgroundImage: `url("/images/bg_bannerArea.jpg"` }}
+        style={{ backgroundImage: `url("/images/bg_bannerArea.jpg")` }}
       >
         <div className="absolute inset-0 bg-black/20" />
         

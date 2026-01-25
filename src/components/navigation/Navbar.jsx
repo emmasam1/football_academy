@@ -62,15 +62,16 @@ const Navbar = () => {
 
     {
       key: "/about",
-      label: "About Club",
+      label: "The League",
     },
 
     {
       key: "/team",
       label: "Team",
       children: [
-        { key: "/team/players", label: "Players" },
         { key: "/team/coaches", label: "Coaches" },
+        { key: "/team/players", label: "Players" },
+        { key: "/team/media", label: "Media" },
       ],
     },
     // {
