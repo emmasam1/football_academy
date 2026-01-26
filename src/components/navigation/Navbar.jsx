@@ -178,6 +178,7 @@ const Navbar = () => {
               toggle={setOpen}
               size={17}
               duration={0.8}
+              color="white"
             />
           </div>
         </motion.div>

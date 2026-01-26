@@ -84,20 +84,19 @@ const PrevArrow = ({ onClick }) => {
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
-
-  const nextSlide = () =>
-    setCurrent((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
-
-  const prevSlide = () =>
-    setCurrent((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      nextSlide();
-    }, 7000); // 7 seconds
+      setCurrent((prev) => (prev + 1) % heroSlides.length);
+    }, 7000);
 
     return () => clearInterval(interval);
-  }, [current]);
+  }, []);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const fixtures = [
     {
@@ -261,17 +260,23 @@ const Home = () => {
     centerMode: false,
     /* ========================= */
 
-    // responsive: [
-    //   { breakpoint: 1280, settings: { slidesToShow: 3 } },
-    //   { breakpoint: 1024, settings: { slidesToShow: 2 } },
-    //   {
-    //     breakpoint: 640,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       arrows: false, // 🔥 prevent mobile overflow
-    //     },
-    //   },
-    // ],
+    responsive: [
+    {
+      breakpoint: 1024, // tablet
+      settings: {
+        slidesToShow: 1,
+        fade: true,
+      },
+    },
+    {
+      breakpoint: 640, // mobile
+      settings: {
+        slidesToShow: 1,
+        fade: true,
+        arrows: false,
+      },
+    },
+  ],
   };
 
   const slides = [
@@ -328,88 +333,100 @@ const Home = () => {
       transition: { duration: 0.8, ease: "easeOut" },
     },
   };
-  
+
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <div>
-      <div className="-top-16 relative w-full overflow-hidden h-[90vh] sm:h-[85vh] md:h-[90vh]">
-      <AnimatePresence>
-        {heroSlides.map(
-          (slide, index) =>
-            index === current && (
-              <motion.div
-                key={index}
-                className="absolute inset-0 w-full h-full"
-                initial={{ opacity: 0.9, x: "100%" }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0.9, x: "-100%" }}
-                transition={{ duration: 1, ease: "easeInOut" }}
-              >
-                {/* Background */}
-                <div
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url(${slide.image})` }}
-                />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/50" />
-
-                {/* Content */}
-                <motion.div
-                  className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 text-white"
-                  variants={textContainer}
-                  initial="hidden"
-                  animate="show"
-                >
-                  <motion.h1
-                    variants={textItem}
-                    className="text-3xl md:text-5xl font-bold mb-4"
-                  >
-                    {slide.title}
-                  </motion.h1>
-
-                  <motion.p
-                    variants={textItem}
-                    className="text-lg md:text-2xl mb-6 max-w-xl"
-                  >
-                    {slide.subtitle}
-                  </motion.p>
-
-                  <motion.button
-                    variants={textItem}
-                    className="bg-[#1C1F42] px-6 py-3 font-semibold w-fit"
-                  >
-                    {slide.cta}
-                  </motion.button>
-                </motion.div>
-              </motion.div>
-            )
-        )}
-      </AnimatePresence>
-
-      {/* Indicators */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md px-6">
-        <div className="flex justify-between items-center text-white text-sm mb-3">
-          <span className="font-semibold">
-            {String(current + 1).padStart(2, "0")}
-          </span>
-          <span className="opacity-60">
-            {String(heroSlides.length).padStart(2, "0")}
-          </span>
-        </div>
-
-        <div className="flex gap-3">
-          {heroSlides.map((_, i) => (
+      <div className="-top-16 relative w-full overflow-hidden h-[90vh] sm:h-[85vh] md:h-[90vh] bg-black">
+        <AnimatePresence>
+          <motion.div
+            key={current}
+            className="absolute inset-0 w-full h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            style={{ zIndex: 1 }}
+          >
+            {/* BACKGROUND IMAGE */}
             <div
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`flex-1 cursor-pointer transition-all duration-500
-                ${current === i ? "bg-orange-500 h-1" : "bg-white/40 h-0.5"}
-              `}
+              className="absolute inset-0 bg-cover bg-center scale-105"
+              style={{
+                backgroundImage: `url(${heroSlides[current].image})`,
+              }}
             />
-          ))}
+
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-black/55" />
+
+            {/* CONTENT */}
+            <motion.div
+              className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 text-white max-w-3xl"
+              variants={textContainer}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.h1
+                variants={textItem}
+                className="text-3xl md:text-5xl font-bold mb-4"
+              >
+                {heroSlides[current].title}
+              </motion.h1>
+
+              <motion.p
+                variants={textItem}
+                className="text-lg md:text-2xl mb-6 text-slate-200"
+              >
+                {heroSlides[current].subtitle}
+              </motion.p>
+
+              <motion.button
+                variants={textItem}
+                className="bg-[#1C1F42] hover:bg-orange-500 transition px-6 py-3 font-semibold w-fit"
+              >
+                {heroSlides[current].cta}
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* INDICATOR */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-md px-6 z-20">
+          <div className="flex justify-between items-center text-white text-sm mb-3">
+            <span className="font-semibold">
+              {String(current + 1).padStart(2, "0")}
+            </span>
+            <span className="opacity-60">
+              {String(heroSlides.length).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div className="flex gap-3">
+            {heroSlides.map((_, i) => (
+              <div
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`flex-1 cursor-pointer transition-all duration-500 ${
+                  current === i
+                    ? "h-1 bg-orange-500"
+                    : "h-[2px] bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
 
       {/* Hero Section */}
       {/* <section className="relative h-screen w-full">
@@ -428,7 +445,13 @@ const Home = () => {
         
         </div>
       </section> */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <motion.section
+        variants={sectionVariant}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto px-4 py-16"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* LEFT: FIXTURES */}
           <div className="lg:col-span-3">
@@ -508,13 +531,33 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <section className="max-w-7xl mx-auto px-4 py-20">
         <h2 className="text-2xl font-bold mb-5">League Table & Schedule</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* LEAGUE TABLE */}
+          <div className="bg-white rounded-xl shadow">
+            <div className="bg-[#1C1F42] text-white px-6 py-4 font-semibold">
+              Serie A
+            </div>
+            <Table
+              columns={leagueColumns}
+              dataSource={leagueTable}
+              rowKey="id"
+              size="small"
+              pagination={false}
+              scroll={{ y: 260 }}
+              className="px-4"
+            />
+
+            <div className="px-6 py-4 text-sm text-gray-500">
+              Showing 1 to {leagueTable.length} of {leagueTable.length} entries
+            </div>
+          </div>
+
+          {/* SCHEDULE */}
           <div className="bg-white rounded-xl shadow">
             <div className="bg-[#1C1F42] text-white px-6 py-4  font-semibold">
               Serie A
@@ -532,26 +575,6 @@ const Home = () => {
 
             <div className="px-6 py-4 text-sm text-gray-500">
               Showing 1 to {schedule.length} of {schedule.length} entries
-            </div>
-          </div>
-
-          {/* SCHEDULE */}
-          <div className="bg-white rounded-xl shadow">
-            <div className="bg-[#1C1F42] text-white px-6 py-4 font-semibold">
-              Serie A
-            </div>
-            <Table
-              columns={leagueColumns}
-              dataSource={leagueTable}
-              rowKey="id"
-              size="small"
-              pagination={false}
-              scroll={{ y: 260 }}
-              className="px-4"
-            />
-
-            <div className="px-6 py-4 text-sm text-gray-500">
-              Showing 1 to {leagueTable.length} of {leagueTable.length} entries
             </div>
           </div>
         </div>
@@ -603,7 +626,7 @@ const Home = () => {
               <p className="text-2xl sm:text-3xl md:text-4xl">
                 Looking for a good team?{" "}
                 <span className="block font-bold uppercase text-4xl sm:text-5xl md:text-7xl mt-2">
-                  Join Our Club!
+                  Join Our League!
                 </span>
               </p>
 
