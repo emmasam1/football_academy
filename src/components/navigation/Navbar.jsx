@@ -74,18 +74,9 @@ const Navbar = () => {
         { key: "/team/media", label: "Media" },
       ],
     },
-    // {
-    //   key: "/program",
-    //   label: "Programs",
-    //   children: [
-    //     { key: "/program/program", label: "Programs" },
-    //     { key: "/program/training", label: "Tranining" },
-    //   ],
-    // },
-     { key: "/program", label: "Programs" },
-      { key: "/schedule", label: "Match Schedule" },
+    { key: "/program", label: "Programs" },
+    { key: "/schedule", label: "Match Schedule" },
     { key: "/blog", label: "Blog" },
-    { key: "/gallery", label: "Gallery" },
     { key: "/contact", label: "Contacts" },
   ];
 
