@@ -13,6 +13,7 @@ import Schedule from "./pages/schedule/Schedule";
 import PlayersInfo from "./pages/players/PlayersInfo";
 import Mediapage from "./pages/media/Mediapage";
 import Blogpage from "./pages/blog/Blogpage";
+import Contactpage from "./pages/contact/Contactpage";
 
 const App = () => {
   return (
@@ -33,8 +34,8 @@ const App = () => {
          <Route path="/program" element={<ProgramsPage />} />
          <Route path="/schedule" element={<Schedule />} />
         <Route path="/blog" element={<Blogpage />} />
-        <Route path="/gallery" element={<div>Gallery</div>} />
-        <Route path="/contact" element={<div>Contacts</div>} />
+        <Route path="/contact" element={<Contactpage />} />
+        {/* <Route path="/contact" element={<div>Contacts</div>} /> */}
       </Routes>
       {/* <Footer /> */}
       <Footers />

@@ -103,5 +103,8 @@ export const usePlayerStore = create((set, get) => ({
     const { news, newsPage, newsPerPage } = get();
     const startIndex = (newsPage - 1) * newsPerPage;
     return news.slice(startIndex, startIndex + newsPerPage);
-  }
+  },
+
+contactStatus: 'idle', // 'idle' | 'submitting' | 'success'
+setContactStatus: (status) => set({ contactStatus: status }),
 }));
