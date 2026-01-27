@@ -1,391 +1,251 @@
+
+
+
 import React, { useState } from "react";
-import { Progress, Button, Collapse, Tabs } from "antd";
+import { Progress, Button, Collapse } from "antd";
 import {
   UsergroupAddOutlined,
   TrophyOutlined,
   CheckCircleOutlined,
   StarOutlined,
+  HistoryOutlined,
+  BulbOutlined,
+  EyeOutlined,
+  CalendarOutlined,
 } from "@ant-design/icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const About = () => {
-  const [size, setSize] = useState("small");
+  const [activeTab, setActiveTab] = useState("History");
+  const [activeYear, setActiveYear] = useState("2022");
 
-  const [activeKey, setActiveKey] = useState("1");
-
-  const tabItems = [
-    {
-      key: "1",
-      label: "Our Mission",
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          Our mission is to nurture young football talents through structured
-          training, mentorship, and competitive exposure while instilling
-          discipline, confidence, and teamwork.
-        </p>
-      ),
+  // Mission, Vision, and History Data Structure
+  const tabData = {
+    History: {
+      icon: <HistoryOutlined />,
+      years: ["1990", "1995", "2005", "2015", "2022"],
+      content: {
+        "1990": "Founded as a local youth initiative in Abuja with just 15 players and a passion for the game.",
+        "1995": "Expanded our training facilities and registered as an official youth development affiliate.",
+        "2005": "Launched our first competitive league structure, attracting over 200 young athletes.",
+        "2015": "Introduced advanced scouting programs and specialized goalkeeper coaching clinics.",
+        "2022": "Joseninho Kids Football League continues to evolve as a premier sports hub.",
+      },
+      image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800",
     },
-    {
-      key: "2",
-      label: "Our Vision",
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          We aim to become a leading youth football development platform in
-          Africa, producing technically sound, mentally strong, and globally
-          competitive players.
-        </p>
-      ),
+    Mission: {
+      icon: <BulbOutlined />,
+      title: "Our Mission",
+      content: "At our core, we are dedicated to shaping the future of young footballers. We believe in creating a vibrant and secure environment where talent can flourish. Through top-notch training and exhilarating competition. Our commitment includes instilling essential values like teamwork, discipline, respect, and resilience traits that extend far beyond the field.",
+      image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1600",
     },
-    {
-      key: "3",
-      label: "Our Values",
-      children: (
-        <ul className="list-disc pl-5 text-gray-600 space-y-2">
-          <li>Discipline & Sportsmanship</li>
-          <li>Teamwork & Leadership</li>
-          <li>Consistency & Growth</li>
-        </ul>
-      ),
+    Vision: {
+      icon: <EyeOutlined />,
+      title: "Our Vision",
+      content: "Our vision is to be at the forefront of children's football leagues and sports management in Nigeria and across Africa. We strive to be recognized as a leader in nurturing young talent, crafting not just exceptional players but remarkable individuals ready to thrive in any arena.",
+      image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800",
     },
-  ];
+  };
 
   const coaches = [
-    {
-      name: "Dr Victor isereke ",
-      role: "Technical Coach",
-      image: "/images/Victor_isereke.jpeg",
-      experience: "10 Years Experience",
-      bio: "Chairman/Covener",
-    },
-    {
-      name: "Temidayo faleyimu",
-      role: "Assistant Coach",
-      image: "/images/Temidayo_faleyimu.jpeg",
-      experience: "8 Years Experience",
-      bio: "LOC chairman",
-    },
-    {
-      name: "Pascal Inyang",
-      role: "Head Coach",
-      image: "/images/Pascal_Inyang.jpeg",
-      experience: "12 Years Experience",
-      bio: "member planning committee",
-    },
-    {
-      name: "Keiphas Augustine",
-      role: "Goalkeeper Coach",
-      image: "/images/forth.jpeg",
-      experience: "9 Years Experience",
-      bio: "Match Commissioner",
-    },
+    { name: "Dr Victor Isereke", bio: "Chairman/Covener", image: "/images/Victor_isereke.jpeg" },
+    { name: "Temidayo Faleyimu", bio: "LOC chairman", image: "/images/Temidayo_faleyimu.jpeg" },
+    { name: "Pascal Inyang", bio: "Member planning committee", image: "/images/Pascal_Inyang.jpeg" },
+    { name: "Keiphas Augustine", bio: "Match Commissioner", image: "/images/forth.jpeg" },
   ];
 
   const stats = [
-    {
-      icon: <UsergroupAddOutlined />,
-      value: "12K+",
-      label: "Active Players",
-    },
-    {
-      icon: <TrophyOutlined />,
-      value: "48+",
-      label: "Winning Records",
-    },
-    {
-      icon: <CheckCircleOutlined />,
-      value: "98%",
-      label: "Satisfaction Rate",
-    },
-    {
-      icon: <StarOutlined />,
-      value: "4.7",
-      label: "User Ratings",
-    },
+    { icon: <UsergroupAddOutlined />, value: "12K+", label: "Active Players" },
+    { icon: <TrophyOutlined />, value: "48+", label: "Winning Records" },
+    { icon: <CheckCircleOutlined />, value: "98%", label: "Satisfaction Rate" },
+    { icon: <StarOutlined />, value: "4.7", label: "User Ratings" },
   ];
 
   const faqsLeft = [
-    {
-      key: "1",
-      label: "Who are the coaches at Joseninho Kids Football League?",
-      children:
-        "Our coaches are experienced football professionals and trained mentors passionate about youth development. They combine technical knowledge with a strong focus on discipline, character, and player growth..",
-    },
-    {
-      key: "2",
-      label: "How do I know which service is right for my child?",
-      children:
-        "Our coaches assess each player’s skill level and recommend programs that best support their development and confidence.",
-    },
-    {
-      key: "3",
-      label: "What qualifications do your coaches have?",
-      children:
-        "Our coaching team consists of certified and experienced football coaches with backgrounds in grassroots and youth football development, ensuring safe, effective, and age-appropriate training.",
-    },
+    { key: "1", label: "Who are the coaches at Joseninho Kids Football League?", children: "Our coaches are experienced football professionals and trained mentors passionate about youth development." },
+    { key: "2", label: "How do I know which service is right for my child?", children: "Our coaches assess each player’s skill level and recommend programs that best support their development." },
+    { key: "3", label: "What qualifications do your coaches have?", children: "Our coaching team consists of certified and experienced football coaches with backgrounds in grassroots development." },
   ];
 
   const faqsRight = [
-    {
-      key: "4",
-      label: "How do coaches support player development?",
-      children:
-        "Coaches focus on technical skills, tactical understanding, physical conditioning, mental strength, and teamwork, creating a balanced approach to football and personal development.",
-    },
-    {
-      key: "5",
-      label: "Do coaches work with different age groups?",
-      children:
-        "Yes. Our coaches are trained to work with various age categories, adapting training methods to suit each player’s age, ability, and stage of development.",
-    },
-    {
-      key: "6",
-      label: "Is player safety a priority during training?",
-      children:
-        "Absolutely. Player safety is central to our coaching philosophy. Coaches are trained in first aid, injury prevention, and creating a safe training environment for all players.",
-    },
+    { key: "4", label: "How do coaches support player development?", children: "Coaches focus on technical skills, tactical understanding, physical conditioning, and mental strength." },
+    { key: "5", label: "Do coaches work with different age groups?", children: "Yes. Our coaches are trained to work with various age categories, adapting training methods to suit each stage." },
+    { key: "6", label: "Is player safety a priority during training?", children: "Absolutely. Coaches are trained in first aid and injury prevention to ensure a safe environment." },
   ];
 
   return (
-    <div>
+    <div className="bg-gray-50">
       {/* ================= HERO ================= */}
       <section className="relative h-[40vh] w-full">
         <div className='absolute inset-0 -top-16 bg-[url("/images/hero.jpg")] bg-cover bg-center' />
-        <div className="relative z-10 h-full" />
       </section>
 
-      {/* ================= ABOUT ================= */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-10">
-          {/* TOP GRID */}
+      {/* ================= ABOUT TOP SECTION ================= */}
+      <section className="bg-white py-16 md:py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          {/* Removed gap-12 and added items-center to keep original compact height */}
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-            {/* LEFT */}
-            <div className="bg-blue-50 p-5">
-              <span className="inline-block mb-4 text-xs uppercase tracking-wide text-orange-500 border border-orange-500/30 px-3 py-1">
+            
+            {/* LEFT TEXT BOX - Touching the image */}
+            <div className="bg-blue-50/50 p-8 lg:rounded-l-2xl lg:rounded-r-none rounded-2xl">
+              <span className="inline-block mb-4 text-xs font-bold uppercase tracking-widest text-orange-600 border border-orange-200 bg-orange-50 px-3 py-1">
                 Who we are
               </span>
-
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight text-black mb-6">
-                Dedicated football professionals shaping confident, disciplined,
-                and skilled athletes
+              <h2 className="text-3xl md:text-4xl font-black leading-tight text-slate-900 mb-6">
+                Dedicated professionals shaping disciplined athletes
               </h2>
-
-              <p className="max-w-xl text-black text-justify">
-                Joseninho Kids Football League is a vibrant kids football
-                initiative nestled in the heart of Abuja, where we are
-                passionate about nurturing, developing, and celebrating the
-                incredible talent of young footballers. Tailored for players
-                aged 6 to 15, our league provides a dynamic and engaging
-                environment that combines fun with competition, enabling
-                children to master the fundamentals of football while developing
-                essential life skills such as confidence, discipline, and
-                teamwork.
+              <p className="text-slate-600 text-justify mb-6">
+                Joseninho Kids Football League is a vibrant initiative in Abuja, nurturing players aged 6 to 15. Our league provides a dynamic environment that combines fun with competition.
               </p>
-
-              <p className="text-black text-justify max-w-xl mt-5 mb-10">
-                Joseninho Kids Football League promises an exhilarating and
-                fulfilling experience for every participant. Our program
-                harmoniously combines skill development with the values of
-                sportsmanship and mentorship, all within a supportive community.
-                Here, football transcends mere play, it becomes a powerful
-                platform for personal growth, character development, and the
-                creation of cherished memories that will last a lifetime.
-              </p>
-
-              {/* STATS */}
+              
               <div className="flex flex-wrap gap-8">
                 <div className="flex items-center gap-4">
-                  <Progress
-                    type="circle"
-                    percent={87}
-                    width={80}
-                    strokeColor="#FB5724"
-                    trailColor="#444"
-                  />
-                  <p className="text-sm font-medium text-gray-300 max-w-35">
-                    Long Term Player Development
-                  </p>
+                  <Progress type="circle" percent={87} width={65} strokeColor="#FB5724" />
+                  <p className="text-sm font-bold text-slate-700 w-24">Player Development</p>
                 </div>
-
                 <div className="flex items-center gap-4">
-                  <Progress
-                    type="circle"
-                    percent={92}
-                    width={80}
-                    strokeColor="#FB5724"
-                    trailColor="#444"
-                  />
-                  <p className="text-sm font-medium text-gray-300 max-w-40">
-                    Structured Football Growth Strategy
-                  </p>
+                  <Progress type="circle" percent={92} width={65} strokeColor="#2141a5" />
+                  <p className="text-sm font-bold text-slate-700 w-24">Growth Strategy</p>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT IMAGE */}
+            {/* RIGHT IMAGE BOX - Touching the text box */}
             <div className="relative">
-              <img
-                src="/images/aboutImg1.jpeg"
-                alt="Coach training players"
-                className="w-full h-80 sm:h-95 lg:h-105 object-cover"
+              <img 
+                src="/images/aboutImg1.jpeg" 
+                alt="Training" 
+                className="w-full h-96 object-cover lg:rounded-r-2xl lg:rounded-l-none rounded-2xl shadow-2xl" 
               />
-
-              {/* EXPERIENCE BADGE */}
-              <div className="absolute bg-white h-28 w-28 -left-6 sm:-left-10 top-1/2 -translate-y-1/2 shadow-lg rounded-full flex flex-col items-center justify-center">
-                <p className="text-2xl font-bold text-orange-600">25+</p>
-                <p className="text-[11px] uppercase tracking-wide text-gray-500 text-center">
-                  Years of Experience
-                </p>
+              
+              {/* EXPERIENCE BADGE - Precisely overlapping in the middle */}
+              <div className="absolute hidden lg:flex bg-white h-24 w-24 left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl rounded-full flex flex-col items-center justify-center border-4 border-gray-50 z-10">
+                <p className="text-xl font-black text-orange-600">25+</p>
+                <p className="text-[10px] font-bold uppercase text-gray-400 text-center">Experience</p>
               </div>
             </div>
           </div>
-          <section className="w-full bg-[#EFF6FF] py-14 px-4 md:px-10 mt-10">
-            <div className="w-full max-w-7xl mx-auto">
-              {/* Tabs Header */}
-              <Tabs
-                activeKey={activeKey}
-                onChange={(key) => setActiveKey(key)}
-                type="card"
-                size={size}
-                items={tabItems.map((tab) => ({
-                  ...tab,
-                  children: null,
-                }))}
-                className="custom-tabs mb-12"
-              />
 
-              {/* Animated Content */}
-              <div className="relative bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] rounded-2xl p-8 md:p-12 overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeKey}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -16 }}
-                    transition={{ duration: 0.45, ease: "easeOut" }}
-                  >
-                    {tabItems.find((tab) => tab.key === activeKey)?.children}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+          {/* ================= UPDATED MISSION & VISION TABS ================= */}
+          <div className="mt-24">
+            {/* Tab Triggers */}
+            <div className="flex border-b border-gray-200 mb-8 overflow-x-auto">
+              {Object.keys(tabData).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex items-center gap-2 px-6 py-4 font-bold uppercase tracking-widest text-xs transition-all relative whitespace-nowrap ${
+                    activeTab === tab ? "text-[#e2e619] bg-white" : "text-slate-400 hover:text-yellow-500"
+                  }`}
+                >
+                  <span className="text-lg">{tabData[tab].icon}</span>
+                  Our {tab}
+                  {activeTab === tab && (
+                    <motion.div layoutId="activeTabBorder" className="absolute bottom-0 left-0 right-0 h-1 bg-[#97991b]" />
+                  )}
+                </button>
+              ))}
             </div>
-          </section>
 
-          {/* ================= BOTTOM ================= */}
-          <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block mb-4 text-xs uppercase tracking-wide text-[#1C1F42] border border-[#1C1F42]-500/30 px-3 py-1">
-                Meet our team
-              </span>
+            {/* Content Area */}
+            <div className="bg-white p-6 md:p-10 shadow-xl rounded-2xl border border-gray-100">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {activeTab === "History" && (
+                    <div className="flex flex-wrap gap-3 mb-8">
+                      {tabData.History.years.map((year) => (
+                        <button
+                          key={year}
+                          onClick={() => setActiveYear(year)}
+                          className={`flex items-center gap-2 px-4 py-2 text-xs font-black transition-all rounded ${
+                            activeYear === year ? "bg-[#97991b] text-white" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                          }`}
+                        >
+                          <CalendarOutlined /> {year}
+                        </button>
+                      ))}
+                    </div>
+                  )}
 
-              <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">
-                Meet our team shaping modern football excellence
-              </h3>
-            </div>
-            <div>
-              <p className="text-black mb-6 max-w-xl">
-                We’ve compiled the most common questions to help you understand
-                our process, services, and how we deliver results.
-              </p>
-
-              <Button
-                type="primary"
-                className="bg-[#2141a5]!  rounded-none! px-8 h-11"
-              >
-                Contact Us
-              </Button>
+                  <div className="grid md:grid-cols-2 gap-10 items-center">
+                    <img 
+                      src={tabData[activeTab].image} 
+                      className="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg" 
+                      alt={activeTab} 
+                    />
+                    <div>
+                      <h3 className="text-2xl font-black text-slate-900 uppercase mb-4">
+                        {activeTab === "History" ? "Our Journey Through Time" : tabData[activeTab].title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed text-lg">
+                        {activeTab === "History" ? tabData.History.content[activeYear] : tabData[activeTab].content}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>
       </section>
 
-      {/* COACHES GRID */}
-      <div className="mt-20 bg-[url('/images/teamplay-dark.jpeg')] bg-cover bg-center px-10 py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {coaches.map((coach, index) => {
-            const { name, role, image, experience, bio } = coach;
+      {/* ================= TEAM SECTION ================= */}
+      <section className="py-20 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-10">
+          <div className="grid lg:grid-cols-2 gap-10 mb-16 items-end">
+            <div>
+              <span className="text-[#97991b] font-bold uppercase tracking-widest text-xs">The Experts</span>
+              <h3 className="text-4xl font-black text-white mt-2 leading-tight">Meet our team shaping modern football excellence</h3>
+            </div>
+            <div className="flex flex-col items-start lg:items-end">
+              <p className="text-gray-400 mb-6 max-w-md">Our staff consists of seasoned professionals dedicated to training the next generation of football stars.</p>
+              <Link to="/contact" className="h-12 px-10 py-3 font-bold uppercase bg-[#97991b] text-white transition-colors hover:bg-[#868818]">Contact Us</Link>
+            </div>
+          </div>
 
-            return (
-              <div
-                key={index}
-                className="bg-[#1f2124] overflow-hidden shadow-lg hover:shadow-xl transition"
-              >
-                {/* IMAGE */}
-                <img
-                  src={image}
-                  alt={name}
-                  className="w-full h-90 object-cover"
-                />
-
-                {/* CONTENT */}
-                <div className="p-5 text-white">
-                  <h4 className="text-lg font-semibold">{name}</h4>
-                  {/* <p className="text-sm text-orange-500">{role}</p> */}
-                  {/* <p className="text-xs text-gray-400 mt-1">{experience}</p> */}
-
-                  <p className="text-sm text-gray-300 mt-3 line-clamp-3">
-                    {bio}
-                  </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {coaches.map((coach, i) => (
+              <div key={i} className="group bg-slate-800 border border-slate-700 overflow-hidden transition-all hover:-translate-y-2 cursor-pointer">
+                <img src={coach.image} className="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt={coach.name} />
+                <div className="p-6">
+                  <h4 className="text-white font-bold text-lg">{coach.name}</h4>
+                  <p className="text-[#97991b] text-xs font-bold uppercase mt-1 tracking-tighter">{coach.bio}</p>
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* ================= FAQ & STATS ================= */}
-      <section className="bg-white py-16 md:py-8">
-        <div className="max-w-7xl mx-auto px-10">
-          {/* STATS */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 text-center border-b pb-4 border-gray-200">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center gap-2 border-r border-gray-200 last:border-0 pr-4 md:pr-0"
-              >
-                <div className="text-orange-500 text-2xl">{stat.icon}</div>
-                <h4 className="text-2xl font-bold text-gray-900">
-                  {stat.value}
-                </h4>
-                <p className="text-xs uppercase tracking-wide text-gray-500">
-                  {stat.label}
-                </p>
+      {/* ================= STATS & FAQ ================= */}
+      <section className="bg-white py-20 px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center border-r border-gray-100 last:border-0">
+                <div className="text-[#97991b] text-3xl mb-2">{stat.icon}</div>
+                <h4 className="text-3xl font-black text-slate-900">{stat.value}</h4>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{stat.label}</p>
               </div>
             ))}
           </div>
 
-          {/* HEADER */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10 items-center">
+          <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <span className="inline-block mb-4 text-xs uppercase tracking-wide text-blue-600 border border-blue-200 px-3 py-1">
-                Common Questions
-              </span>
-
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Meet Our Coaches – FAQs
-              </h3>
+              <span className="text-blue-600 font-bold text-xs uppercase">Common Questions</span>
+              <h3 className="text-3xl font-black text-slate-900 mt-2">Coach & Program FAQs</h3>
+              <Collapse accordion items={faqsLeft} className="mt-8 bg-transparent border-none" expandIconPosition="end" />
             </div>
-
-            <p className="text-gray-500 max-w-xl">
-              We’ve compiled the most common questions to help you understand
-              our process, services, and how we deliver results.
-            </p>
-          </div>
-
-          {/* FAQ GRID */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Collapse
-              accordion
-              items={faqsLeft}
-              bordered={false}
-              expandIconPosition="end"
-            />
-
-            <Collapse
-              accordion
-              items={faqsRight}
-              bordered={false}
-              expandIconPosition="end"
-            />
+            <div className="lg:pt-16">
+              <Collapse accordion items={faqsRight} className="bg-transparent border-none" expandIconPosition="end" />
+            </div>
           </div>
         </div>
       </section>
