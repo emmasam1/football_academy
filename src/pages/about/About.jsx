@@ -1,13 +1,55 @@
-import React from "react";
-import { Progress, Button, Collapse } from "antd";
+import React, { useState } from "react";
+import { Progress, Button, Collapse, Tabs } from "antd";
 import {
   UsergroupAddOutlined,
   TrophyOutlined,
   CheckCircleOutlined,
   StarOutlined,
 } from "@ant-design/icons";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 const About = () => {
+  const [size, setSize] = useState("small");
+
+  const [activeKey, setActiveKey] = useState("1");
+
+  const tabItems = [
+    {
+      key: "1",
+      label: "Our Mission",
+      children: (
+        <p className="text-gray-600 leading-relaxed">
+          Our mission is to nurture young football talents through structured
+          training, mentorship, and competitive exposure while instilling
+          discipline, confidence, and teamwork.
+        </p>
+      ),
+    },
+    {
+      key: "2",
+      label: "Our Vision",
+      children: (
+        <p className="text-gray-600 leading-relaxed">
+          We aim to become a leading youth football development platform in
+          Africa, producing technically sound, mentally strong, and globally
+          competitive players.
+        </p>
+      ),
+    },
+    {
+      key: "3",
+      label: "Our Values",
+      children: (
+        <ul className="list-disc pl-5 text-gray-600 space-y-2">
+          <li>Discipline & Sportsmanship</li>
+          <li>Teamwork & Leadership</li>
+          <li>Consistency & Growth</li>
+        </ul>
+      ),
+    },
+  ];
+
   const coaches = [
     {
       name: "Coach Samuel Adeyemi",
@@ -199,7 +241,39 @@ const About = () => {
                 </p>
               </div>
             </div>
+
           </div>
+            <section className=" flex items-center w-full  mt-10!">
+              <div className="w-full!">
+                {/* Tabs Header */}
+                <Tabs
+                  activeKey={activeKey}
+                  onChange={(key) => setActiveKey(key)}
+                  type="card"
+                  size={size}
+                  items={tabItems.map((tab) => ({
+                    ...tab,
+                    children: null, // prevent AntD from rendering content
+                  }))}
+                  className="custom-tabs mb-10"
+                />
+
+                {/* Animated Content */}
+                <div className="relative bg-white shadow-xl rounded-xl p-8 md:p-12 overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeKey}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                    >
+                      {tabItems.find((tab) => tab.key === activeKey)?.children}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+            </section>
 
           {/* ================= BOTTOM ================= */}
           <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -228,6 +302,7 @@ const About = () => {
           </div>
         </div>
       </section>
+
       {/* COACHES GRID */}
       <div className="mt-20 bg-[url('/images/teamplay-dark.jpeg')] bg-cover bg-center px-10 py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

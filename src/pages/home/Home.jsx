@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { motion, AnimatePresence } from "framer-motion";
 import { Table } from "antd";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -452,7 +451,7 @@ const Home = () => {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-4 py-16"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* <div className="grid grid-cols-1 lg:grid-cols-4 gap-8"> */}
           {/* LEFT: FIXTURES */}
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-6">
@@ -501,7 +500,7 @@ const Home = () => {
           </div>
 
           {/* RIGHT: LATEST RESULTS */}
-          <div>
+          {/* <div>
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold">Latest Results</h3>
               <span className="text-white cursor-pointer bg-[#1C1F42] px-3">
@@ -529,15 +528,15 @@ const Home = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </motion.section>
 
-      <section className="max-w-7xl mx-auto px-4 py-20">
+      {/* <section className="max-w-7xl mx-auto px-4 py-20">
         <h2 className="text-2xl font-bold mb-5">League Table & Schedule</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* LEAGUE TABLE */}
+
           <div className="bg-white rounded-xl shadow">
             <div className="bg-[#1C1F42] text-white px-6 py-4 font-semibold">
               Serie A
@@ -557,7 +556,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* SCHEDULE */}
           <div className="bg-white rounded-xl shadow">
             <div className="bg-[#1C1F42] text-white px-6 py-4  font-semibold">
               Serie A
@@ -578,12 +576,12 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <div className="">
-        {/* Slider */}
+      {/* <div className="">
+      
         <div className=" bg-[#1C1F42] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
-          {/* relative wrapper REQUIRED for arrows */}
+       
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 overflow-hidden">
             <Slider {...settings}>
               {slides.map((slide, index) => (
@@ -610,7 +608,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Banner Area */}
+     
         <div>
           <div
             className='
@@ -647,7 +645,7 @@ const Home = () => {
         <div className="bg-[#1A1D21] p-10 text-white">
           <div className="max-w-7xl mx-auto">
             <Row gutter={[48, 40]}>
-              {/* Column 1: Welcome */}
+            
               <Col xs={24} lg={8}>
                 <div className="mb-6">
                   <Title
@@ -694,7 +692,7 @@ const Home = () => {
                 </div>
               </Col>
 
-              {/* Column 2: Latest News */}
+     
               <Col xs={24} lg={8}>
                 <div className="mb-6">
                   <Title
@@ -737,7 +735,7 @@ const Home = () => {
                 </div>
               </Col>
 
-              {/* Column 3: What We Do */}
+      
               <Col xs={24} lg={8}>
                 <div className="mb-6">
                   <Title
@@ -786,7 +784,7 @@ const Home = () => {
             </Row>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
