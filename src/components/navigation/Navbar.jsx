@@ -1,8 +1,242 @@
+// import React, { useState, useEffect } from "react";
+// import { Menu, Drawer, Button } from "antd";
+// import { SunOutlined, MoonOutlined } from "@ant-design/icons";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { Spin as Hamburger } from "hamburger-react";
+// import { useLocation, useNavigate } from "react-router-dom";
+
+// const Navbar = () => {
+//   const [open, setOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+//   const location = useLocation();
+//   const navigate = useNavigate();
+
+//   /* ================= SCROLL DETECTION ================= */
+//   useEffect(() => {
+//     const onScroll = () => {
+//       setScrolled(window.scrollY > 40);
+//     };
+
+//     window.addEventListener("scroll", onScroll);
+//     return () => window.removeEventListener("scroll", onScroll);
+//   }, []);
+//   /* ==================================================== */
+
+//   useEffect(() => {
+//     const handleResize = () => {
+//       const mobile = window.innerWidth < 768;
+//       setIsMobile(mobile);
+
+//       // CLOSE drawer when switching back to desktop
+//       if (!mobile) {
+//         setOpen(false);
+//       }
+//     };
+
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   /* ================= THEME ================= */
+//   const [darkMode, setDarkMode] = useState(() => {
+//     return localStorage.getItem("theme") !== "light";
+//   });
+
+//   useEffect(() => {
+//     document.documentElement.classList.toggle("dark", darkMode);
+//   }, [darkMode]);
+
+//   const toggleTheme = () => {
+//     setDarkMode((prev) => {
+//       const next = !prev;
+//       localStorage.setItem("theme", next ? "dark" : "light");
+//       return next;
+//     });
+//   };
+//   /* ========================================= */
+
+//   const menuItems = [
+//     { key: "/", label: "Home" },
+
+//     {
+//       key: "/about",
+//       label: "The League",
+//     },
+
+//     {
+//       key: "/team",
+//       label: "Team",
+//       children: [
+//         { key: "/team/coaches", label: "Coaches" },
+//         { key: "/team/players", label: "Players" },
+//         { key: "/team/media", label: "Media" },
+//       ],
+//     },
+//     { key: "/program", label: "Programs" },
+//     { key: "/schedule", label: "Match Schedule" },
+//     { key: "/blog", label: "Blog" },
+//     { key: "/contact", label: "Contacts" },
+//   ];
+
+//   return (
+//     <AnimatePresence>
+//       <motion.header
+//         initial={{ y: -20, opacity: 0 }}
+//         animate={{ y: 0, opacity: 1 }}
+//         transition={{ duration: 0.35 }}
+//         className={`z-50 ${
+//           scrolled ? "fixed top-0 left-0 w-full" : "relative"
+//         }`}
+//       >
+//         {/* ===== NAV CONTAINER ===== */}
+//         <motion.div
+//           animate={{
+//             width: scrolled ? "100%" : "80%",
+//             borderRadius: scrolled ? "0px" : "6px",
+//           }}
+//           transition={{ duration: 0.3, ease: "easeOut" }}
+//           className="
+//             mx-auto h-16
+//             flex items-center justify-between
+//             bg-[#1C1F42]
+//             px-4
+//           "
+//         >
+//           {/* LOGO */}
+//           {/* <div
+//             className="font-bold tracking-wide cursor-pointer text-white"
+//             onClick={() => navigate("/")}
+//           >
+//             <img src="/images/logo.png" alt="Joseninho Logo" />
+//           </div> */}
+//           <div
+//         onClick={() => navigate("/")}
+//         className="flex items-center cursor-pointer select-none"
+//       >
+//         <img
+//           src="/images/logo2.jpeg"
+//           alt="Joseninho Logo"
+//           className="
+//             h-10 
+//             w-auto 
+//             object-contain 
+//             md:h-12 
+//             lg:h-14
+//           "
+//         />
+//       </div>
+
+//           {/* DESKTOP MENU */}
+//           <div className="hidden md:flex items-center gap-4">
+//             <Menu
+//               key={isMobile ? "mobile-hidden" : "desktop-menu"}
+//               mode="horizontal"
+//               selectedKeys={[location.pathname]}
+//               onClick={(e) => navigate(e.key)}
+//               items={menuItems}
+//               theme="dark"
+//               className="
+//             bg-transparent!
+//             uppercase
+//             tracking-wide
+//             border-none!
+//             [&_.ant-menu-item]:px-4
+//             [&_.ant-menu-submenu-title]:px-4
+//           "
+//             />
+
+//             <motion.button
+//               whileTap={{ scale: 0.9 }}
+//               onClick={toggleTheme}
+//               className="text-lg ml-4 text-white"
+//             >
+//               {darkMode ? <SunOutlined /> : <MoonOutlined />}
+//             </motion.button>
+//           </div>
+
+//           {/* MOBILE */}
+//           <div className="md:hidden flex items-center gap-3">
+//             <Button
+//               type="text"
+//               icon={darkMode ? <SunOutlined /> : <MoonOutlined />}
+//               onClick={toggleTheme}
+//               className="text-white!"
+//             />
+//             <Hamburger
+//               toggled={open}
+//               toggle={setOpen}
+//               size={17}
+//               duration={0.8}
+//               color="white"
+//             />
+//           </div>
+//         </motion.div>
+
+//         {/* MOBILE DRAWER */}
+//         <Drawer
+//           placement="left"
+//           open={open}
+//           onClose={() => setOpen(false)}
+//           mask={false}
+//           closable={false}
+//           getContainer={false}
+//           destroyOnClose
+//           width={0}
+//         >
+//           <AnimatePresence>
+//             {open && (
+//               <motion.div
+//                 key="mobile-nav"
+//                 initial={{ x: "-100%" }}
+//                 animate={{ x: 0 }}
+//                 exit={{ x: "-100%" }}
+//                 transition={{ duration: 0.35, ease: "easeOut" }}
+//                 className="
+//           fixed top-0 left-0 h-screen
+//           w-[50vw]
+//           bg-[#252625]
+//           text-[#9DAAAA]!
+//           z-40
+//           p-6
+//         "
+//               >
+//                 <Menu
+//                   mode="inline"
+//                   selectedKeys={[location.pathname]}
+//                   onClick={(e) => {
+//                     navigate(e.key);
+//                     setOpen(false);
+//                   }}
+//                   items={menuItems}
+//                   className="
+//     bg-transparent!
+//     border-none!
+//     uppercase
+//     tracking-wide
+//     text-xs
+//     [&_.ant-menu-item]:py-3
+//     [&_.ant-menu-submenu-title]:py-3
+//     [&_.ant-menu-item]:text-[#9DAAAA]
+//     [&_.ant-menu-submenu-title]:text-[#9DAAAA]
+//   "
+//                 />
+//               </motion.div>
+//             )}
+//           </AnimatePresence>
+//         </Drawer>
+//       </motion.header>
+//     </AnimatePresence>
+//   );
+// };
+
+// export default Navbar;
 
 
 import React, { useState, useEffect } from "react";
 import { Menu, Drawer, Button } from "antd";
-import { SunOutlined, MoonOutlined, DownOutlined } from "@ant-design/icons";
+import { SunOutlined, MoonOutlined, DownOutlined, EllipsisOutlined } from "@ant-design/icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { Spin as Hamburger } from "hamburger-react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -15,6 +249,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  /* ================= HELPERS ================= */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
@@ -31,8 +266,12 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  /* ================= THEME FIX ================= */
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") !== "light");
-  useEffect(() => document.documentElement.classList.toggle("dark", darkMode), [darkMode]);
+  
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
 
   const toggleTheme = () => {
     setDarkMode((prev) => {
@@ -42,13 +281,12 @@ const Navbar = () => {
     });
   };
 
-  /* ================= UPDATED MENU ITEMS ================= */
-  const menuItems = [
+  /* ================= DUAL MENU CONFIGURATION ================= */
+  const desktopMenuItems = [
     { key: "/", label: "Home" },
     { key: "/about", label: "The League" },
     {
-      key: "/team",
-      // WE ADD THE ICON MANUALLY TO THE LABEL HERE
+      key: "team-parent",
       label: (
         <span className="flex items-center gap-1 group">
           Team 
@@ -63,9 +301,30 @@ const Navbar = () => {
     },
     { key: "/program", label: "Programs" },
     { key: "/schedule", label: "Match Schedule" },
-    { key: "/blog", label: "Blog" },
-    { key: "/contact", label: "Contacts" },
+    {
+      key: "more-parent",
+      label: (
+        <span className="flex items-center gap-1 group">
+          More <EllipsisOutlined className="text-lg" />
+        </span>
+      ),
+      children: [
+        { key: "/blog", label: "Blog" },
+        { key: "/contact", label: "Contacts" },
+      ],
+    },
   ];
+
+  const mobileMenuItems = desktopMenuItems.map(item => {
+    if (item.key === "team-parent") return { ...item, label: "Team" };
+    if (item.key === "more-parent") return null; 
+    return item;
+  }).filter(Boolean);
+
+  mobileMenuItems.push(
+    { key: "/blog", label: "Blog" },
+    { key: "/contact", label: "Contacts" }
+  );
 
   return (
     <AnimatePresence>
@@ -73,61 +332,59 @@ const Navbar = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.35 }}
-        className={`z-50 ${scrolled ? "fixed top-0 left-0 w-full" : "relative"}`}
+        className={`z-50 transition-all duration-300 ${scrolled ? "fixed top-0 left-0 w-full" : "relative"}`}
       >
         <style dangerouslySetInnerHTML={{ __html: `
-          /* Ensure the submenu dropdown looks clean */
           .ant-menu-sub {
             background: #1C1F42 !important;
             border: 1px solid rgba(255,255,255,0.1) !important;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
           }
-          /* Hide Ant Design's default internal arrow if it appears */
-          .ant-menu-submenu-arrow { display: none !important; }
-          
+          .ant-menu-horizontal .ant-menu-submenu-arrow { display: none !important; }
           .ant-menu-item-selected, .ant-menu-submenu-selected {
             color: #ef4444 !important;
+          }
+          .ant-menu-submenu-title {
+            display: flex !important;
+            align-items: center !important;
+          }
+          /* Custom: Reduce padding between menu items to fit more on the left */
+          .ant-menu-horizontal > .ant-menu-item, 
+          .ant-menu-horizontal > .ant-menu-submenu {
+            padding-inline: 12px !important;
           }
         `}} />
 
         <motion.div
           animate={{
-            width: scrolled ? "100%" : "80%",
+            width: scrolled ? "100%" : "80%", // Increased slightly to provide more left-room
             borderRadius: scrolled ? "0px" : "6px",
           }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="mx-auto h-16 flex items-center justify-between bg-[#1C1F42] px-4 shadow-2xl"
+          className="mx-auto h-16 flex items-center justify-between bg-[#1C1F42] px-6 shadow-2xl"
         >
           {/* LOGO */}
-          <div onClick={() => navigate("/")} className="flex items-center cursor-pointer select-none">
-            <img src="/images/logo2.jpeg" alt="Logo" className="h-10 w-auto object-contain md:h-12 lg:h-14" />
+          <div onClick={() => navigate("/")} className="flex-shrink-0 flex items-center cursor-pointer">
+            <img src="/images/logo2.jpeg" alt="Logo" className="h-10 w-auto object-contain md:h-12" />
           </div>
 
-          {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* DESKTOP MENU - justify-center pulls it away from the right side */}
+          <div className="hidden md:flex flex-1 items-center justify-center gap-0">
             <Menu
-              key={isMobile ? "mobile-hidden" : "desktop-menu"}
               mode="horizontal"
+              overflowedIndicator={null}
               selectedKeys={[location.pathname]}
               onClick={(e) => navigate(e.key)}
-              items={menuItems}
+              items={desktopMenuItems}
               theme="dark"
-              className="
-                bg-transparent!
-                uppercase
-                text-[13px]
-                font-black
-                tracking-tighter
-                border-none!
-                [&_.ant-menu-item]:px-4
-                [&_.ant-menu-submenu-title]:px-4
-              "
+              className="bg-transparent! uppercase text-[12px] font-black border-none! flex-1 justify-center min-w-0"
             />
+          </div>
 
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleTheme}
-              className="text-lg ml-4 text-white hover:text-red-600 transition-colors"
+          {/* THEME BUTTON - Kept on the right */}
+          <div className="hidden md:flex items-center pl-4">
+            <motion.button 
+              whileTap={{ scale: 0.9 }} 
+              onClick={toggleTheme} 
+              className="text-lg text-white flex-shrink-0 hover:text-red-500 transition-colors"
             >
               {darkMode ? <SunOutlined /> : <MoonOutlined />}
             </motion.button>
@@ -136,7 +393,7 @@ const Navbar = () => {
           {/* MOBILE TOGGLE */}
           <div className="md:hidden flex items-center gap-3">
             <Button type="text" icon={darkMode ? <SunOutlined /> : <MoonOutlined />} onClick={toggleTheme} className="text-white!" />
-            <Hamburger toggled={open} toggle={setOpen} size={17} duration={0.8} color="white" />
+            <Hamburger toggled={open} toggle={setOpen} size={17} color="white" />
           </div>
         </motion.div>
 
@@ -147,30 +404,25 @@ const Navbar = () => {
           onClose={() => setOpen(false)}
           mask={true}
           closable={false}
-          width="70vw"
-          styles={{ body: { padding: 0, backgroundColor: '#1C1F42' } }}
+          width="75vw"
+          styles={{ body: { padding: "80px 0 0 0", backgroundColor: '#1C1F42' } }}
         >
-          <div className="p-6 pt-20">
-            <Menu
-              mode="inline"
-              theme="dark"
-              selectedKeys={[location.pathname]}
-              onClick={(e) => {
-                if(!e.key.includes('team')) {
-                  navigate(e.key);
-                  setOpen(false);
-                }
-              }}
-              // In mobile inline mode, expandIcon works!
-              expandIcon={({ isOpen }) => (
-                <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
-                  <DownOutlined />
-                </motion.span>
-              )}
-              items={menuItems}
-              className="bg-transparent! border-none! uppercase tracking-widest font-bold text-xs"
-            />
-          </div>
+          <Menu
+            mode="inline"
+            theme="dark"
+            selectedKeys={[location.pathname]}
+            onClick={(e) => {
+              navigate(e.key);
+              setOpen(false);
+            }}
+            expandIcon={({ isOpen }) => (
+              <motion.span animate={{ rotate: isOpen ? 180 : 0 }} className="flex items-center">
+                <DownOutlined className="text-[10px]" />
+              </motion.span>
+            )}
+            items={mobileMenuItems}
+            className="bg-transparent! border-none! uppercase font-bold text-sm"
+          />
         </Drawer>
       </motion.header>
     </AnimatePresence>

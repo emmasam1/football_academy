@@ -19,22 +19,22 @@ const Contact = () => {
 
   const enquiryCards = [
     {
-      title: "Club Enquiries",
+      title: "League Enquiries",
       phone: "1800-250-356",
       email: "example@gmail.com",
-      address: "31 Scotsburn Rd, Talyllyn, UK"
+      address: "31 Scotsburn Rd, FCT, Nigeria"
     },
     {
       title: "Media Enquiries",
       phone: "1800-250-356",
       email: "example@gmail.com",
-      address: "31 Scotsburn Rd, Talyllyn, UK"
+      address: "31 Scotsburn Rd, FCT, Nigeria"
     },
     {
       title: "Head Office",
       phone: "2500-250-356",
       email: "example@gmail.com",
-      address: "89 Mounthoolie Lane, Sutton Bassett, UK"
+      address: "89 Mounthoolie Lane, Lagos, Nigeria"
     }
   ];
 
