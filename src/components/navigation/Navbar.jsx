@@ -515,17 +515,17 @@ const Navbar = () => {
           </div>
 
           {/* DESKTOP LINKS */}
-          <div className="hidden md:flex items-center gap-1 lg:gap-4">
+          <div className="hidden md:flex items-center gap-1 lg:gap-4 cursor-pointer">
             {menuItems.map((item) => (
               <div 
                 key={item.label}
-                className="relative group"
+                className="relative group cursor-pointer"
                 onMouseEnter={() => setActiveDropdown(item.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <button
                   onClick={() => !item.children && navigate(item.path)}
-                  className={`flex items-center gap-1.5 px-3 py-2 text-[13px] font-bold uppercase tracking-wider transition-colors hover:text-red-500 ${
+                  className={`flex items-center gap-1.5 px-3 py-2 text-[13px] font-bold uppercase tracking-wider cursor-pointer transition-colors hover:text-red-500 ${
                     location.pathname === item.path ? "text-red-500" : "text-white/90"
                   }`}
                 >
@@ -542,7 +542,7 @@ const Navbar = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full left-0 mt-0 w-48 bg-[#1C1F42] border border-white/10 rounded-b-lg shadow-2xl py-2 backdrop-blur-xl"
+                      className="absolute top-full left-0 mt-0 w-48 bg-[#1C1F42] border border-white/10 rounded-b-lg shadow-2xl py-2 backdrop-blur-xl cursor-pointer"
                     >
                       {item.children.map((child) => (
                         <div
