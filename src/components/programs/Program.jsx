@@ -41,8 +41,13 @@ const Program = () => {
           animate={{ opacity: 1, y: 0 }}
           className="relative z-20"
         >
-          <h1 className="text-5xl md:text-6xl font-black mb-2 tracking-tight">Programs</h1>
-          <p className="text-lg text-gray-200 font-light">Football training programs focused on performance and progression</p>
+            <div className="relative z-20 text-center px-4">
+              <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Programs</h1>
+              <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
+                <span className="text-gray-400">Home</span>
+                <span className="text-red-600">/ Programs</span>
+              </div>
+            </div>
         </motion.div>
       </section>
 
