@@ -8,7 +8,6 @@ import {
 } from "@ant-design/icons";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const About = () => {
   const [size, setSize] = useState("small");
 
@@ -58,27 +57,24 @@ const About = () => {
       experience: "10 Years Experience",
       bio: "Chairman/Covener",
     },
-     {
+    {
       name: "Temidayo faleyimu",
       role: "Assistant Coach",
-      image:
-        "/images/Temidayo_faleyimu.jpeg",
+      image: "/images/Temidayo_faleyimu.jpeg",
       experience: "8 Years Experience",
       bio: "LOC chairman",
     },
     {
       name: "Pascal Inyang",
       role: "Head Coach",
-      image:
-        "/images/Pascal_Inyang.jpeg",
+      image: "/images/Pascal_Inyang.jpeg",
       experience: "12 Years Experience",
       bio: "member planning committee",
     },
     {
       name: "Keiphas Augustine",
       role: "Goalkeeper Coach",
-      image:
-        "/images/forth.jpeg",
+      image: "/images/forth.jpeg",
       experience: "9 Years Experience",
       bio: "Match Commissioner",
     },
@@ -241,39 +237,38 @@ const About = () => {
                 </p>
               </div>
             </div>
-
           </div>
-            <section className=" flex items-center w-full  mt-10!">
-              <div className="w-full!">
-                {/* Tabs Header */}
-                <Tabs
-                  activeKey={activeKey}
-                  onChange={(key) => setActiveKey(key)}
-                  type="card"
-                  size={size}
-                  items={tabItems.map((tab) => ({
-                    ...tab,
-                    children: null, // prevent AntD from rendering content
-                  }))}
-                  className="custom-tabs mb-10"
-                />
+          <section className="w-full bg-[#EFF6FF] py-14 px-4 md:px-10 mt-10">
+            <div className="w-full max-w-7xl mx-auto">
+              {/* Tabs Header */}
+              <Tabs
+                activeKey={activeKey}
+                onChange={(key) => setActiveKey(key)}
+                type="card"
+                size={size}
+                items={tabItems.map((tab) => ({
+                  ...tab,
+                  children: null,
+                }))}
+                className="custom-tabs mb-12"
+              />
 
-                {/* Animated Content */}
-                <div className="relative bg-white shadow-xl rounded-xl p-8 md:p-12 overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeKey}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.45, ease: "easeOut" }}
-                    >
-                      {tabItems.find((tab) => tab.key === activeKey)?.children}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
+              {/* Animated Content */}
+              <div className="relative bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] rounded-2xl p-8 md:p-12 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeKey}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -16 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                  >
+                    {tabItems.find((tab) => tab.key === activeKey)?.children}
+                  </motion.div>
+                </AnimatePresence>
               </div>
-            </section>
+            </div>
+          </section>
 
           {/* ================= BOTTOM ================= */}
           <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -366,7 +361,7 @@ const About = () => {
               </span>
 
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-               Meet Our Coaches – FAQs
+                Meet Our Coaches – FAQs
               </h3>
             </div>
 

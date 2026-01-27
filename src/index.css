@@ -139,3 +139,42 @@ button:focus-visible {
 .custom-tabs .ant-tabs-ink-bar {
   background: #1c1f42;
 }
+
+/* ===== Custom AntD Tabs ===== */
+.custom-tabs .ant-tabs-nav {
+  margin-bottom: 0;
+}
+
+.custom-tabs .ant-tabs-tab {
+  background: transparent !important;
+  border: none !important;
+  padding: 12px 20px !important;
+  font-weight: 500;
+  color: #64748b; /* slate-500 */
+  transition: all 0.25s ease;
+}
+
+.custom-tabs .ant-tabs-tab:hover {
+  color: #2563eb; /* blue-600 */
+}
+
+.custom-tabs .ant-tabs-tab-active {
+  color: #1d4ed8 !important; /* blue-700 */
+  font-weight: 600;
+  position: relative;
+}
+
+.custom-tabs .ant-tabs-tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 16px;
+  right: 16px;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  border-radius: 999px;
+}
+
+.custom-tabs .ant-tabs-ink-bar {
+  display: none;
+}
