@@ -260,22 +260,22 @@ const Home = () => {
     /* ========================= */
 
     responsive: [
-    {
-      breakpoint: 1024, // tablet
-      settings: {
-        slidesToShow: 1,
-        fade: true,
+      {
+        breakpoint: 1024, // tablet
+        settings: {
+          slidesToShow: 1,
+          fade: true,
+        },
       },
-    },
-    {
-      breakpoint: 640, // mobile
-      settings: {
-        slidesToShow: 1,
-        fade: true,
-        arrows: false,
+      {
+        breakpoint: 640, // mobile
+        settings: {
+          slidesToShow: 1,
+          fade: true,
+          arrows: false,
+        },
       },
-    },
-  ],
+    ],
   };
 
   const slides = [
@@ -295,11 +295,11 @@ const Home = () => {
       description: "Vivamus at condimentum ipsum. Nulla fringilla risus.",
       image: sliderImg_4,
     },
-    {
-      title: "Goals",
-      description: "Cras maximus tortor mauris, at venenatis ante eleifend.",
-      image: sliderImg_1,
-    },
+    // {
+    //   title: "Goals",
+    //   description: "Cras maximus tortor mauris, at venenatis ante eleifend.",
+    //   image: sliderImg_1,
+    // },
     {
       title: "Rules",
       description: "Cras maximus tortor mauris, at venenatis ante eleifend.",
@@ -452,55 +452,55 @@ const Home = () => {
         className="max-w-7xl mx-auto px-4 py-16"
       >
         {/* <div className="grid grid-cols-1 lg:grid-cols-4 gap-8"> */}
-          {/* LEFT: FIXTURES */}
-          <div className="lg:col-span-3">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">Fixtures & Results</h2>
-              <button className="bg-[#1C1F42]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
-                All Matches →
-              </button>
-            </div>
+        {/* LEFT: FIXTURES */}
+        <div className="lg:col-span-3">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold">Fixtures & Results</h2>
+            <button className="bg-[#1C1F42]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
+              All Matches →
+            </button>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {fixtures.map((match) => (
-                <div
-                  key={match.id}
-                  className="relative h-56 rounded-xl overflow-hidden text-white"
-                >
-                  <img
-                    src={match.bg}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/60" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {fixtures.map((match) => (
+              <div
+                key={match.id}
+                className="relative h-56 rounded-xl overflow-hidden text-white"
+              >
+                <img
+                  src={match.bg}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/60" />
 
-                  <div className="relative z-10 h-full flex flex-col justify-between p-5">
-                    <div className="text-center">
-                      <h3 className="font-semibold">{match.stadium}</h3>
-                      <p className="text-sm text-gray-200">{match.date}</p>
+                <div className="relative z-10 h-full flex flex-col justify-between p-5">
+                  <div className="text-center">
+                    <h3 className="font-semibold">{match.stadium}</h3>
+                    <p className="text-sm text-gray-200">{match.date}</p>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col items-center gap-2">
+                      <img src={match.home.logo} className="h-18" />
+                      <span className="text-sm">{match.home.name}</span>
                     </div>
 
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-col items-center gap-2">
-                        <img src={match.home.logo} className="h-18" />
-                        <span className="text-sm">{match.home.name}</span>
-                      </div>
+                    <span className="text-lg font-bold">VS</span>
 
-                      <span className="text-lg font-bold">VS</span>
-
-                      <div className="flex flex-col items-center gap-2">
-                        <img src={match.away.logo} className="h-18" />
-                        <span className="text-sm">{match.away.name}</span>
-                      </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <img src={match.away.logo} className="h-18" />
+                      <span className="text-sm">{match.away.name}</span>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* RIGHT: LATEST RESULTS */}
-          {/* <div>
+        {/* RIGHT: LATEST RESULTS */}
+        {/* <div>
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold">Latest Results</h3>
               <span className="text-white cursor-pointer bg-[#1C1F42] px-3">
@@ -578,10 +578,8 @@ const Home = () => {
         </div>
       </section> */}
 
-      {/* <div className="">
-      
+      <div className="">
         <div className=" bg-[#1C1F42] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
-       
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 overflow-hidden">
             <Slider {...settings}>
               {slides.map((slide, index) => (
@@ -608,7 +606,6 @@ const Home = () => {
           </div>
         </div>
 
-     
         <div>
           <div
             className='
@@ -629,14 +626,11 @@ const Home = () => {
               </p>
 
               <p className="mt-4 text-xs sm:text-sm md:text-base text-gray-200">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                quis lobortis felis. Sed commodo commodo tempor. Nullam eget
-                augue quis felis posuere accumsan eu et erat. Sed urna dolor,
-                posuere sed eros vel, accumsan fermentum mi. Nunc ullamcorper,
-                dolor non fringilla dapibus, risus tellus congue enim, ac
-                faucibus odio nunc id erat. Phasellus mollis eu nulla eget
-                congue. Vivamus id laoreet nisi, sed scelerisque diam. Curabitur
-                interdum convallis sapien, eget placerat neque placerat ut.
+                We are building a community of dedicated teams committed to
+                growth, discipline, and excellence. With a well organised
+                fixtures, qualified officials, and a focus on development and
+                fair play, this is the perfect platform to showcase your skills
+                and be a part of an exciting football experience.
               </p>
             </div>
           </div>
@@ -645,7 +639,6 @@ const Home = () => {
         <div className="bg-[#1A1D21] p-10 text-white">
           <div className="max-w-7xl mx-auto">
             <Row gutter={[48, 40]}>
-            
               <Col xs={24} lg={8}>
                 <div className="mb-6">
                   <Title
@@ -692,7 +685,6 @@ const Home = () => {
                 </div>
               </Col>
 
-     
               <Col xs={24} lg={8}>
                 <div className="mb-6">
                   <Title
@@ -735,7 +727,6 @@ const Home = () => {
                 </div>
               </Col>
 
-      
               <Col xs={24} lg={8}>
                 <div className="mb-6">
                   <Title
@@ -784,7 +775,7 @@ const Home = () => {
             </Row>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
