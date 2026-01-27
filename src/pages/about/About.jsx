@@ -52,33 +52,33 @@ const About = () => {
 
   const coaches = [
     {
-      name: "Coach Samuel Adeyemi",
+      name: "Pascal Inyang",
       role: "Head Coach",
       image:
-        "https://www.cafonline.com/media/juxpueoo/eric-sekou-chelle-coach-of-nigeria.jpg",
+        "/images/Pascal_Inyang.jpeg",
       experience: "12 Years Experience",
-      bio: "UEFA-certified coach focused on player development, discipline, and tactical intelligence.",
+      bio: "member planning committee",
     },
     {
-      name: "Coach Ibrahim Musa",
+      name: "Temidayo faleyimu",
       role: "Assistant Coach",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmtoIEwOUGdTf7X8Yqztn2KLJhuQn0ZahaTA&s",
+        "/images/Temidayo_faleyimu.jpeg",
       experience: "8 Years Experience",
-      bio: "Specialist in youth fitness, agility training, and match preparation.",
+      bio: "SLOC chairman",
     },
     {
-      name: "Coach Daniel Okonkwo",
+      name: "Dr Victor isereke ",
       role: "Technical Coach",
-      image: "/images/coach.jpeg",
+      image: "/images/Victor_isereke.jpeg",
       experience: "10 Years Experience",
-      bio: "Expert in ball control, passing accuracy, and modern football techniques.",
+      bio: "Chairman/Covener",
     },
     {
       name: "Coach Emmanuel Bello",
       role: "Goalkeeper Coach",
       image:
-        "https://www.thesportstuff.in/cdn/shop/articles/Jose-Mourinho-Best-Manager-of-all-time_1200x1200.jpg?v=1589775578",
+        "/images/forth.jpeg",
       experience: "9 Years Experience",
       bio: "Former professional goalkeeper training young keepers with confidence and focus.",
     },
@@ -279,11 +279,11 @@ const About = () => {
           <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block mb-4 text-xs uppercase tracking-wide text-[#1C1F42] border border-[#1C1F42]-500/30 px-3 py-1">
-                Meet our coach
+                Meet our team
               </span>
 
               <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">
-                Meet our coaches shaping modern football excellence
+                Meet our team shaping modern football excellence
               </h3>
             </div>
             <div>
@@ -318,14 +318,14 @@ const About = () => {
                 <img
                   src={image}
                   alt={name}
-                  className="w-full h-56 object-cover"
+                  className="w-full h-90 object-cover"
                 />
 
                 {/* CONTENT */}
                 <div className="p-5 text-white">
                   <h4 className="text-lg font-semibold">{name}</h4>
-                  <p className="text-sm text-orange-500">{role}</p>
-                  <p className="text-xs text-gray-400 mt-1">{experience}</p>
+                  {/* <p className="text-sm text-orange-500">{role}</p> */}
+                  {/* <p className="text-xs text-gray-400 mt-1">{experience}</p> */}
 
                   <p className="text-sm text-gray-300 mt-3 line-clamp-3">
                     {bio}
