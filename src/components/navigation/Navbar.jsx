@@ -1,7 +1,10 @@
-
-
 import React, { useState, useEffect } from "react";
-import { SunOutlined, MoonOutlined, DownOutlined, EllipsisOutlined } from "@ant-design/icons";
+import {
+  SunOutlined,
+  MoonOutlined,
+  DownOutlined,
+  EllipsisOutlined,
+} from "@ant-design/icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { Spin as Hamburger } from "hamburger-react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -21,7 +24,9 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") !== "light");
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem("theme") !== "light",
+  );
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
@@ -37,24 +42,24 @@ const Navbar = () => {
   const menuItems = [
     { label: "Home", path: "/" },
     { label: "The League", path: "/about" },
-    { 
-      label: "Team", 
-      path: "/team", 
+    {
+      label: "Team",
+      path: "/team",
       children: [
         { label: "Coaches", path: "/team/coaches" },
         { label: "Players", path: "/team/players" },
         { label: "Media", path: "/team/media" },
-      ] 
+      ],
     },
     { label: "Programs", path: "/program" },
     { label: "Match Schedule", path: "/schedule" },
-    { 
-      label: "More", 
+    {
+      label: "More",
       isMore: true,
       children: [
         { label: "Blog", path: "/blog" },
         { label: "Contacts", path: "/contact" },
-      ] 
+      ],
     },
   ];
 
@@ -64,29 +69,33 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         // Removed pt-4 here to ensure it always touches the top
-        className="fixed top-0 left-0 right-0 z-[100] flex justify-center pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-100 flex justify-center pointer-events-none"
       >
         <motion.nav
           animate={{
             width: scrolled ? "100%" : "80%",
-            borderRadius: scrolled ? "0px" : "0px 0px 12px 12px", // Only round bottom corners
+            // borderRadius: scrolled ? "0px" : "0px 0px 12px 12px", // Only round bottom corners
             height: scrolled ? "75px" : "68px",
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="bg-[#1C1F42] shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex items-center justify-between px-6 md:px-10 border-b border-white/10 overflow-visible pointer-events-auto"
+          className="bg-[#1C1F42] shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex items-center justify-between px-6  overflow-visible pointer-events-auto"
         >
           {/* LOGO */}
-          <div 
-            onClick={() => navigate("/")} 
-            className="flex-shrink-0 cursor-pointer hover:scale-105 transition-transform"
+          <div
+            onClick={() => navigate("/")}
+            className="shrink-0 cursor-pointer hover:scale-105 transition-transform"
           >
-            <img src="/images/logo2.jpeg" alt="Logo" className="h-10 w-auto object-contain md:h-12" />
+            <img
+              src="/images/logo2.jpeg"
+              alt="Logo"
+              className="h-10 w-auto object-contain md:h-12"
+            />
           </div>
 
           {/* DESKTOP LINKS */}
           <div className="hidden md:flex items-center gap-1 lg:gap-4 cursor-pointer">
             {menuItems.map((item) => (
-              <div 
+              <div
                 key={item.label}
                 className="relative group cursor-pointer"
                 onMouseEnter={() => setActiveDropdown(item.label)}
@@ -95,12 +104,16 @@ const Navbar = () => {
                 <button
                   onClick={() => !item.children && navigate(item.path)}
                   className={`flex items-center gap-1.5 px-3 py-2 text-[13px] font-bold uppercase tracking-wider cursor-pointer transition-colors hover:text-[#e2e619] ${
-                    location.pathname === item.path ? "text-yellow-500" : "text-white/90"
+                    location.pathname === item.path
+                      ? "text-yellow-500"
+                      : "text-white/90"
                   }`}
                 >
                   {item.label}
                   {item.children && (
-                    <DownOutlined className={`text-[10px] transition-transform duration-300 ${activeDropdown === item.label ? "rotate-180" : ""}`} />
+                    <DownOutlined
+                      className={`text-[10px] transition-transform duration-300 ${activeDropdown === item.label ? "rotate-180" : ""}`}
+                    />
                   )}
                   {item.isMore && <EllipsisOutlined className="text-lg" />}
                 </button>
@@ -120,7 +133,7 @@ const Navbar = () => {
                             navigate(child.path);
                             setActiveDropdown(null);
                           }}
-                          className="px-4 py-2.5 text-[12px] text-white/80 uppercase font-bold hover:bg-[#e2e619] hover:text-white cursor-pointer transition-all"
+                          className="px-4 py-2.5 text-[12px] text-white/80 uppercase font-bold hover:bg-[#e2e619] hover:text-white cursor-pointer! transition-all"
                         >
                           {child.label}
                         </div>
@@ -131,7 +144,7 @@ const Navbar = () => {
               </div>
             ))}
 
-            <button 
+            <button
               onClick={toggleTheme}
               className="ml-4 p-2 rounded-full hover:bg-white/5 text-white transition-colors cursor-pointer"
             >
@@ -144,7 +157,12 @@ const Navbar = () => {
             <button onClick={toggleTheme} className="p-2 text-white">
               {darkMode ? <SunOutlined /> : <MoonOutlined />}
             </button>
-            <Hamburger toggled={isOpen} toggle={setIsOpen} size={20} color="white" />
+            <Hamburger
+              toggled={isOpen}
+              toggle={setIsOpen}
+              size={20}
+              color="white"
+            />
           </div>
         </motion.nav>
       </motion.header>
@@ -156,48 +174,69 @@ const Navbar = () => {
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[90] bg-[#1C1F42] pt-24 px-8 flex flex-col gap-6 overflow-y-auto cursor-pointer"
+            transition={{ type: "spring", damping: 26, stiffness: 220 }}
+            className="fixed inset-0 z-90 bg-[#1C1F42] pt-24 px-6 flex flex-col gap-5 overflow-y-auto"
           >
             {menuItems.map((item) => (
-              <div key={item.label}>
-                <div 
-                  className="text-2xl font-black uppercase text-white/90 cursor-pointer"
+              <div key={item.label} className="border-b border-white/10 pb-3">
+                {/* MAIN ITEM */}
+                <button
+                  className={`w-full flex items-center justify-between 
+              text-[14px] font-semibold uppercase tracking-wider
+              transition-colors
+              ${
+                location.pathname === item.path
+                  ? "text-[#e2e619]"
+                  : "text-white/80 hover:text-white"
+              }`}
                   onClick={() => {
-                    if(!item.children) {
+                    if (!item.children) {
                       navigate(item.path);
                       setIsOpen(false);
                     } else {
-                      setActiveDropdown(activeDropdown === item.label ? null : item.label);
+                      setActiveDropdown(
+                        activeDropdown === item.label ? null : item.label,
+                      );
                     }
                   }}
                 >
-                  <div className="flex justify-between items-center">
-                    {item.label}
-                    {item.children && <DownOutlined className={`text-sm transition-transform ${activeDropdown === item.label ? "rotate-180" : ""}`} />}
-                  </div>
-                </div>
-                
-                {item.children && activeDropdown === item.label && (
-                  <motion.div 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    className="pl-4 mt-4 flex flex-col gap-4 border-l-2 border-yellow-500"
-                  >
-                    {item.children.map(child => (
-                      <span 
-                        key={child.path}
-                        className="text-lg font-bold text-white/60 uppercase"
-                        onClick={() => {
-                          navigate(child.path);
-                          setIsOpen(false);
-                        }}
-                      >
-                        {child.label}
-                      </span>
-                    ))}
-                  </motion.div>
-                )}
+                  {item.label}
+                  {item.children && (
+                    <DownOutlined
+                      className={`text-[11px] transition-transform duration-300 ${
+                        activeDropdown === item.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  )}
+                </button>
+
+                {/* SUB MENU */}
+                <AnimatePresence>
+                  {item.children && activeDropdown === item.label && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="mt-3 ml-3 flex flex-col gap-2"
+                    >
+                      {item.children.map((child) => (
+                        <span
+                          key={child.path}
+                          onClick={() => {
+                            navigate(child.path);
+                            setIsOpen(false);
+                          }}
+                          className="text-[13px] font-medium uppercase tracking-wide
+                               text-white/60 hover:text-[#e2e619]
+                               transition-colors cursor-pointer"
+                        >
+                          {child.label}
+                        </span>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </motion.div>

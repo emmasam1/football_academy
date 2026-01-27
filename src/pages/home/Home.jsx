@@ -7,7 +7,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { Row, Col, Typography, Divider, Button } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import {
+  LeftOutlined,
+  RightOutlined,
+  CalendarOutlined,
+  MessageOutlined,
+} from "@ant-design/icons";
 
 import sliderImg_1 from "../../../public/images/sliderImg_1.png";
 import sliderImg_2 from "../../../public/images/sliderImg_2.png";
@@ -131,6 +136,46 @@ const Home = () => {
       bg: "/images/bg-mc3.jpeg",
     },
   ];
+
+  const posts = [
+    {
+      id: 1,
+      title: "Draymond Green Had Bizarre...",
+      image: "/images/news1.webp",
+      date: "27 June, 2020",
+      comments: 89,
+      excerpt:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. the printing and typesetting industry.",
+      featured: true,
+    },
+    {
+      id: 2,
+      title: "Draymond Green Had Bizarre...",
+      image: "/images/news2.webp",
+      date: "27 June, 2020",
+      comments: 89,
+      excerpt:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. the printing and typesetting industry.",
+      featured: true,
+    },
+    {
+      id: 3,
+      title: "Draymond Green Had Biz...",
+      image: "/images/news3.jpg",
+      date: "27 June, 2020",
+      comments: 89,
+    },
+    {
+      id: 4,
+      title: "Draymond Green Had Bizarre...",
+      image: "/images/news4.jpg",
+      date: "27 June, 2020",
+      comments: 89,
+    },
+  ];
+
+  const featuredPosts = posts.filter((p) => p.featured);
+  const smallPosts = posts.filter((p) => !p.featured);
 
   const results = [
     { id: 1, score: "1 - 2" },
@@ -578,6 +623,53 @@ const Home = () => {
         </div>
       </section> */}
 
+      <section className="relative h-120 w-full overflow-hidden mb-5">
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-[url('/images/about-bg.jpg')] bg-cover bg-right" />
+
+        {/* Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-linear-to-r from-[#020617]/90 via-[#020617]/70 to-transparent" />
+
+        {/* Content Wrapper */}
+        <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full items-center">
+            {/* LEFT CONTENT */}
+            <div className="text-white max-w-xl">
+              <p className="text-sm uppercase tracking-wide mb-3 opacity-90">
+                Our History
+              </p>
+
+              <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold mb-6 leading-tight">
+                About the Club SC United
+              </h2>
+
+              <p className="text-gray-300 leading-relaxed mb-8">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry’s standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged.
+              </p>
+
+              <Button className="inline-flex items-center gap-2 bg-[#1C1F42]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!">
+                About More
+                <span>→</span>
+              </Button>
+            </div>
+
+            {/* RIGHT IMAGE (PLAYER) */}
+            {/* <div className="hidden lg:flex justify-end">
+              <img
+                src="/images/player.png"
+                alt="Football Player"
+                className="h-130 object-contain"
+              />
+            </div> */}
+          </div>
+        </div>
+      </section>
+
       <div className="">
         <div className=" bg-[#1C1F42] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 overflow-hidden">
@@ -636,7 +728,81 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#1A1D21] p-10 text-white">
+        <section className="py-16 bg-white px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredPosts.map((post, index) => (
+              <React.Fragment key={post.id}>
+                {/* BIG LEFT */}
+                <div className="md:col-span-2 bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col md:flex-row">
+                  <div className="md:w-1/1 overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="h-full w-full object-cover hover:scale-105 transition duration-500"
+                    />
+                  </div>
+
+                  <div className="p-6 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold mb-3">{post.title}</h3>
+
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                        <span className="flex items-center gap-1">
+                          <CalendarOutlined className="text-red-500" />
+                          {post.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MessageOutlined className="text-red-500" />
+                          {post.comments} Comments
+                        </span>
+                      </div>
+
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {post.excerpt}
+                      </p>
+                    </div>
+
+                    <button className="mt-6 w-10 h-10 bg-[#1C1F42]! text-white flex items-center justify-center rounded hover:bg-red-700 transition">
+                      ↗
+                    </button>
+                  </div>
+                </div>
+
+                {/* SMALL RIGHT (MATCHING INDEX) */}
+                {smallPosts[index] && (
+                  <div className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+                    <div className="overflow-hidden">
+                      <img
+                        src={smallPosts[index].image}
+                        alt={smallPosts[index].title}
+                        className="h-48 w-full object-cover hover:scale-105 transition duration-500"
+                      />
+                    </div>
+
+                    <div className="p-5">
+                      <h4 className="font-semibold mb-2 text-gray-900">
+                        {smallPosts[index].title}
+                      </h4>
+
+                      <div className="flex items-center gap-4 text-xs text-gray-500">
+                        <span className="flex items-center gap-1">
+                          <CalendarOutlined className="text-red-500" />
+                          {smallPosts[index].date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MessageOutlined className="text-red-500" />
+                          {smallPosts[index].comments} Comments
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </section>
+
+        {/* <div className="bg-[#1A1D21] p-10 text-white">
           <div className="max-w-7xl mx-auto">
             <Row gutter={[48, 40]}>
               <Col xs={24} lg={8}>
@@ -774,7 +940,7 @@ const Home = () => {
               </Col>
             </Row>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
