@@ -177,7 +177,7 @@ const Coaches = () => {
 
                 {/* EXPERIENCE BADGE */}
                 <div className="absolute -top-6 -right-6 bg-white shadow-xl rounded-full h-32 w-32 flex flex-col items-center justify-center">
-                  <p className="text-3xl font-bold text-red-600">25+</p>
+                  <p className="text-3xl font-bold text-[#e2e619]">25+</p>
                   <p className="text-xs uppercase tracking-wide text-gray-500 text-center">
                     Years of Experience
                   </p>
@@ -191,14 +191,13 @@ const Coaches = () => {
                 </span>
 
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                  Dedicated coaches inspiring growth and football success
+                  Experienced & Dedicated Coaches Developing Skills, Character, and Champions
                 </h2>
 
                 <p className="text-gray-500 mb-8 max-w-xl">
-                  Sed massa aptent metus quisque sapien ullamcorper risus
-                  hendrerit natoque per vitae vivamus neque nullam sed tincidunt
-                  lacus lacinia ornare et consequat ante maecenas libero aliquam
-                  dolor erat cursus.
+                  Our coaches are passionate professionals committed to nurturing young footballers through structured 
+                  training and mentorship. Our program emphasise physical fitness, mental strength, sportsmanship, and 
+                  leadership, helping players build confidence, resilience, and a winning mindset.
                 </p>
 
                 {/* PROGRESS BARS */}
@@ -213,7 +212,7 @@ const Coaches = () => {
                     <Progress
                       percent={87}
                       showInfo={false}
-                      strokeColor="#e11d48"
+                      strokeColor="#e2e619"
                     />
                   </div>
 
@@ -241,7 +240,7 @@ const Coaches = () => {
                     <Progress
                       percent={90}
                       showInfo={false}
-                      strokeColor="#e11d48"
+                      strokeColor="yellow"
                     />
                   </div>
                 </div>

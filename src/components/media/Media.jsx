@@ -55,7 +55,7 @@ const Media = () => {
               <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Media</h1>
               <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
                 <span className="text-gray-400">Home</span>
-                <span className="text-red-600">/ Media</span>
+                <span className="text-[#e2e619]">/ Media</span>
               </div>
             </div>
           </section>
@@ -105,7 +105,7 @@ const Media = () => {
                     </div>
                     <div className="mt-4">
                       <h3 className="font-black text-lg text-[#1C1F42] uppercase tracking-tight">{item.title}</h3>
-                      <div className="flex items-center gap-2 text-red-600 mt-1 text-sm font-bold">
+                      <div className="flex items-center gap-2 text-[#e2e619] mt-1 text-sm font-bold">
                         <FiClock size={14} />
                         <span>{item.time}</span>
                       </div>
@@ -136,7 +136,7 @@ const Media = () => {
               <button 
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages}
-                className="bg-[#0A1D37] text-white px-8 py-3 font-bold flex items-center gap-2 hover:bg-red-600 transition-colors disabled:opacity-50 disabled:hover:bg-[#0A1D37]"
+                className="bg-[#0A1D37] text-white px-8 py-3 font-bold flex items-center gap-2 hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:hover:bg-[#0A1D37]"
               >
                 Next page <FiChevronRight />
               </button>
@@ -152,14 +152,14 @@ const Media = () => {
                     <button 
                         onClick={handlePrevPage}
                         disabled={currentPage === 1}
-                        className="w-10 h-10 flex items-center justify-center border border-slate-200 text-slate-400 hover:border-red-600 hover:text-red-600 disabled:opacity-30"
+                        className="w-10 h-10 flex items-center justify-center border border-slate-200 text-slate-400 hover:border-[#e2e619] hover:text-yellow-600 disabled:opacity-30"
                     >
                         <FiChevronLeft />
                     </button>
                     <button 
                         onClick={handleNextPage}
                         disabled={currentPage === totalPages}
-                        className="w-10 h-10 flex items-center justify-center border border-slate-200 text-slate-400 hover:border-red-600 hover:text-red-600 disabled:opacity-30"
+                        className="w-10 h-10 flex items-center justify-center border border-slate-200 text-slate-400 hover:border-[#e2e619] hover:text-yellow-600 disabled:opacity-30"
                     >
                         <FiChevronRight />
                     </button>
@@ -179,15 +179,15 @@ const Media = () => {
             className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
             onClick={() => setSelectedImageIndex(null)}
           >
-            <button className="absolute top-10 right-10 text-white hover:text-red-600 z-[110]"><FiX size={40} /></button>
-            <button onClick={(e) => { e.stopPropagation(); setSelectedImageIndex((prev) => (prev - 1 + totalItems) % totalItems); }} className="absolute left-10 text-white hover:text-red-600"><FiChevronLeft size={40} /></button>
-            <button onClick={(e) => { e.stopPropagation(); setSelectedImageIndex((prev) => (prev + 1) % totalItems); }} className="absolute right-10 text-white hover:text-red-600"><FiChevronRight size={40} /></button>
+            <button className="absolute top-10 right-10 text-white hover:text-yellow-600 z-[110]"><FiX size={40} /></button>
+            <button onClick={(e) => { e.stopPropagation(); setSelectedImageIndex((prev) => (prev - 1 + totalItems) % totalItems); }} className="absolute left-10 text-white hover:text-yellow-600"><FiChevronLeft size={40} /></button>
+            <button onClick={(e) => { e.stopPropagation(); setSelectedImageIndex((prev) => (prev + 1) % totalItems); }} className="absolute right-10 text-white hover:text-reyellowd-600"><FiChevronRight size={40} /></button>
 
             <motion.div key={selectedImageIndex} initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="relative max-w-5xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
               <img src={sortedData[selectedImageIndex].img} alt="Selected" className="max-h-[80vh] object-contain shadow-2xl" />
               <div className="mt-6 text-center text-white">
                 <h4 className="text-2xl font-black uppercase tracking-widest">{sortedData[selectedImageIndex].title}</h4>
-                <p className="text-red-500 font-bold mt-2">{selectedImageIndex + 1} / {totalItems}</p>
+                <p className="text-[#e2e619] font-bold mt-2">{selectedImageIndex + 1} / {totalItems}</p>
               </div>
             </motion.div>
           </motion.div>

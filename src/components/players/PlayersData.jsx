@@ -30,7 +30,7 @@ const PlayersData = () => {
             <span className="text-gray-400">Home</span>
             <span className="text-gray-400">/</span>
             <span 
-              className={`transition-colors cursor-pointer ${!selectedPlayer ? 'text-red-600' : 'text-gray-400 hover:text-white'}`}
+              className={`transition-colors cursor-pointer ${!selectedPlayer ? 'text-yellow-600' : 'text-gray-400 hover:text-white'}`}
               onClick={() => setSelectedPlayer(null)}
             >
               Players
@@ -38,7 +38,7 @@ const PlayersData = () => {
             {selectedPlayer && (
               <>
                 <span className="text-gray-400">/</span>
-                <span className="text-red-600">{selectedPlayer.role}</span>
+                <span className="text-yellow-600">{selectedPlayer.role}</span>
               </>
             )}
           </div>
@@ -202,14 +202,14 @@ const PlayersData = () => {
                               <div key={label}>
                                   <div className="flex justify-between font-black uppercase text-sm mb-3">
                                       <span className="tracking-widest text-[#1C1F42]">{label}</span>
-                                      <span className="text-red-600">{value}%</span>
+                                      <span className="text-[#e2e619]">{value}%</span>
                                   </div>
                                   <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
                                       <motion.div 
                                           initial={{ width: 0 }}
                                           animate={{ width: `${value}%` }}
                                           transition={{ duration: 1, ease: "circOut" }}
-                                          className="h-full bg-red-600"
+                                          className="h-full bg-[#e2e619]"
                                       />
                                   </div>
                               </div>

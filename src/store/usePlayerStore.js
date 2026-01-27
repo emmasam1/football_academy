@@ -1,5 +1,7 @@
 
 import { create } from 'zustand';
+import { FaFutbol, FaRunning, FaBullseye, FaUserFriends } from 'react-icons/fa';
+import { GiAwareness } from "react-icons/gi";
 
 const MOCK_API_DATA = [
   { id: 1, name: "Harry Deo", team: "First Team", number: "22", role: "Goalkeeper", nationality: "American", dob: "25/02/1988", height: "190cm", weight: "90kg", img: "https://images.unsplash.com/photo-1551958219-acbc608c6377", stats: { attack: 10, defence: 95, kick: 88 } },
@@ -16,6 +18,44 @@ const MOCK_API_DATA = [
   { id: 12, name: "Erling H", team: "First Team", number: "09", role: "Forward", nationality: "Norwegian", dob: "21/07/2000", height: "194cm", weight: "88kg", img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018", stats: { attack: 97, defence: 15, kick: 85 } },
 ];
 
+const MOCK_PROGRAMS = [
+  { 
+    title: "Technical Skills", 
+    description: "Ball control, passing accuracy, dribbling, and finishing fundamentals.",
+    icon: 'FaFutbol', // Store as string to avoid component issues in state
+    img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800" 
+  },
+  { 
+    title: "Speed Training", 
+    description: "Improving acceleration, agility, and quick movement on and off the ball.",
+    icon: 'FaRunning', 
+    img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800" 
+  },
+  { 
+    title: "Tactical Awareness", 
+    description: "Understanding positioning, decision-making, and game intelligence.",
+    icon: 'GiAwareness', 
+    img: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1600" 
+  },
+  { 
+    title: "Physical Conditioning", 
+    description: "Building strength, endurance, balance, and overall fitness safely.",
+    icon: 'FaBullseye', 
+    img: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=800" 
+  },
+  { 
+    title: "Mental Strength", 
+    description: "Developing confidence, focus, discipline, and resilience under pressure.",
+    icon: 'FaBullseye', 
+    img: "https://images.unsplash.com/photo-1518604666860-9ed391f76460?q=80&w=800" 
+  },
+  { 
+    title: "Team Play", 
+    description: "Encouraging communication, cooperation, leadership, and sportsmanship.",
+    icon: 'FaUserFriends', 
+    img: "/images/teamplay.jpeg" 
+  },
+];
 
 const MOCK_NEWS = [
   { 
@@ -61,6 +101,7 @@ const MOCK_NEWS = [
 
 export const usePlayerStore = create((set, get) => ({
   players: MOCK_API_DATA,
+  programs: MOCK_PROGRAMS,
   selectedPlayer: null,
   filterRole: "All",
   currentPage: 1,

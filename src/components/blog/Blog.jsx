@@ -19,7 +19,7 @@ const Blog = () => {
                 <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">OUR NEWS</h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
                   <span className="text-gray-400">Home</span>
-                  <span className="text-red-600">/ News</span>
+                  <span className="text-yellow-600">/ News</span>
                 </div>
               </div>
             </section>
@@ -96,7 +96,7 @@ const Blog = () => {
                 <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
                   <span className="text-gray-400">Home</span>
                   <span className="text-gray-400">/</span>
-                  <span className="text-red-600">News Details</span>
+                  <span className="text-yellow-600">News Details</span>
                 </div>
               </div>
             </section>
@@ -113,7 +113,7 @@ const Blog = () => {
                     <span className="flex items-center gap-2"><FiUser /> By {selectedNews.author}</span>
                     <span className="flex items-center gap-2"><FiClock /> {selectedNews.fullDate}</span>
                     <span className="flex items-center gap-2"><FiMessageSquare /> 2 Comments</span>
-                    <button className="ml-auto flex items-center gap-2 hover:text-red-600"><FiShare2 /> Share</button>
+                    <button className="ml-auto flex items-center gap-2 hover:text-yellow-600"><FiShare2 /> Share</button>
                 </div>
 
                 <h2 className="text-4xl font-black text-[#1C1F42] uppercase mb-8 leading-tight">{selectedNews.title}</h2>
@@ -157,10 +157,10 @@ const Blog = () => {
               {/* Sidebar */}
               <div className="lg:col-span-4 space-y-12">
                 <div className="bg-white p-8 shadow-sm border border-slate-100">
-                    <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-6 border-l-4 border-red-600 pl-4">Categories</h4>
+                    <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-6 border-l-4 border-yellow-600 pl-4">Categories</h4>
                     <ul className="space-y-4 font-bold text-sm text-slate-500">
                         {["Tincidunt Condimentum", "Porttitor Velit", "Popular Belief", "Nisl Porttitor", "Adipiscing Elit"].map(cat => (
-                            <li key={cat} className="flex items-center gap-2 hover:text-red-600 cursor-pointer transition-colors">
+                            <li key={cat} className="flex items-center gap-2 hover:text-yellow-600 cursor-pointer transition-colors">
                                 <FiArrowRight className="text-xs" /> {cat}
                             </li>
                         ))}
@@ -168,14 +168,14 @@ const Blog = () => {
                 </div>
 
                 <div className="bg-white p-8 shadow-sm border border-slate-100">
-                    <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-red-600 pl-4">Recent Post</h4>
+                    <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-yellow-600 pl-4">Recent Post</h4>
                     <div className="space-y-6">
                         {news.map(post => (
                             <div key={post.id} className="flex gap-4 group cursor-pointer" onClick={() => setSelectedNews(post)}>
                                 <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-sm">
                                     <img src={post.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                                 </div>
-                                <h5 className="font-black text-[#1C1F42] text-sm group-hover:text-red-600 transition-colors uppercase leading-snug">{post.title}</h5>
+                                <h5 className="font-black text-[#1C1F42] text-sm group-hover:text-yellow-600 transition-colors uppercase leading-snug">{post.title}</h5>
                             </div>
                         ))}
                     </div>

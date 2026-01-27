@@ -53,7 +53,7 @@ const Contact = () => {
               <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">OFFICIAL CONTACT</h1>
               <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
                 <span className="text-gray-400">Home</span>
-                <span className="text-red-600">/ Contact</span>
+                <span className="text-[#e2e619]">/ Contact</span>
               </div>
             </div>
           </section>
@@ -68,7 +68,7 @@ const Contact = () => {
                   whileHover={{ y: -5 }}
                   className="bg-white p-10 shadow-sm border border-slate-100 rounded-sm"
                 >
-                  <h3 className="text-xl font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-red-600 pl-4">
+                  <h3 className="text-xl font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-[#e2e619] pl-4">
                     {card.title}
                   </h3>
                   <div className="space-y-4">

@@ -52,6 +52,21 @@ const About = () => {
 
   const coaches = [
     {
+      name: "Dr Victor isereke ",
+      role: "Technical Coach",
+      image: "/images/Victor_isereke.jpeg",
+      experience: "10 Years Experience",
+      bio: "Chairman/Covener",
+    },
+     {
+      name: "Temidayo faleyimu",
+      role: "Assistant Coach",
+      image:
+        "/images/Temidayo_faleyimu.jpeg",
+      experience: "8 Years Experience",
+      bio: "LOC chairman",
+    },
+    {
       name: "Pascal Inyang",
       role: "Head Coach",
       image:
@@ -60,27 +75,12 @@ const About = () => {
       bio: "member planning committee",
     },
     {
-      name: "Temidayo faleyimu",
-      role: "Assistant Coach",
-      image:
-        "/images/Temidayo_faleyimu.jpeg",
-      experience: "8 Years Experience",
-      bio: "SLOC chairman",
-    },
-    {
-      name: "Dr Victor isereke ",
-      role: "Technical Coach",
-      image: "/images/Victor_isereke.jpeg",
-      experience: "10 Years Experience",
-      bio: "Chairman/Covener",
-    },
-    {
-      name: "Coach Emmanuel Bello",
+      name: "Keiphas Augustine",
       role: "Goalkeeper Coach",
       image:
         "/images/forth.jpeg",
       experience: "9 Years Experience",
-      bio: "Former professional goalkeeper training young keepers with confidence and focus.",
+      bio: "Match Commissioner",
     },
   ];
 
@@ -110,9 +110,9 @@ const About = () => {
   const faqsLeft = [
     {
       key: "1",
-      label: "What services does Joseninho offer?",
+      label: "Who are the coaches at Joseninho Kids Football League?",
       children:
-        "We provide structured football training, youth development programs, mentorship, and competitive league experiences tailored for children aged 6–15.",
+        "Our coaches are experienced football professionals and trained mentors passionate about youth development. They combine technical knowledge with a strong focus on discipline, character, and player growth..",
     },
     {
       key: "2",
@@ -122,30 +122,30 @@ const About = () => {
     },
     {
       key: "3",
-      label: "How long before I start seeing results?",
+      label: "What qualifications do your coaches have?",
       children:
-        "Most players show measurable improvement within the first few months through consistent training and match exposure.",
+        "Our coaching team consists of certified and experienced football coaches with backgrounds in grassroots and youth football development, ensuring safe, effective, and age-appropriate training.",
     },
   ];
 
   const faqsRight = [
     {
       key: "4",
-      label: "Do you guarantee results?",
+      label: "How do coaches support player development?",
       children:
-        "While results depend on commitment and consistency, our structured programs are designed to maximize each player’s potential.",
+        "Coaches focus on technical skills, tactical understanding, physical conditioning, mental strength, and teamwork, creating a balanced approach to football and personal development.",
     },
     {
       key: "5",
-      label: "Will I have access to performance reports?",
+      label: "Do coaches work with different age groups?",
       children:
-        "Yes, parents receive periodic feedback and performance insights on their child’s progress.",
+        "Yes. Our coaches are trained to work with various age categories, adapting training methods to suit each player’s age, ability, and stage of development.",
     },
     {
       key: "6",
-      label: "Where is your training center based?",
+      label: "Is player safety a priority during training?",
       children:
-        "Our main training center is located in Abuja, with scheduled sessions across selected fields.",
+        "Absolutely. Player safety is central to our coaching philosophy. Coaches are trained in first aid, injury prevention, and creating a safe training environment for all players.",
     },
   ];
 
@@ -366,7 +366,7 @@ const About = () => {
               </span>
 
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Meet our coaches shaping modern football excellence
+               Meet Our Coaches – FAQs
               </h3>
             </div>
 

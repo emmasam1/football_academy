@@ -100,7 +100,7 @@ const MatchSchedule = () => {
                 <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Schedule</h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
                   <span className="text-gray-400">Schedule</span>
-                  <span className="text-red-600">/</span>
+                  <span className="text-[#e2e619]">/</span>
                 </div>
               </div>
             </section>
@@ -169,7 +169,7 @@ const MatchSchedule = () => {
               <div className="relative z-20 text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Matches Details</h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-sm font-bold uppercase tracking-widest">
-                  <span className="text-gray-400">Schedule</span> <span className="text-red-600">/</span> <span>Details</span>
+                  <span className="text-gray-400">Schedule</span> <span className="text-[#e2e619]">/</span> <span>Details</span>
                 </div>
               </div>
             </section>
@@ -221,7 +221,7 @@ const MatchSchedule = () => {
                                     <div className="px-2 md:px-4 text-center">
                                         <button 
                                             onClick={() => setIsVideoPlaying(true)}
-                                            className="w-12 h-12 md:w-16 md:h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-600/40 hover:scale-110 transition-transform mb-2 cursor-pointer"
+                                            className="w-12 h-12 md:w-16 md:h-16 bg-[#e2e619] rounded-full flex items-center justify-center text-white shadow-lg shadow-red-600/40 hover:scale-110 transition-transform mb-2 cursor-pointer"
                                         >
                                             <FiPlay size={20} fill="currentColor" />
                                         </button>
@@ -234,7 +234,7 @@ const MatchSchedule = () => {
                                 </motion.div>
                             ) : (
                                 <motion.div key="video" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative w-full h-full bg-black">
-                                    <button onClick={() => setIsVideoPlaying(false)} className="absolute top-2 right-2 z-50 bg-red-600 text-white p-1 rounded-full hover:bg-white hover:text-red-600 transition-colors">
+                                    <button onClick={() => setIsVideoPlaying(false)} className="absolute top-2 right-2 z-50 bg-[#e2e619] text-white p-1 rounded-full hover:bg-white hover:text-yellow-600 transition-colors">
                                         <FiX size={20} />
                                     </button>
                                     <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${selectedMatch.youtubeId}?autoplay=1`} frameBorder="0" allowFullScreen></iframe>
