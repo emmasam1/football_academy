@@ -14,6 +14,7 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("History");
@@ -205,7 +206,7 @@ const About = () => {
             </div>
             <div className="flex flex-col items-start lg:items-end">
               <p className="text-gray-400 mb-6 max-w-md">Our staff consists of seasoned professionals dedicated to training the next generation of football stars.</p>
-              <button className="h-12 px-10 font-bold uppercase bg-[#97991b] text-white transition-colors hover:bg-[#868818]">Contact Us</button>
+              <Link to="/contact" className="h-12 px-10 py-3 font-bold uppercase bg-[#97991b] text-white transition-colors hover:bg-[#868818]">Contact Us</Link>
             </div>
           </div>
 
