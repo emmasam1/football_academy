@@ -564,14 +564,14 @@ const Navbar = () => {
 
             <button 
               onClick={toggleTheme}
-              className="ml-4 p-2 rounded-full hover:bg-white/5 text-white transition-colors"
+              className="ml-4 p-2 rounded-full hover:bg-white/5 text-white transition-colors cursor-pointer"
             >
               {darkMode ? <SunOutlined /> : <MoonOutlined />}
             </button>
           </div>
 
           {/* MOBILE TOGGLE */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-2 cursor-pointer">
             <button onClick={toggleTheme} className="p-2 text-white">
               {darkMode ? <SunOutlined /> : <MoonOutlined />}
             </button>
@@ -588,12 +588,12 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[90] bg-[#1C1F42] pt-24 px-8 flex flex-col gap-6 overflow-y-auto"
+            className="fixed inset-0 z-[90] bg-[#1C1F42] pt-24 px-8 flex flex-col gap-6 overflow-y-auto cursor-pointer"
           >
             {menuItems.map((item) => (
               <div key={item.label}>
                 <div 
-                  className="text-2xl font-black uppercase text-white/90"
+                  className="text-2xl font-black uppercase text-white/90 cursor-pointer"
                   onClick={() => {
                     if(!item.children) {
                       navigate(item.path);
