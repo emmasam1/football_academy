@@ -32,7 +32,7 @@ const About = () => {
         "2015": "Introduced advanced scouting programs and specialized goalkeeper coaching clinics.",
         "2022": "Joseninho Kids Football League continues to evolve as a premier sports hub.",
       },
-      image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800",
+      image: "/images/bg-ms2.jpeg",
     },
     Mission: {
       icon: <BulbOutlined />,
@@ -44,7 +44,7 @@ const About = () => {
       icon: <EyeOutlined />,
       title: "Our Vision",
       content: "Our vision is to be at the forefront of children's football leagues and sports management in Nigeria and across Africa. We strive to be recognized as a leader in nurturing young talent, crafting not just exceptional players but remarkable individuals ready to thrive in any arena.",
-      image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800",
+      image: "/images/teamplay2.jpeg",
     },
   };
 
