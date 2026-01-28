@@ -464,7 +464,7 @@ const Home = () => {
                 className={`flex-1 cursor-pointer transition-all duration-500 ${
                   current === i
                     ? "h-1 bg-orange-500"
-                    : "h-[2px] bg-white/40 hover:bg-white/70"
+                    : "h-0.5 bg-white/40 hover:bg-white/70"
                 }`}
               />
             ))}
