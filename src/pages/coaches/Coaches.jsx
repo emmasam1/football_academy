@@ -67,7 +67,7 @@ const Coaches = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[40vh] w-full">
+      <section className="relative h-[50vh] w-full">
         {/* Background image (absolute) */}
         <div
           className='

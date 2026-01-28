@@ -35,10 +35,10 @@ const Program = () => {
   };
 
   return (
-    <div className="bg-[#FEFEFE] font-sans overflow-hidden relative -top-16">
+    <div className="bg-[#FEFEFE] font-sans overflow-hidden relative -top-16 py-10">
       
       {/* HERO SECTION */}
-      <section className="relative h-[40vh] flex items-center justify-center text-white text-center px-6">
+      <section className="relative h-[50vh] flex items-center justify-center text-white text-center px-6">
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div 
           className="absolute inset-0 bg-cover bg-center"

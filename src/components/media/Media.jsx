@@ -44,12 +44,12 @@ const Media = () => {
   const handlePrevPage = () => { if (currentPage > 1) setCurrentPage(currentPage - 1); };
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen font-sans relative -top-16">
+    <div className="bg-[#f8fafc] min-h-screen font-sans relative -top-16 py-10">
       <AnimatePresence mode="wait">
         <motion.div key="list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           
           {/* HERO SECTION */}
-          <section className="relative h-[30vh] md:h-[40vh] flex items-center justify-center text-white">
+          <section className="relative h-[30vh] md:h-[50vh] flex items-center justify-center text-white">
             <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }} />
             <div className="relative z-20 text-center px-4">
               <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Media</h1>

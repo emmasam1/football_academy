@@ -74,7 +74,7 @@ const About = () => {
   return (
     <div className="bg-gray-50">
       {/* ================= HERO ================= */}
-      <section className="relative h-[40vh] w-full">
+      <section className="relative h-[50vh] w-full">
         <div className='absolute inset-0 -top-16 bg-[url("/images/bg-subanner.jpg")] bg-cover bg-center' />
       </section>
 

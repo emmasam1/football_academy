@@ -88,12 +88,12 @@ const MatchSchedule = () => {
   };
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen font-sans relative -top-16">
+    <div className="bg-[#f8fafc] min-h-screen font-sans relative -top-16 py-10">
       <AnimatePresence mode="wait">
         {view === 'list' ? (
           <motion.div key="list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             {/* HERO SECTION */}
-            <section className="relative h-[30vh] md:h-[40vh] flex items-center justify-center text-white">
+            <section className="relative h-[30vh] md:h-[50vh] flex items-center justify-center text-white">
               {/* <div className="absolute inset-0 bg-black/60 z-10" /> */}
               <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }} />
               <div className="relative z-20 text-center px-4">
