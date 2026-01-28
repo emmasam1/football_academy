@@ -434,7 +434,7 @@ const Home = () => {
 
               <motion.button
                 variants={textItem}
-                className="bg-[#1C1F42] hover:bg-orange-500 transition px-6 py-3 font-semibold w-fit"
+                className="bg-yellow-500 hover:bg-[#e2e619] transition px-6 py-3 font-semibold w-fit"
               >
                 <Link to="/contact">{heroSlides[current].cta}</Link>
               </motion.button>
