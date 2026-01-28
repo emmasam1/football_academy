@@ -24,13 +24,10 @@ const About = () => {
   const tabData = {
     History: {
       icon: <HistoryOutlined />,
-      years: ["1990", "1995", "2005", "2015", "2022"],
+      years: ["2025", "2026"],
       content: {
-        "1990": "Founded as a local youth initiative in Abuja with just 15 players and a passion for the game.",
-        "1995": "Expanded our training facilities and registered as an official youth development affiliate.",
-        "2005": "Launched our first competitive league structure, attracting over 200 young athletes.",
-        "2015": "Introduced advanced scouting programs and specialized goalkeeper coaching clinics.",
-        "2022": "Joseninho Kids Football League continues to evolve as a premier sports hub.",
+        "2025": "Founded as a local youth initiative in Abuja with just few players and a passion for the game.",
+        "2026": "Joseninho Kids Football League continues to evolve as a premier sports hub.",
       },
       image: "/images/bg-ms2.jpeg",
     },
@@ -44,7 +41,7 @@ const About = () => {
       icon: <EyeOutlined />,
       title: "Our Vision",
       content: "Our vision is to be at the forefront of children's football leagues and sports management in Nigeria and across Africa. We strive to be recognized as a leader in nurturing young talent, crafting not just exceptional players but remarkable individuals ready to thrive in any arena.",
-      image: "/images/teamplay2.jpeg",
+      image: "/images/trophy_lift.jpeg",
     },
   };
 
@@ -78,7 +75,7 @@ const About = () => {
     <div className="bg-gray-50">
       {/* ================= HERO ================= */}
       <section className="relative h-[40vh] w-full">
-        <div className='absolute inset-0 -top-16 bg-[url("/images/hero.jpg")] bg-cover bg-center' />
+        <div className='absolute inset-0 -top-16 bg-[url("/images/bg-subanner.jpg")] bg-cover bg-center' />
       </section>
 
       {/* ================= ABOUT TOP SECTION ================= */}
@@ -142,13 +139,13 @@ const About = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`flex items-center gap-2 px-6 py-4 font-bold uppercase tracking-widest text-xs transition-all relative whitespace-nowrap ${
-                    activeTab === tab ? "text-[#e2e619] bg-white" : "text-slate-400 hover:text-yellow-500"
+                    activeTab === tab ? "text-blue-900 bg-white" : "text-slate-400 hover:text-blue-600"
                   }`}
                 >
                   <span className="text-lg">{tabData[tab].icon}</span>
                   Our {tab}
                   {activeTab === tab && (
-                    <motion.div layoutId="activeTabBorder" className="absolute bottom-0 left-0 right-0 h-1 bg-[#97991b]" />
+                    <motion.div layoutId="activeTabBorder" className="absolute bottom-0 left-0 right-0 h-1 bg-[#1C1F42]" />
                   )}
                 </button>
               ))}
@@ -171,7 +168,7 @@ const About = () => {
                           key={year}
                           onClick={() => setActiveYear(year)}
                           className={`flex items-center gap-2 px-4 py-2 text-xs font-black transition-all rounded ${
-                            activeYear === year ? "bg-[#97991b] text-white" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                            activeYear === year ? "bg-[#1C1F42] text-white" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                           }`}
                         >
                           <CalendarOutlined /> {year}
@@ -219,7 +216,7 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {coaches.map((coach, i) => (
               <div key={i} className="group bg-slate-800 border border-slate-700 overflow-hidden transition-all hover:-translate-y-2 cursor-pointer">
-                <img src={coach.image} className="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt={coach.name} />
+                <img src={coach.image} className="w-full h-80 object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500" alt={coach.name} />
                 <div className="p-6">
                   <h4 className="text-white font-bold text-lg">{coach.name}</h4>
                   <p className="text-[#97991b] text-xs font-bold uppercase mt-1 tracking-tighter">{coach.bio}</p>

@@ -28,7 +28,7 @@ const MOCK_PROGRAMS = [
     title: "Speed Training", 
     description: "Improving acceleration, agility, and quick movement on and off the ball.",
     icon: 'FaRunning', 
-    img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800" 
+    img: "images/speed.jpg" 
   },
   { 
     title: "Tactical Awareness", 
@@ -40,7 +40,7 @@ const MOCK_PROGRAMS = [
     title: "Physical Conditioning", 
     description: "Building strength, endurance, balance, and overall fitness safely.",
     icon: 'FaBullseye', 
-    img: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=800" 
+    img: "images/training.jpg" 
   },
   { 
     title: "Mental Strength", 
@@ -66,7 +66,7 @@ const MOCK_NEWS = [
     commentsCount: 125, 
     timeAgo: "1 Day ago", 
     category: "Transfer",
-    img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018",
+    img: "images/egles_mvp.jpeg",
     excerpt: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
     content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia..."
   },
@@ -79,7 +79,7 @@ const MOCK_NEWS = [
     commentsCount: 125, 
     timeAgo: "1 Day ago", 
     category: "Match Report",
-    img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2",
+    img: "images/YFA_team.jpeg",
     excerpt: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
     content: "Ireland dominated the qualification round with an impressive display of tactical discipline..."
   },
@@ -92,10 +92,23 @@ const MOCK_NEWS = [
     commentsCount: 125, 
     timeAgo: "1 Day ago", 
     category: "International",
-    img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974",
+    img: "images/trophy_lift.jpeg",
     excerpt: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
     content: "A masterclass performance led by the veteran forwards secured a comfortable victory..."
-  }
+  },
+    { 
+    id: 4, 
+    title: "Ireland FC In 10 Racking", 
+    author: "Thomas Wills", 
+    date: "16 June", 
+    fullDate: "Oct 12, 2021",
+    commentsCount: 125, 
+    timeAgo: "1 Day ago", 
+    category: "Match Report",
+    img: "images/YFA_team.jpeg",
+    excerpt: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    content: "Ireland dominated the qualification round with an impressive display of tactical discipline..."
+  },
 ];
 
 const text = "Joseninho Kids Football League is a vibrant kids football initiative nestled in the heart of Abuja, where we are passionate about nurturing, developing, and celebrating the incredible talent of young footballers. Tailored for players aged 6 to 15, our league provides a dynamic and engaging environment that combines fun with competition, enabling children to master the fundamentals of football while developing essential life skills such as confidence, discipline, and teamwork.Joseninho Kids Football League promises an exhilarating and fulfilling experience for every participant. Our program harmoniously combines skill development with the values of sportsmanship and mentorship, all within a supportive community. Here, football transcends mere play, it becomes a powerful platform for personal growth, character development, and the creation of cherished memories that will last a lifetime."

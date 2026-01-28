@@ -72,7 +72,7 @@ const Program = () => {
               and thrive. Through organised matches, quality coaching, and mentorship, we focus on skill development, discipline, 
               teamwork, and leadership preparing young talents for the future of football and life beyond the game.
             </p>
-            <Link to="/team/coaches" className="bg-[#2141a5] text-white px-8 py-3 font-bold text-sm tracking-widest transition-all">DISCOVER MORE</Link>
+            <Link to="/team/coaches" className="bg-[#97991b] text-white px-8 py-3 font-bold text-sm tracking-widest transition-all">DISCOVER MORE</Link>
           </motion.div>
         </div>
 
@@ -133,7 +133,7 @@ const Program = () => {
           <p className="text-sm lg:text-lg opacity-90 leading-relaxed mb-10">
             Professional guidance is the bridge between raw talent and elite performance. Our mentors bring years of field experience directly to you.
           </p>
-          <Link to="/team/coaches" className="w-fit bg-[#2141a5] px-10 py-4 font-bold uppercase tracking-widest text-xs border border-white/20 hover:bg-white hover:text-blue-900 transition-all">
+          <Link to="/team/coaches" className="w-fit bg-[#97991b] px-10 py-4 font-bold uppercase tracking-widest text-xs border border-white/20 hover:bg-white hover:text-blue-900 transition-all">
             Discover More
           </Link>
         </motion.div>
