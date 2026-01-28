@@ -96,7 +96,13 @@ const About = () => {
                 Dedicated professionals shaping disciplined athletes
               </h2>
               <p className="text-slate-600 text-justify mb-6">
-                Joseninho Kids Football League is a vibrant initiative in Abuja, nurturing players aged 6 to 15. Our league provides a dynamic environment that combines fun with competition.
+                Joseninho Kids Football League is a vibrant kids football initiative nestled in the heart of Abuja, where we are passionate about nurturing, developing, 
+                and celebrating the incredible talent of young footballers. Tailored for players aged 6 to 15, our league provides a dynamic and engaging environment that combines fun with competition, enabling children to master the fundamentals of football while developing essential life skills such as confidence, discipline, and teamwork.
+              </p>
+
+              <p className="text-slate-600 text-justify mb-6">
+                Joseninho Kids Football League promises an exhilarating and fulfilling experience for every participant. Our program harmoniously combines skill development with the
+                 values of sportsmanship and mentorship, all within a supportive community. Here, football transcends mere play, it becomes a powerful platform for personal growth, character development, and the creation of cherished memories that will last a lifetime.
               </p>
               
               <div className="flex flex-wrap gap-8">

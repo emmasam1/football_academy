@@ -4,18 +4,17 @@ import { FaFutbol, FaRunning, FaBullseye, FaUserFriends } from 'react-icons/fa';
 import { GiAwareness } from "react-icons/gi";
 
 const MOCK_API_DATA = [
-  { id: 1, name: "Harry Deo", team: "First Team", number: "22", role: "Goalkeeper", nationality: "American", dob: "25/02/1988", height: "190cm", weight: "90kg", img: "https://images.unsplash.com/photo-1551958219-acbc608c6377", stats: { attack: 10, defence: 95, kick: 88 } },
-  { id: 2, name: "Noah Smith", team: "Under 21s", number: "34", role: "Goalkeeper", nationality: "British", dob: "12/05/2003", height: "185cm", weight: "80kg", img: "https://images.unsplash.com/photo-1606925791574-e91af3ad295b", stats: { attack: 5, defence: 82, kick: 75 } },
-  { id: 3, name: "Oliver Smith", team: "First Team", number: "04", role: "Defender", nationality: "Spanish", dob: "10/10/1995", height: "188cm", weight: "85kg", img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36", stats: { attack: 45, defence: 90, kick: 60 } },
-  { id: 4, name: "Jacob Smith", team: "First Team", number: "10", role: "Defender", nationality: "French", dob: "22/01/1994", height: "180cm", weight: "78kg", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e", stats: { attack: 55, defence: 85, kick: 70 } },
-  { id: 5, name: "Jack Due", team: "First Team", number: "28", role: "Midfielder", nationality: "German", dob: "15/03/1998", height: "175cm", weight: "72kg", img: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c", stats: { attack: 85, defence: 70, kick: 92 } },
-  { id: 6, name: "Liam Due", team: "Under 21s", number: "09", role: "Forward", nationality: "Italian", dob: "05/09/2004", height: "182cm", weight: "75kg", img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2", stats: { attack: 98, defence: 30, kick: 95 } },
-  { id: 7, name: "Aaron Ramsey", team: "First Team", number: "16", role: "Midfielder", nationality: "Welsh", dob: "26/12/1990", height: "178cm", weight: "76kg", img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974", stats: { attack: 75, defence: 60, kick: 80 } },
-  { id: 8, name: "Mason Mount", team: "First Team", number: "19", role: "Midfielder", nationality: "British", dob: "10/01/1999", height: "180cm", weight: "74kg", img: "https://images.unsplash.com/photo-1510567198184-c748466c1445", stats: { attack: 82, defence: 55, kick: 85 } },
-  { id: 9, name: "Virgil Van", team: "First Team", number: "04", role: "Defender", nationality: "Dutch", dob: "08/07/1991", height: "193cm", weight: "92kg", img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20", stats: { attack: 30, defence: 98, kick: 70 } },
-  { id: 10, name: "Kylian M", team: "First Team", number: "07", role: "Forward", nationality: "French", dob: "20/12/1998", height: "178cm", weight: "73kg", img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae", stats: { attack: 99, defence: 20, kick: 90 } },
-  { id: 11, name: "Luka Modric", team: "First Team", number: "10", role: "Midfielder", nationality: "Croatian", dob: "09/09/1985", height: "172cm", weight: "66kg", img: "https://images.unsplash.com/photo-1551280857-2b9bbe52cfcd", stats: { attack: 88, defence: 75, kick: 95 } },
-  { id: 12, name: "Erling H", team: "First Team", number: "09", role: "Forward", nationality: "Norwegian", dob: "21/07/2000", height: "194cm", weight: "88kg", img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018", stats: { attack: 97, defence: 15, kick: 85 } },
+  { id: 1, name: "Harry Deo", team: "First Team", number: "22", role: "Goalkeeper", nationality: "American", dob: "25/02/1988", height: "190cm", weight: "90kg", img: "/images/egles_mvp.jpeg", stats: { attack: 10, defence: 95, kick: 88 } },
+  { id: 2, name: "Noah Smith", team: "Under 21s", number: "34", role: "Goalkeeper", nationality: "British", dob: "12/05/2003", height: "185cm", weight: "80kg", img: "/images/forth.jpeg", stats: { attack: 5, defence: 82, kick: 75 } },
+  { id: 3, name: "Oliver Smith", team: "First Team", number: "04", role: "Defender", nationality: "Spanish", dob: "10/10/1995", height: "188cm", weight: "85kg", img: "/images/egles_mvp.jpeg", stats: { attack: 45, defence: 90, kick: 60 } },
+  { id: 4, name: "Jacob Smith", team: "First Team", number: "10", role: "Defender", nationality: "French", dob: "22/01/1994", height: "180cm", weight: "78kg", img: "/images/forth.jpeg", stats: { attack: 55, defence: 85, kick: 70 } },
+  { id: 5, name: "Jack Due", team: "First Team", number: "28", role: "Midfielder", nationality: "German", dob: "15/03/1998", height: "175cm", weight: "72kg", img: "/images/egles_mvp.jpeg", stats: { attack: 85, defence: 70, kick: 92 } },
+  { id: 6, name: "Liam Due", team: "Under 21s", number: "09", role: "Forward", nationality: "Italian", dob: "05/09/2004", height: "182cm", weight: "75kg", img: "/images/egles_mvp.jpeg", stats: { attack: 98, defence: 30, kick: 95 } },
+  { id: 7, name: "Aaron Ramsey", team: "First Team", number: "16", role: "Midfielder", nationality: "Welsh", dob: "26/12/1990", height: "178cm", weight: "76kg", img: "/images/egles_mvp.jpeg", stats: { attack: 75, defence: 60, kick: 80 } },
+  { id: 8, name: "Mason Mount", team: "First Team", number: "19", role: "Midfielder", nationality: "British", dob: "10/01/1999", height: "180cm", weight: "74kg", img: "/images/forth.jpeg", stats: { attack: 82, defence: 55, kick: 85 } },
+  { id: 9, name: "Virgil Van", team: "First Team", number: "04", role: "Defender", nationality: "Dutch", dob: "08/07/1991", height: "193cm", weight: "92kg", img:"/images/egles_mvp.jpeg" , stats : { attack : 30 , defence : 98 , kick : 70 } },
+  { id: 11, name: "Luka Modric", team: "First Team", number: "10", role: "Midfielder", nationality: "Croatian", dob: "09/09/1985", height: "172cm", weight: "66kg", img: "/images/forth.jpeg", stats: { attack: 88, defence: 75, kick: 95 } },
+  { id: 12, name: "Erling H", team: "First Team", number: "09", role: "Forward", nationality: "Norwegian", dob: "21/07/2000", height: "194cm", weight: "88kg", img: "/images/egles_mvp.jpeg", stats: { attack: 97, defence: 15, kick: 85 } },
 ];
 
 const MOCK_PROGRAMS = [
@@ -99,9 +98,12 @@ const MOCK_NEWS = [
   }
 ];
 
+const text = "Joseninho Kids Football League is a vibrant kids football initiative nestled in the heart of Abuja, where we are passionate about nurturing, developing, and celebrating the incredible talent of young footballers. Tailored for players aged 6 to 15, our league provides a dynamic and engaging environment that combines fun with competition, enabling children to master the fundamentals of football while developing essential life skills such as confidence, discipline, and teamwork.Joseninho Kids Football League promises an exhilarating and fulfilling experience for every participant. Our program harmoniously combines skill development with the values of sportsmanship and mentorship, all within a supportive community. Here, football transcends mere play, it becomes a powerful platform for personal growth, character development, and the creation of cherished memories that will last a lifetime."
+
 export const usePlayerStore = create((set, get) => ({
   players: MOCK_API_DATA,
   programs: MOCK_PROGRAMS,
+  aboutText: text,
   selectedPlayer: null,
   filterRole: "All",
   currentPage: 1,

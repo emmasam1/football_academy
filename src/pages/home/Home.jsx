@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Table } from "antd";
 
 import "slick-carousel/slick/slick.css";
@@ -23,6 +24,7 @@ import small_img_1 from "../../../public/images/small_img_1.jpg";
 import small_img_2 from "../../../public/images/small_img_2.jpg";
 import small_img_3 from "../../../public/images/small_img_3.jpg";
 import small_img_4 from "../../../public/images/small_img_4.jpg";
+import { usePlayerStore } from "../../store/usePlayerStore";
 
 const heroSlides = [
   {
@@ -45,7 +47,7 @@ const heroSlides = [
   },
 ];
 
-const { Title, Text, Link } = Typography;
+//const { Title, Text, Link } = Typography;
 
 /* ================= ARROWS (FIXED) ================= */
 const NextArrow = ({ onClick }) => {
@@ -89,6 +91,7 @@ const PrevArrow = ({ onClick }) => {
 const Home = () => {
   const [current, setCurrent] = useState(0);
   const [hasMounted, setHasMounted] = useState(false);
+    const { aboutText } = usePlayerStore();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -439,7 +442,7 @@ const Home = () => {
                 variants={textItem}
                 className="bg-[#1C1F42] hover:bg-orange-500 transition px-6 py-3 font-semibold w-fit"
               >
-                {heroSlides[current].cta}
+                <Link to="/contact">{heroSlides[current].cta}</Link>
               </motion.button>
             </motion.div>
           </motion.div>
@@ -501,9 +504,9 @@ const Home = () => {
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">Fixtures & Results</h2>
-            <button className="bg-[#1C1F42]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
+            <Link to="/schedule" className="bg-[#1C1F42]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
               All Matches →
-            </button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -640,22 +643,17 @@ const Home = () => {
               </p>
 
               <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold mb-6 leading-tight">
-                About the Club SC United
+                About JOSENINO Kids Football League
               </h2>
 
               <p className="text-gray-300 leading-relaxed mb-8">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry’s standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged.
+                 {aboutText.length > 300 ? aboutText.slice(0, 300) + "....." : aboutText}
               </p>
 
-              <Button className="inline-flex items-center gap-2 bg-[#1C1F42]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!">
-                About More
+              <Link to="/about" className="inline-flex items-center gap-2 bg-[#1C1F42]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!">
+                Read More
                 <span>→</span>
-              </Button>
+              </Link>
             </div>
 
             {/* RIGHT IMAGE (PLAYER) */}
