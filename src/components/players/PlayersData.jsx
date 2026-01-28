@@ -63,8 +63,8 @@ const PlayersData = () => {
                       onClick={() => setFilterRole(role)}
                       className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all cursor-pointer ${
                         filterRole === role 
-                        ? 'bg-[#1C1F42]  text-white shadow-lg shadow-blue-200' 
-                        : 'bg-white text-[#1C1F42] hover:bg-blue-900 border border-slate-200'
+                        ? 'bg-[#97991b]  text-white shadow-lg shadow-blue-200' 
+                        : 'bg-white text-[#1C1F42] hover:bg-[#dadd2d] border border-slate-200'
                       }`}
                     >
                       {role}

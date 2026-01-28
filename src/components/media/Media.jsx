@@ -10,18 +10,18 @@ const Media = () => {
 
   // Expanded Mock Data (12 Items)
   const baseMedia = [
-    { id: 1, title: "Alpha Cup Final", time: "1 years Ago", date: "2022-05-01", img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800" },
-    { id: 2, title: "Bravo Training Session", time: "1 years Ago", date: "2022-06-15", img: "/images/teamplay.jpeg" },
-    { id: 3, title: "Charlie Stadium View", time: "1 years Ago", date: "2022-01-10", img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=800" },
-    { id: 4, title: "Delta Goal Celebration", time: "2 years Ago", date: "2021-11-20", img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800" },
-    { id: 5, title: "Echo Team Photo", time: "1 years Ago", date: "2022-08-05", img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
-    { id: 6, title: "Foxtrot Night Match", time: "1 years Ago", date: "2022-09-12", img: "/images/media_n.jpeg" },
-    { id: 7, title: "Golf Trophy Lift", time: "3 years Ago", date: "2020-12-25", img: "/images/winner.jpeg" },
-    { id: 8, title: "Hotel Youth Academy", time: "1 years Ago", date: "2022-03-30", img: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=800" },
-    { id: 9, title: "India Fan Zone", time: "1 years Ago", date: "2022-07-14", img: "/images/bg_bannerArea.jpg" },
-    { id: 10, title: "Juliet Press Conf", time: "6 months Ago", date: "2023-01-05", img: "/images/press.jpeg" },
-    { id: 11, title: "Kilo New Kit Reveal", time: "4 months Ago", date: "2023-03-20", img: "/images/teamplay2.jpeg" },
-    { id: 12, title: "Lima Championship Win", time: "2 months Ago", date: "2023-05-10", img: "/images/under_12_winner.jpeg" },
+    { id: 1, title: "Youth Cup Final", time: "1 years Ago", date: "2025-01-01", img: "/images/inmatch_g.jpeg" },
+    { id: 2, title: "Bravo Training Session", time: "1 years Ago", date: "2025-01-15", img: "/images/teamplay.jpeg" },
+    { id: 6, title: "Foxtrot Night Match", time: "1 years Ago", date: "2025-01-12", img: "/images/media_n.jpeg" },
+    { id: 7, title: "Golf Trophy Lift", time: "3 years Ago", date: "2022-12-10", img: "/images/winner.jpeg" },
+    { id: 8, title: "Award presentation", time: "1 months Ago", date: "2026-01-10", img: "/images/award_press.jpeg" },
+    { id: 9, title: "India Fan Zone", time: "1 years Ago", date: "2025-01-10", img: "/images/bg_bannerArea.jpg" },
+    { id: 10, title: "Juliet Press Conf", time: "6 months Ago", date: "2025-07-10", img: "/images/press.jpeg" },
+    { id: 11, title: "Kilo New Kit Reveal", time: "4 months Ago", date: "2025-09-10", img: "/images/teamplay2.jpeg" },
+    { id: 12, title: "Lima Championship Win", time: "2 months Ago", date: "2025-12-20", img: "/images/under_12_winner.jpeg" },
+    { id: 13, title: "Youth trophy Winner", time: "2 months Ago", date: "2025-12-19", img: "/images/trophy_lift.jpeg" },
+    { id: 14, title: "Y.F.A team", time: "2 months Ago", date: "2025-12-15", img: "/images/YFA_team.jpeg" },
+    { id: 15, title: "Trophy presentation", time: "2 months Ago", date: "2025-12-10", img: "/images/youtth_winner.jpeg" },
   ];
 
   // Sorting Logic

@@ -8,62 +8,36 @@ import {
 } from "@ant-design/icons";
 
 const Coaches = () => {
+
+
   const coaches = [
     {
-      name: "Coach Samuel Adeyemi",
-      role: "Head Coach",
-      image: "https://topsoccerblog.com/wp-content/uploads/2021/04/images-11-2021-04-27T224047.035.jpeg",
+      name: "Dr Victor Isereke",
+      role: "Chairman/Covener",
+      image: "/images/Victor_isereke.jpeg",
       experience: "12 Years Experience",
       bio: "UEFA-certified coach focused on player development, discipline, and tactical intelligence.",
     },
     {
-      name: "Coach Ibrahim Musa",
-      role: "Assistant Coach",
-      image: "https://topsoccerblog.com/wp-content/uploads/2022/11/gettyimages-1245419183-612x612-1.jpg",
+      name: "Temidayo Faleyimu",
+      role: "LOC chairman",
+      image: "/images/Temidayo_faleyimu.jpeg",
       experience: "8 Years Experience",
       bio: "Specialist in youth fitness, agility training, and match preparation.",
     },
     {
-      name: "Coach Daniel Okonkwo",
-      role: "Technical Coach",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVLbFrXzyGd6DC3jO7efQAPMDysYNZGXnVLw&s",
+      name: "Pascal Inyang",
+      role: "Member planning committee",
+      image: "/images/Pascal_Inyang.jpeg",
       experience: "10 Years Experience",
       bio: "Expert in ball control, passing accuracy, and modern football techniques.",
     },
     {
-      name: "Coach Emmanuel Bello",
-      role: "Goalkeeper Coach",
-      image: "https://rangowealth.com/wp-content/uploads/2024/11/Top-Ten-Best-Coaches-in-the-World-Jurgen-Klopp.jpg",
+      name: "Keiphas Augustine",
+      role: "Match Commissioner",
+      image: "/images/forth.jpeg",
       experience: "9 Years Experience",
       bio: "Former professional goalkeeper training young keepers with confidence and focus.",
-    },
-    {
-      name: "Coach Aisha Lawal",
-      role: "Fitness Coach",
-      image: "https://images2.minutemediacdn.com/image/upload/c_crop,w_1024,h_682,x_0,y_0/c_fill,w_720,ar_3:2,f_auto,q_auto,g_auto/images/GettyImages/mmsport/90min_en_international_web/01jcnwfgrtfny52g9scf.jpg",
-      experience: "7 Years Experience",
-      bio: "Fitness specialist focused on strength, endurance, and injury prevention.",
-    },
-    {
-      name: "Coach Musa Adamu",
-      role: "Defensive Coach",
-      image: "https://rangowealth.com/wp-content/uploads/2024/11/Top-10-best-coaches-in-the-world-Carlo-Ancelotti.jpg",
-      experience: "11 Years Experience",
-      bio: "Defensive strategist skilled in formations, marking, and tactical discipline.",
-    },
-    {
-      name: "Coach Funmi Ojo",
-      role: "Youth Development Coach",
-      image: "https://www.cafonline.com/media/juxpueoo/eric-sekou-chelle-coach-of-nigeria.jpg",
-      experience: "6 Years Experience",
-      bio: "Youth-focused coach dedicated to developing young talent and leadership skills.",
-    },
-    {
-      name: "Coach Tunde Okafor",
-      role: "Tactical Coach",
-      image: "https://rangowealth.com/wp-content/uploads/2024/11/Top-10-best-coaches-in-the-world-Carlo-Ancelotti.jpg",
-      experience: "10 Years Experience",
-      bio: "Tactical analyst who specializes in match strategy, video review, and opponent scouting.",
     },
   ];
 
@@ -128,7 +102,7 @@ const Coaches = () => {
                 <img
                   src={image}
                   alt={name}
-                  className="w-full h-56 object-cover"
+                  className="w-full h-56 object-cover object-top"
                 />
 
                 {/* CONTENT */}

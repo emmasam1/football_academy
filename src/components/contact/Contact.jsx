@@ -138,7 +138,7 @@ const Contact = () => {
                   <button 
                     disabled={contactStatus === 'submitting'}
                     type="submit" 
-                    className={`bg-[#1C1F42] text-white px-12 py-4 font-black uppercase text-sm tracking-widest hover:bg-blue-900 cursor-pointer transition-all duration-300 ${contactStatus === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`bg-yellow-500 text-white px-12 py-4 font-black uppercase text-sm tracking-widest hover:bg-[#e2e619] cursor-pointer transition-all duration-300 ${contactStatus === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     {contactStatus === 'submitting' ? 'Sending...' : 'Submit'}
                   </button>

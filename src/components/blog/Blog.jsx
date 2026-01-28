@@ -44,7 +44,7 @@ const Blog = () => {
                          <span className="block text-xl font-black">{item.date.split(' ')[0]}</span>
                          <span className="block text-[10px] uppercase font-bold">{item.date.split(' ')[1]}</span>
                       </div>
-                      <button onClick={() => setSelectedNews(item)} className="absolute top-4 right-4 bg-[#1C1F42] cursor-pointer text-white p-2 text-xs font-black flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button onClick={() => setSelectedNews(item)} className="absolute top-4 right-4 bg-[#97991b] cursor-pointer text-white p-2 text-xs font-black flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         Read more <FiArrowRight />
                       </button>
                     </div>
@@ -58,7 +58,7 @@ const Blog = () => {
                         {item.title}
                       </h3>
                       <p className="text-slate-500 text-sm leading-relaxed mb-6">{item.excerpt}</p>
-                      <button onClick={() => setSelectedNews(item)} className="flex items-center gap-2 bg-[#1C1F42] cursor-pointer text-white px-4 py-2 text-xs font-black uppercase tracking-wider hover:bg-[#1C1F42] transition-colors">
+                      <button onClick={() => setSelectedNews(item)} className="flex items-center gap-2 bg-[#97991b] cursor-pointer text-white px-4 py-2 text-xs font-black uppercase tracking-wider hover:bg-[#1C1F42] transition-colors">
                         Read more <FiArrowRight />
                       </button>
                     </div>

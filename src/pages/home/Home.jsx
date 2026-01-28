@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Table } from "antd";
 
 import "slick-carousel/slick/slick.css";
@@ -23,11 +24,12 @@ import small_img_1 from "../../../public/images/small_img_1.jpg";
 import small_img_2 from "../../../public/images/small_img_2.jpg";
 import small_img_3 from "../../../public/images/small_img_3.jpg";
 import small_img_4 from "../../../public/images/small_img_4.jpg";
+import { usePlayerStore } from "../../store/usePlayerStore";
 
 const heroSlides = [
   {
     image: "/images/teamplay-dark.jpeg",
-    title: "Join the Football League Today",
+    title: "Join Our Football League Today",
     subtitle: "Compete with the Best. Develop Your Skills.",
     cta: "Register Now",
   },
@@ -45,7 +47,7 @@ const heroSlides = [
   },
 ];
 
-const { Title, Text, Link } = Typography;
+//const { Title, Text, Link } = Typography;
 
 /* ================= ARROWS (FIXED) ================= */
 const NextArrow = ({ onClick }) => {
@@ -89,6 +91,7 @@ const PrevArrow = ({ onClick }) => {
 const Home = () => {
   const [current, setCurrent] = useState(0);
   const [hasMounted, setHasMounted] = useState(false);
+    const { aboutText } = usePlayerStore();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -141,7 +144,7 @@ const Home = () => {
     {
       id: 1,
       title: "Draymond Green Had Bizarre...",
-      image: "/images/news1.webp",
+      image: "/images/award_press.jpeg",
       date: "27 June, 2020",
       comments: 89,
       excerpt:
@@ -151,7 +154,7 @@ const Home = () => {
     {
       id: 2,
       title: "Draymond Green Had Bizarre...",
-      image: "/images/news2.webp",
+      image: "/images/coach1.jpeg",
       date: "27 June, 2020",
       comments: 89,
       excerpt:
@@ -161,14 +164,14 @@ const Home = () => {
     {
       id: 3,
       title: "Draymond Green Had Biz...",
-      image: "/images/news3.jpg",
+      image: "/images/inmatch_g.jpeg",
       date: "27 June, 2020",
       comments: 89,
     },
     {
       id: 4,
       title: "Draymond Green Had Bizarre...",
-      image: "/images/news4.jpg",
+      image: "/images/YFA_team.jpeg",
       date: "27 June, 2020",
       comments: 89,
     },
@@ -326,28 +329,22 @@ const Home = () => {
   const slides = [
     {
       title: "Coaches",
-      description:
-        "Cras mattis mattis ipsum, vel porttitor augue laoreet quis.",
+      description: "Meet our qualified and passionate coaches dedicated to developing young talent on and off the pitch.",
       image: sliderImg_2,
     },
     {
       title: "Awards",
-      description: "Net massa. Ut vel diam nulla. Cras mattis mattis ipsum.",
+      description: "We Celebrate achievements, milestones, and outstanding performances across all teams.",
       image: sliderImg_1,
     },
     {
-      title: "Our Team",
-      description: "Vivamus at condimentum ipsum. Nulla fringilla risus.",
+      title: "Our Teams",
+      description: "Discover our age group teams, built to nurture skill, teamwork, and competitive excellence",
       image: sliderImg_4,
     },
-    // {
-    //   title: "Goals",
-    //   description: "Cras maximus tortor mauris, at venenatis ante eleifend.",
-    //   image: sliderImg_1,
-    // },
     {
       title: "Rules",
-      description: "Cras maximus tortor mauris, at venenatis ante eleifend.",
+      description: "We have clear guidelines that promote discipline, fairness, safety, and respect for everyone involved.",
       image: sliderImg_3,
     },
   ];
@@ -437,9 +434,9 @@ const Home = () => {
 
               <motion.button
                 variants={textItem}
-                className="bg-[#1C1F42] hover:bg-orange-500 transition px-6 py-3 font-semibold w-fit"
+                className="bg-yellow-500 hover:bg-[#e2e619] transition px-6 py-3 font-semibold w-fit"
               >
-                {heroSlides[current].cta}
+                <Link to="/contact">{heroSlides[current].cta}</Link>
               </motion.button>
             </motion.div>
           </motion.div>
@@ -501,9 +498,9 @@ const Home = () => {
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">Fixtures & Results</h2>
-            <button className="bg-[#1C1F42]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
+            <Link to="/schedule" className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
               All Matches →
-            </button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -640,22 +637,17 @@ const Home = () => {
               </p>
 
               <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold mb-6 leading-tight">
-                About the Club SC United
+                About JOSENINO Kids Football League
               </h2>
 
               <p className="text-gray-300 leading-relaxed mb-8">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry’s standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged.
+                 {aboutText.length > 300 ? aboutText.slice(0, 300) + "....." : aboutText}
               </p>
 
-              <Button className="inline-flex items-center gap-2 bg-[#1C1F42]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!">
-                About More
+              <Link to="/about" className="inline-flex items-center gap-2 bg-[#97991b]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!">
+                Read More
                 <span>→</span>
-              </Button>
+              </Link>
             </div>
 
             {/* RIGHT IMAGE (PLAYER) */}
@@ -688,9 +680,9 @@ const Home = () => {
                       {slide.description}
                     </p>
 
-                    <Button className="mt-auto bg-[#1C1F26]! text-[#949aa7]! border-none! hover:bg-[#1C1F42]! hover:text-white! rounded-none! px-5! text-sm">
+                    {/* <Button className="mt-auto bg-[#1C1F26]! text-[#949aa7]! border-none! hover:bg-[#1C1F42]! hover:text-white! rounded-none! px-5! text-sm">
                       details
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
               ))}
@@ -733,7 +725,7 @@ const Home = () => {
             {featuredPosts.map((post, index) => (
               <React.Fragment key={post.id}>
                 {/* BIG LEFT */}
-                <div className="md:col-span-2 bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col md:flex-row">
+                <div className="md:col-span-2 bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col md:flex-row h-[300px]">
                   <div className="md:w-1/1 overflow-hidden">
                     <img
                       src={post.image}
@@ -762,9 +754,9 @@ const Home = () => {
                       </p>
                     </div>
 
-                    <button className="mt-6 w-10 h-10 bg-[#1C1F42]! text-white flex items-center justify-center rounded hover:bg-red-700 transition">
+                    <Link to="/team/media" className="mt-6 w-10 h-10 bg-[#97991b]! text-white flex items-center justify-center rounded hover:bg-red-700 transition">
                       ↗
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
