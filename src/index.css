@@ -178,3 +178,12 @@ button:focus-visible {
 .custom-tabs .ant-tabs-ink-bar {
   display: none;
 }
+
+
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-list {
+  overflow: hidden;
+}

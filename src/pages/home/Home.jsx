@@ -91,7 +91,7 @@ const PrevArrow = ({ onClick }) => {
 const Home = () => {
   const [current, setCurrent] = useState(0);
   const [hasMounted, setHasMounted] = useState(false);
-    const { aboutText } = usePlayerStore();
+  const { aboutText } = usePlayerStore();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -180,147 +180,39 @@ const Home = () => {
   const featuredPosts = posts.filter((p) => p.featured);
   const smallPosts = posts.filter((p) => !p.featured);
 
-  const results = [
-    { id: 1, score: "1 - 2" },
-    { id: 2, score: "2 - 0" },
-    { id: 3, score: "1 - 0" },
-    { id: 4, score: "1 - 0" },
-    { id: 5, score: "1 - 0" },
-  ];
-
-  const leagueTable = [
-    { id: 1, club: "France FC", logo: "/logos/france.png", w: 13, d: 1, l: 61 },
-    {
-      id: 2,
-      club: "France FC",
-      logo: "/logos/france.png",
-      w: 12,
-      d: 20,
-      l: 61,
-    },
-    {
-      id: 3,
-      club: "France FC",
-      logo: "/logos/france.png",
-      w: 25,
-      d: 36,
-      l: 61,
-    },
-    {
-      id: 4,
-      club: "France FC",
-      logo: "/logos/france.png",
-      w: 10,
-      d: 15,
-      l: 61,
-    },
-    {
-      id: 5,
-      club: "France FC",
-      logo: "/logos/france.png",
-      w: 18,
-      d: 22,
-      l: 61,
-    },
-  ];
-
-  const schedule = [
-    {
-      id: 1,
-      date: "Nov 10, 2022",
-      event: "Royal FC vs GS FC",
-      time: "12:00",
-      venue: "GST Stadium",
-    },
-    {
-      id: 2,
-      date: "Nov 11, 2022",
-      event: "Royal FC vs GS FC",
-      time: "14:00",
-      venue: "GST Stadium",
-    },
-    {
-      id: 3,
-      date: "Nov 12, 2022",
-      event: "Royal FC vs GS FC",
-      time: "14:30",
-      venue: "GST Stadium",
-    },
-    {
-      id: 4,
-      date: "Nov 14, 2022",
-      event: "Royal FC vs GS FC",
-      time: "15:30",
-      venue: "GST Stadium",
-    },
-    {
-      id: 5,
-      date: "Nov 15, 2022",
-      event: "Royal FC vs GS FC",
-      time: "19:30",
-      venue: "GST Stadium",
-    },
-    {
-      id: 6,
-      date: "Nov 16, 2022",
-      event: "Royal FC vs GS FC",
-      time: "20:00",
-      venue: "GST Stadium",
-    },
-  ];
-
-  const leagueColumns = [
-    {
-      title: "Club",
-      dataIndex: "club",
-      render: (_, record) => (
-        <div className="flex items-center gap-3">
-          <img src={record.logo} alt="" className="h-8 w-8 object-contain" />
-          <span className="font-medium">{record.club}</span>
-        </div>
-      ),
-    },
-    { title: "W", dataIndex: "w", sorter: (a, b) => a.w - b.w },
-    { title: "D", dataIndex: "d", sorter: (a, b) => a.d - b.d },
-    { title: "L", dataIndex: "l", sorter: (a, b) => a.l - b.l },
-  ];
-
-  const scheduleColumns = [
-    { title: "Date", dataIndex: "date" },
-    { title: "Event", dataIndex: "event" },
-    { title: "Time", dataIndex: "time" },
-    { title: "Venue", dataIndex: "venue" },
-  ];
-
   const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    swipeToSlide: true,
+    adaptiveHeight: true,
+    arrows: true,
 
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
 
-    /* ===== OVERFLOW FIXES ===== */
-    swipeToSlide: true,
-    adaptiveHeight: true,
-    centerMode: false,
-    /* ========================= */
-
     responsive: [
       {
-        breakpoint: 1024, // tablet
+        breakpoint: 1280, // laptops
         settings: {
-          slidesToShow: 1,
-          fade: true,
+          slidesToShow: 3,
         },
       },
       {
-        breakpoint: 320, // mobile
+        breakpoint: 1024, // tablets
+        settings: {
+          slidesToShow: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 768, // MOBILE (this is the important one)
         settings: {
           slidesToShow: 1,
-          fade: true,
+          slidesToScroll: 1,
           arrows: false,
+          dots: true,
         },
       },
     ],
@@ -329,22 +221,26 @@ const Home = () => {
   const slides = [
     {
       title: "Coaches",
-      description: "Meet our qualified and passionate coaches dedicated to developing young talent on and off the pitch.",
+      description:
+        "Meet our qualified and passionate coaches dedicated to developing young talent on and off the pitch.",
       image: sliderImg_2,
     },
     {
       title: "Awards",
-      description: "We Celebrate achievements, milestones, and outstanding performances across all teams.",
+      description:
+        "We Celebrate achievements, milestones, and outstanding performances across all teams.",
       image: sliderImg_1,
     },
     {
       title: "Our Teams",
-      description: "Discover our age group teams, built to nurture skill, teamwork, and competitive excellence",
+      description:
+        "Discover our age group teams, built to nurture skill, teamwork, and competitive excellence",
       image: sliderImg_4,
     },
     {
       title: "Rules",
-      description: "We have clear guidelines that promote discipline, fairness, safety, and respect for everyone involved.",
+      description:
+        "We have clear guidelines that promote discipline, fairness, safety, and respect for everyone involved.",
       image: sliderImg_3,
     },
   ];
@@ -469,23 +365,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Hero Section */}
-      {/* <section className="relative h-screen w-full">
- 
-        <div
-          className='
-      absolute inset-0 -top-16
-      bg-[url("/images/hero.jpg")]
-      bg-cover bg-center
-      z-0
-    '
-        />
-
-    
-        <div className="relative z-10 h-full flex items-center justify-center text-white">
-        
-        </div>
-      </section> */}
       <motion.section
         variants={sectionVariant}
         initial="hidden"
@@ -493,12 +372,16 @@ const Home = () => {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-6 py-16"
       >
-        {/* <div className="grid grid-cols-1 lg:grid-cols-4 gap-8"> */}
         {/* LEFT: FIXTURES */}
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold uppercase text-[#1C1F42]">Fixtures & Results</h2>
-            <Link to="/schedule" className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
+            <h2 className="text-2xl font-bold uppercase text-[#1C1F42]">
+              Fixtures & Results
+            </h2>
+            <Link
+              to="/schedule"
+              className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition"
+            >
               All Matches →
             </Link>
           </div>
@@ -540,85 +423,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-
-        {/* RIGHT: LATEST RESULTS */}
-        {/* <div>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold">Latest Results</h3>
-              <span className="text-white cursor-pointer bg-[#1C1F42] px-3">
-                ↗
-              </span>
-            </div>
-
-            <div className="bg-white rounded-xl shadow p-4 space-y-4">
-              {results.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center justify-between border-b last:border-none pb-3 last:pb-0"
-                >
-                  <div className="flex items-center gap-2">
-                    <img src="/images/clublog1.png" className="h-6" />
-                    <span className="text-sm font-medium">Italy FC.</span>
-                  </div>
-
-                  <span className="text-red-600 font-bold">{item.score}</span>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium">Italy FC.</span>
-                    <img src="/images/clublog2.png" className="h-6" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div> */}
-        {/* </div> */}
       </motion.section>
-
-      {/* <section className="max-w-7xl mx-auto px-4 py-20">
-        <h2 className="text-2xl font-bold mb-5">League Table & Schedule</h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-          <div className="bg-white rounded-xl shadow">
-            <div className="bg-[#1C1F42] text-white px-6 py-4 font-semibold">
-              Serie A
-            </div>
-            <Table
-              columns={leagueColumns}
-              dataSource={leagueTable}
-              rowKey="id"
-              size="small"
-              pagination={false}
-              scroll={{ y: 260 }}
-              className="px-4"
-            />
-
-            <div className="px-6 py-4 text-sm text-gray-500">
-              Showing 1 to {leagueTable.length} of {leagueTable.length} entries
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl shadow">
-            <div className="bg-[#1C1F42] text-white px-6 py-4  font-semibold">
-              Serie A
-            </div>
-
-            <Table
-              columns={scheduleColumns}
-              dataSource={schedule}
-              rowKey="id"
-              size="small"
-              pagination={false}
-              scroll={{ y: 260 }}
-              className="px-4"
-            />
-
-            <div className="px-6 py-4 text-sm text-gray-500">
-              Showing 1 to {schedule.length} of {schedule.length} entries
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <section className="relative h-120 w-full overflow-hidden mb-5">
         {/* Background Image */}
@@ -641,48 +446,44 @@ const Home = () => {
               </h2>
 
               <p className="text-gray-300 leading-relaxed mb-8">
-                 {aboutText.length > 300 ? aboutText.slice(0, 300) + "....." : aboutText}
+                {aboutText.length > 300
+                  ? aboutText.slice(0, 300) + "....."
+                  : aboutText}
               </p>
 
-              <Link to="/about" className="inline-flex items-center gap-2 bg-[#97991b]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 bg-[#97991b]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!"
+              >
                 Read More
                 <span>→</span>
               </Link>
             </div>
-
-            {/* RIGHT IMAGE (PLAYER) */}
-            {/* <div className="hidden lg:flex justify-end">
-              <img
-                src="/images/player.png"
-                alt="Football Player"
-                className="h-130 object-contain"
-              />
-            </div> */}
           </div>
         </div>
       </section>
 
       <div className="">
-        <div className=" bg-[#1C1F42] h-auto md:h-120 flex items-center justify-center text-white py-12 md:py-0 overflow-hidden">
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 overflow-hidden">
+        <div className="bg-[#1C1F42] text-white py-12 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <Slider {...settings}>
               {slides.map((slide, index) => (
                 <div key={index} className="px-3">
-                  <div className="h-full flex flex-col items-center text-center p-6">
+                  <div className="flex flex-col items-center text-center p-6">
+                    {/* IMAGE */}
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className="h-24 sm:h-28 w-full object-contain mb-4"
+                      className="h-20 sm:h-24 md:h-28 w-auto max-w-full object-contain mb-4"
                     />
 
-                    <h3 className="text-lg font-bold">{slide.title}</h3>
-                    <p className="text-sm text-gray-400 mb-4">
+                    <h3 className="text-base sm:text-lg font-semibold">
+                      {slide.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-gray-400 mt-2 max-w-xs">
                       {slide.description}
                     </p>
-
-                    {/* <Button className="mt-auto bg-[#1C1F26]! text-[#949aa7]! border-none! hover:bg-[#1C1F42]! hover:text-white! rounded-none! px-5! text-sm">
-                      details
-                    </Button> */}
                   </div>
                 </div>
               ))}
@@ -722,9 +523,11 @@ const Home = () => {
 
         <section className="py-16 bg-white max-w-7xl mx-auto px-6">
           <div className="flex justify-between">
-            <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">News & Media Gallery</h2>
+            <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">
+              News & Media Gallery
+            </h2>
             <Button className="bg-[#97991b]! text-white! px-4 py-2 text-sm rounded-none! cursor-pointer transition">
-              <Link to="/blog">View All   →</Link>
+              <Link to="/blog">View All →</Link>
             </Button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -760,7 +563,10 @@ const Home = () => {
                       </p>
                     </div>
 
-                    <Link to="/team/media" className="mt-6 w-10 h-10 bg-[#97991b]! text-white flex items-center justify-center rounded hover:bg-red-700 transition">
+                    <Link
+                      to="/team/media"
+                      className="mt-6 w-10 h-10 bg-[#97991b]! text-white flex items-center justify-center rounded hover:bg-red-700 transition"
+                    >
                       ↗
                     </Link>
                   </div>
@@ -799,146 +605,6 @@ const Home = () => {
             ))}
           </div>
         </section>
-
-        {/* <div className="bg-[#1A1D21] p-10 text-white">
-          <div className="max-w-7xl mx-auto">
-            <Row gutter={[48, 40]}>
-              <Col xs={24} lg={8}>
-                <div className="mb-6">
-                  <Title
-                    level={3}
-                    className="text-white! mb-1! text-2xl! uppercase font-bold tracking-tighter"
-                  >
-                    Welcome to our site
-                  </Title>
-                  <div className="h-0.5 w-16 bg-orange-600" />
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <img
-                      src="/images/small_img_2.jpg"
-                      alt="Player"
-                      className="w-1/2 h-32 object-cover border-4 border-[#25282c]"
-                    />
-                    <p className="text-gray-400 text-sm leading-relaxed italic font-semibold">
-                      Lorem ipsum dolor sit amet conse ctetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ...
-                    </p>
-                  </div>
-                  <div className="flex gap-4">
-                    <img
-                      src="/images/small_img_3.jpg"
-                      alt="Soccer"
-                      className="w-1/2 h-32 object-cover border-4 border-[#25282c]"
-                    />
-                    <div className="w-1/2">
-                      <p className="text-gray-400 text-xs leading-relaxed mb-4">
-                        Lorem ipsum dolor sit amet conse ctetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.
-                      </p>
-                      <Link
-                        href="#"
-                        className="text-gray-400 hover:text-white text-xs italic"
-                      >
-                        read more →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-
-              <Col xs={24} lg={8}>
-                <div className="mb-6">
-                  <Title
-                    level={3}
-                    className="text-white! mb-1! text-2xl! uppercase font-bold tracking-tighter"
-                  >
-                    Latest News
-                  </Title>
-                  <div className="h-0.5 w-16 bg-orange-600" />
-                </div>
-
-                <div className="space-y-6">
-                  {[1, 2].map((_, i) => (
-                    <div key={i}>
-                      <span className="text-gray-600 text-[10px] block mb-2 uppercase">
-                        30 of October, 2014
-                      </span>
-                      <Link
-                        href="#"
-                        className="text-gray-200 hover:text-orange-500 underline text-sm block mb-2 font-medium"
-                      >
-                        {i === 0
-                          ? "Vestibulum eget massa volutpat, rutrum diam vitae"
-                          : "Sed eget risus vel sem suscipit"}
-                      </Link>
-                      <p className="text-gray-400 text-xs leading-relaxed">
-                        Vestibulum eget massa volutpat, rutrum diam vitae,
-                        pellentesque eros. Phasellus tristique, nulla id
-                        vulputate imperdiet.
-                      </p>
-                      {i === 0 && <Divider className="border-gray-800 my-6" />}
-                    </div>
-                  ))}
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white text-xs block mt-4"
-                  >
-                    news archive →
-                  </Link>
-                </div>
-              </Col>
-
-              <Col xs={24} lg={8}>
-                <div className="mb-6">
-                  <Title
-                    level={3}
-                    className="text-white! mb-1! text-2xl! uppercase font-bold tracking-tighter"
-                  >
-                    What we do
-                  </Title>
-                  <div className="h-0.5 w-16 bg-orange-600" />
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    "Mauris eu mi ac orci lobortis",
-                    "Proin vulputate tincidunt ante",
-                    "Etiam risus ante, vestibulum eget",
-                    "Vestibulum sit amet eros porta",
-                  ].map((title, index) => (
-                    <div
-                      key={index}
-                      className="flex gap-4 items-start group cursor-pointer"
-                    >
-                      <img
-                        src={smallImg[index]?.image}
-                        alt="thumb"
-                        className="w-20 h-15 object-cover border-2 border-[#25282c] group-hover:border-orange-600 transition-colors"
-                      />
-
-                      <div>
-                        <Title
-                          level={5}
-                          className="text-white! text-xs! mb-1! group-hover:text-orange-500 transition-colors"
-                        >
-                          {title}
-                        </Title>
-
-                        <p className="text-gray-500 text-[11px] leading-tight">
-                          Sed finibus elit vitae nulla ultricies convallis.
-                          Vestibulum finibus, tellus
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </div> */}
       </div>
     </div>
   );
