@@ -316,7 +316,7 @@ const Home = () => {
         },
       },
       {
-        breakpoint: 640, // mobile
+        breakpoint: 350, // mobile
         settings: {
           slidesToShow: 1,
           fade: true,
@@ -720,7 +720,7 @@ const Home = () => {
           </div>
         </div>
 
-        <section className="py-16 bg-white px-12">
+        <section className="py-16 bg-white max-w-7xl mx-auto px-4">
           <div className="flex justify-between">
             <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">News & Media Gallery</h2>
             <Button className="bg-[#97991b]! text-white! px-4 py-2 text-sm rounded-none! cursor-pointer transition">
@@ -732,11 +732,11 @@ const Home = () => {
               <React.Fragment key={post.id}>
                 {/* BIG LEFT */}
                 <div className="md:col-span-2 bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col md:flex-row h-[300px]">
-                  <div className="md:w-1/1 overflow-hidden">
+                  <div className="md:w-1/1 overflow-hidden ">
                     <img
                       src={post.image}
                       alt={post.title}
-                      className="h-full w-full object-cover hover:scale-105 transition duration-500"
+                      className="h-80 w-full object-cover hover:scale-105 transition duration-500"
                     />
                   </div>
 
