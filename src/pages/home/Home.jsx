@@ -497,7 +497,7 @@ const Home = () => {
         {/* LEFT: FIXTURES */}
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold">Fixtures & Results</h2>
+            <h2 className="text-2xl font-bold uppercase text-[#1C1F42]">Fixtures & Results</h2>
             <Link to="/schedule" className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
               All Matches →
             </Link>
@@ -721,6 +721,12 @@ const Home = () => {
         </div>
 
         <section className="py-16 bg-white px-12">
+          <div className="flex justify-between">
+            <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">News & Media Gallery</h2>
+            <Button className="bg-[#97991b]! text-white! px-4 py-2 text-sm rounded-none! cursor-pointer transition">
+              <Link to="/blog">View All   →</Link>
+            </Button>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredPosts.map((post, index) => (
               <React.Fragment key={post.id}>
