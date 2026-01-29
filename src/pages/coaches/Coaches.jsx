@@ -88,7 +88,7 @@ const Coaches = () => {
       </section>
 
       {/* COACHES GRID */}
-      <div className="mt-20 px-10 max-w-7xl mx-auto mb-20">
+      <div className="mt-20 max-w-7xl mx-auto px-6 mb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {coaches.map((coach, index) => {
             const { name, role, image, experience, bio } = coach;
@@ -139,7 +139,7 @@ const Coaches = () => {
         </div>
 
         <section className="py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-10">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* IMAGE */}
               <div className="relative">

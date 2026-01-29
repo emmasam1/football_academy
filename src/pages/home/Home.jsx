@@ -316,7 +316,7 @@ const Home = () => {
         },
       },
       {
-        breakpoint: 350, // mobile
+        breakpoint: 320, // mobile
         settings: {
           slidesToShow: 1,
           fade: true,
@@ -491,7 +491,7 @@ const Home = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="max-w-7xl mx-auto px-4 py-16"
+        className="max-w-7xl mx-auto px-6 py-16"
       >
         {/* <div className="grid grid-cols-1 lg:grid-cols-4 gap-8"> */}
         {/* LEFT: FIXTURES */}
@@ -720,7 +720,7 @@ const Home = () => {
           </div>
         </div>
 
-        <section className="py-16 bg-white max-w-7xl mx-auto px-4">
+        <section className="py-16 bg-white max-w-7xl mx-auto px-6">
           <div className="flex justify-between">
             <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">News & Media Gallery</h2>
             <Button className="bg-[#97991b]! text-white! px-4 py-2 text-sm rounded-none! cursor-pointer transition">

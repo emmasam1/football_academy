@@ -79,8 +79,8 @@ const About = () => {
       </section>
 
       {/* ================= ABOUT TOP SECTION ================= */}
-      <section className="bg-white py-16 md:py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="bg-white py-16 md:py-24 overflow-hidden ">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Removed gap-12 and added items-center to keep original compact height */}
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
             
@@ -201,7 +201,7 @@ const About = () => {
 
       {/* ================= TEAM SECTION ================= */}
       <section className="py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-10">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-10 mb-16 items-end">
             <div>
               <span className="text-[#97991b] font-bold uppercase tracking-widest text-xs">The Experts</span>
