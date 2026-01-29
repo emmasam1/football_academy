@@ -180,10 +180,6 @@ button:focus-visible {
 }
 
 
-.slick-slide > div {
-  height: 100%;
-}
-
-.slick-list {
-  overflow: hidden;
+.slick-dots li button:before {
+  color: #e2e619;
 }

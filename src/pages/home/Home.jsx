@@ -91,7 +91,7 @@ const PrevArrow = ({ onClick }) => {
 const Home = () => {
   const [current, setCurrent] = useState(0);
   const [hasMounted, setHasMounted] = useState(false);
-  const { aboutText } = usePlayerStore();
+    const { aboutText } = usePlayerStore();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -180,67 +180,59 @@ const Home = () => {
   const featuredPosts = posts.filter((p) => p.featured);
   const smallPosts = posts.filter((p) => !p.featured);
 
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    swipeToSlide: true,
-    adaptiveHeight: true,
-    arrows: true,
+ const desktopSettings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  arrows: true,
+  swipeToSlide: true,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1280,
+      settings: { slidesToShow: 3 },
+    },
+    {
+      breakpoint: 1024,
+      settings: { slidesToShow: 2 },
+    },
+  ],
+};
 
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
 
-    responsive: [
-      {
-        breakpoint: 1280, // laptops
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 1024, // tablets
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 768, // MOBILE (this is the important one)
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          dots: true,
-        },
-      },
-    ],
-  };
+const mobileSettings = {
+  infinite: true,
+  speed: 400,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  dots: true,
+  swipeToSlide: true,
+};
+
+
 
   const slides = [
     {
       title: "Coaches",
-      description:
-        "Meet our qualified and passionate coaches dedicated to developing young talent on and off the pitch.",
+      description: "Meet our qualified and passionate coaches dedicated to developing young talent on and off the pitch.",
       image: sliderImg_2,
     },
     {
       title: "Awards",
-      description:
-        "We Celebrate achievements, milestones, and outstanding performances across all teams.",
+      description: "We Celebrate achievements, milestones, and outstanding performances across all teams.",
       image: sliderImg_1,
     },
     {
       title: "Our Teams",
-      description:
-        "Discover our age group teams, built to nurture skill, teamwork, and competitive excellence",
+      description: "Discover our age group teams, built to nurture skill, teamwork, and competitive excellence",
       image: sliderImg_4,
     },
     {
       title: "Rules",
-      description:
-        "We have clear guidelines that promote discipline, fairness, safety, and respect for everyone involved.",
+      description: "We have clear guidelines that promote discipline, fairness, safety, and respect for everyone involved.",
       image: sliderImg_3,
     },
   ];
@@ -375,13 +367,8 @@ const Home = () => {
         {/* LEFT: FIXTURES */}
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold uppercase text-[#1C1F42]">
-              Fixtures & Results
-            </h2>
-            <Link
-              to="/schedule"
-              className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition"
-            >
+            <h2 className="text-2xl font-bold uppercase text-[#1C1F42]">Fixtures & Results</h2>
+            <Link to="/schedule" className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition">
               All Matches →
             </Link>
           </div>
@@ -423,6 +410,7 @@ const Home = () => {
             ))}
           </div>
         </div>
+
       </motion.section>
 
       <section className="relative h-120 w-full overflow-hidden mb-5">
@@ -446,50 +434,72 @@ const Home = () => {
               </h2>
 
               <p className="text-gray-300 leading-relaxed mb-8">
-                {aboutText.length > 300
-                  ? aboutText.slice(0, 300) + "....."
-                  : aboutText}
+                 {aboutText.length > 300 ? aboutText.slice(0, 300) + "....." : aboutText}
               </p>
 
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 bg-[#97991b]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!"
-              >
+              <Link to="/about" className="inline-flex items-center gap-2 bg-[#97991b]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!">
                 Read More
                 <span>→</span>
               </Link>
             </div>
+
           </div>
         </div>
       </section>
 
       <div className="">
-        <div className="bg-[#1C1F42] text-white py-12 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <Slider {...settings}>
-              {slides.map((slide, index) => (
-                <div key={index} className="px-3">
-                  <div className="flex flex-col items-center text-center p-6">
-                    {/* IMAGE */}
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className="h-20 sm:h-24 md:h-28 w-auto max-w-full object-contain mb-4"
-                    />
+        {/* ================= DESKTOP SLIDER ================= */}
+<div className="hidden md:flex bg-[#1C1F42] h-120 items-center justify-center text-white py-12 overflow-hidden">
+  <div className="relative max-w-7xl mx-auto px-6 w-full">
+    <Slider {...desktopSettings}>
+      {slides.map((slide, index) => (
+        <div key={index} className="px-3">
+          <div className="flex flex-col items-center text-center p-6">
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="h-28 w-auto object-contain mb-4"
+            />
 
-                    <h3 className="text-base sm:text-lg font-semibold">
-                      {slide.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-gray-400 mt-2 max-w-xs">
-                      {slide.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </Slider>
+            <h3 className="text-lg font-bold">{slide.title}</h3>
+            <p className="text-sm text-gray-400 max-w-xs">
+              {slide.description}
+            </p>
           </div>
         </div>
+      ))}
+    </Slider>
+  </div>
+</div>
+
+{/* ================= MOBILE SLIDER ================= */}
+<div className="md:hidden bg-[#1C1F42] text-white py-12 overflow-hidden">
+  <div className="px-4">
+    <Slider {...mobileSettings}>
+      {slides.map((slide, index) => (
+        <div key={index} className="px-2">
+          <div className="flex flex-col items-center text-center p-6">
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="h-20 w-auto object-contain mb-4"
+            />
+
+            <h3 className="text-base font-semibold">
+              {slide.title}
+            </h3>
+
+            <p className="text-xs text-gray-400 mt-2 max-w-xs">
+              {slide.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </Slider>
+  </div>
+</div>
+
+
 
         <div>
           <div
@@ -523,11 +533,9 @@ const Home = () => {
 
         <section className="py-16 bg-white max-w-7xl mx-auto px-6">
           <div className="flex justify-between">
-            <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">
-              News & Media Gallery
-            </h2>
+            <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">News & Media Gallery</h2>
             <Button className="bg-[#97991b]! text-white! px-4 py-2 text-sm rounded-none! cursor-pointer transition">
-              <Link to="/blog">View All →</Link>
+              <Link to="/blog">View All   →</Link>
             </Button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -563,10 +571,7 @@ const Home = () => {
                       </p>
                     </div>
 
-                    <Link
-                      to="/team/media"
-                      className="mt-6 w-10 h-10 bg-[#97991b]! text-white flex items-center justify-center rounded hover:bg-red-700 transition"
-                    >
+                    <Link to="/team/media" className="mt-6 w-10 h-10 bg-[#97991b]! text-white flex items-center justify-center rounded hover:bg-red-700 transition">
                       ↗
                     </Link>
                   </div>
