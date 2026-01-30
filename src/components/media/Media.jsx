@@ -105,7 +105,7 @@ const Media = () => {
                     </div>
                     <div className="mt-4">
                       <h3 className="font-black text-lg text-[#1C1F42] uppercase tracking-tight">{item.title}</h3>
-                      <div className="flex items-center gap-2 text-[#e2e619] mt-1 text-sm font-bold">
+                      <div className="flex items-center gap-2 text-blue-900 mt-1 text-sm font-bold">
                         <FiClock size={14} />
                         <span>{item.time}</span>
                       </div>
@@ -136,7 +136,7 @@ const Media = () => {
               <button 
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages}
-                className="bg-[#0A1D37] text-white px-8 py-3 font-bold flex items-center gap-2 hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:hover:bg-[#0A1D37]"
+                className="bg-[#97991b] text-white px-8 py-3 font-bold flex items-center gap-2 hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:hover:bg-[#0A1D37]"
               >
                 Next page <FiChevronRight />
               </button>
@@ -187,7 +187,7 @@ const Media = () => {
               <img src={sortedData[selectedImageIndex].img} alt="Selected" className="max-h-[80vh] object-contain shadow-2xl" />
               <div className="mt-6 text-center text-white">
                 <h4 className="text-2xl font-black uppercase tracking-widest">{sortedData[selectedImageIndex].title}</h4>
-                <p className="text-[#e2e619] font-bold mt-2">{selectedImageIndex + 1} / {totalItems}</p>
+                <p className="text-blue-900 font-bold mt-2">{selectedImageIndex + 1} / {totalItems}</p>
               </div>
             </motion.div>
           </motion.div>

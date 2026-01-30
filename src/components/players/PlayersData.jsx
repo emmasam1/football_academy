@@ -102,7 +102,7 @@ const PlayersData = () => {
                         <h3 className="font-black text-xl text-[#1C1F42]  transition-colors uppercase">{player.name}</h3>
                         <p className="text-blue-900 font-bold text-sm uppercase">{player.role} • {player.team}</p>
                       </div>
-                      <div className="w-10 h-10 flex items-center justify-center bg-[#1C1F42] text-white rounded-full font-black text-lg">{player.number}</div>
+                      <div className="w-10 h-10 flex items-center justify-center bg-[#97991b] text-white rounded-full font-black text-lg">{player.number}</div>
                     </div>
                   </motion.div>
                 ))}
@@ -126,7 +126,7 @@ const PlayersData = () => {
                         onClick={() => setCurrentPage(i + 1)}
                         className={`w-12 h-12 rounded-full font-black text-sm transition-all ${
                           currentPage === i + 1 
-                          ? 'bg-blue-900 text-white' 
+                          ? 'bg-[#97991b] text-white' 
                           : 'bg-white text-[#1C1F42] border border-slate-200 hover:border-blue-900'
                         }`}
                       >

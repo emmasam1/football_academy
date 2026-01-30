@@ -74,7 +74,7 @@ const Blog = () => {
                         <option>23</option>
                     </select>
                 </div>
-                <button className="bg-[#0A1D37] text-white px-8 py-3 text-sm font-black uppercase flex items-center gap-2">
+                <button className="bg-[#97991b] text-white px-8 py-3 text-sm font-black uppercase flex items-center gap-2">
                     Next page <FiChevronRight />
                 </button>
                 <div className="flex items-center gap-2">

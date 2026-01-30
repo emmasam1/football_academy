@@ -99,13 +99,13 @@ button:focus-visible {
 
 /* ONLY ACTIVE / OPEN PANEL */
 .ant-collapse-item-active > .ant-collapse-header {
-  background-color: #1C1F42 !important;
+  background-color: #97991b !important;
   color: #ffffff !important;
 }
 
 /* OPEN PANEL CONTENT */
 .ant-collapse-item-active > .ant-collapse-content {
-  background-color: #1C1F42 !important;
+  background-color: #97991b !important;
   color: #ffffff !important;
 }
 

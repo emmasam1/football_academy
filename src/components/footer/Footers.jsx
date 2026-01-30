@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const Footers = () => {
   const currentYear = new Date().getFullYear();
@@ -11,10 +12,10 @@ const Footers = () => {
         
         {/* Brand Section - Occupies full width on mobile, 1 col on desktop */}
         <div className="col-span-2 lg:col-span-1 space-y-6">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-blue-600 rounded flex items-center justify-center font-bold text-xl">J</div>
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-[#97991b] rounded flex items-center justify-center font-bold text-xl">J</div>
             <h2 className="text-2xl font-bold tracking-tight">JOSENIHO</h2>
-          </div>
+          </Link>
           <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
             Your trusted partner to produce a reliable generation of footballers.
           </p>
@@ -37,7 +38,7 @@ const Footers = () => {
           <h4 className="text-lg font-semibold mb-6">Company</h4>
           <ul className="space-y-4 text-gray-400 text-sm">
             {['About Us', 'Our Mission', 'Careers', 'Press & Media', 'Contact Us', 'Partnerships'].map((item) => (
-              <li key={item}><a href="#" className="hover:text-blue-400 transition-colors">{item}</a></li>
+              <li key={item}><a href="#" className="hover:text-yellow-600 transition-colors">{item}</a></li>
             ))}
           </ul>
         </div>
@@ -45,8 +46,8 @@ const Footers = () => {
         <div>
           <h4 className="text-lg font-semibold mb-6">Support</h4>
           <ul className="space-y-4 text-gray-400 text-sm">
-            {['Help Center', 'Live Support', 'Warranty Info'].map((item) => (
-              <li key={item}><a href="#" className="hover:text-blue-400 transition-colors">{item}</a></li>
+            {['Help Center', 'Live Support'].map((item) => (
+              <li key={item}><a href="#" className="hover:text-yellow-600 transition-colors">{item}</a></li>
             ))}
           </ul>
         </div>
@@ -66,7 +67,7 @@ const Footers = () => {
             <motion.button 
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-[#405BF2]! hover:bg-blue-700 text-white font-medium py-2 rounded-md transition-colors text-sm flex items-center justify-center gap-2"
+              className="w-full bg-[#97991b]! hover:bg-yellow-600 cursor-pointer text-white font-medium py-2 rounded-md transition-colors text-sm flex items-center justify-center gap-2"
             >
               GET SMART UPDATES
             </motion.button>

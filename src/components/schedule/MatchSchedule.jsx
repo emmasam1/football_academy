@@ -123,7 +123,7 @@ const MatchSchedule = () => {
                 <div className="overflow-x-auto w-full">
                   <table className="w-full text-left border-collapse min-w-[800px]">
                     <thead>
-                      <tr className="bg-[#1C1F42] text-white uppercase text-[12px] font-black tracking-widest">
+                      <tr className="bg-[#97991b] text-white uppercase text-[12px] font-black tracking-widest">
                         <th className="py-6 px-6 border-r border-white/10 whitespace-nowrap">Date</th>
                         <th className="py-6 px-6 border-r border-white/10 text-center whitespace-nowrap">Event</th>
                         <th className="py-6 px-6 border-r border-white/10 whitespace-nowrap">Time</th>
@@ -147,7 +147,7 @@ const MatchSchedule = () => {
                           <td className="py-5 px-6 whitespace-nowrap">
                             <button 
                               onClick={() => handleMatchClick(match.id)} 
-                              className="bg-[#1C1F42] text-white font-black px-5 py-3 flex items-center gap-2 transition-all uppercase text-[10px] tracking-widest hover:bg-blue-900 whitespace-nowrap cursor-pointer"
+                              className="bg-[#97991b] text-white font-black px-5 py-3 flex items-center gap-2 transition-all uppercase text-[10px] tracking-widest hover:bg-yellow-600 whitespace-nowrap cursor-pointer"
                             >
                               View Match Info <FiArrowUpRight />
                             </button>
@@ -198,7 +198,7 @@ const MatchSchedule = () => {
                     href={selectedMatch.channelUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex bg-[#1C1F42] text-white px-12 py-5 font-black uppercase tracking-widest text-sm rounded hover:bg-blue-900 shadow-xl transition-all items-center gap-3"
+                    className="inline-flex bg-[#97991b] text-white px-12 py-5 font-black uppercase tracking-widest text-sm rounded hover:bg-yellow-600 shadow-xl transition-all items-center gap-3"
                   >
                     Stream Now <FiArrowUpRight size={20} />
                   </a>
@@ -271,7 +271,7 @@ const MatchSchedule = () => {
                     <div className="overflow-x-auto">
                         <table className="w-full text-center border-collapse">
                             <thead>
-                                <tr className="bg-[#1C1F42] text-white uppercase text-xs font-black tracking-widest">
+                                <tr className="bg-[#97991b] text-white uppercase text-xs font-black tracking-widest">
                                     <th className="py-5 px-6">Referee</th>
                                     <th className="py-5 px-6">Assistant Referee</th>
                                     <th className="py-5 px-6">Timekeepers</th>
