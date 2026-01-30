@@ -6,10 +6,9 @@ import {
   CheckCircleOutlined,
   StarOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const Coaches = () => {
-
-
   const coaches = [
     {
       name: "Dr Victor Isereke",
@@ -67,8 +66,8 @@ const Coaches = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[50vh] w-full">
-        {/* Background image (absolute) */}
+      <section className="relative h-[50vh] w-full overflow-hidden">
+        {/* BACKGROUND IMAGE */}
         <div
           className='
       absolute inset-0 -top-16
@@ -78,12 +77,21 @@ const Coaches = () => {
     '
         />
 
-        {/* Optional overlay */}
-        {/* <div className="absolute inset-0 bg-black/40 z-0" /> */}
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
 
-        {/* Hero content (if any later) */}
-        <div className="relative z-10 h-full flex items-center justify-center text-white">
-          {/* Hero text/buttons can live here */}
+        {/* CONTENT */}
+        <div className="relative z-20 flex flex-col items-center justify-center h-full text-white px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+            OUR COACHES
+          </h1>
+
+          <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
+            <span className="text-gray-400">
+              <Link to="/">Home</Link>
+            </span>
+            <span className="text-[#e2e619]">/ Coaches</span>
+          </div>
         </div>
       </section>
 
@@ -165,13 +173,16 @@ const Coaches = () => {
                 </span>
 
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                  Experienced & Dedicated Coaches Developing Skills, Character, and Champions
+                  Experienced & Dedicated Coaches Developing Skills, Character,
+                  and Champions
                 </h2>
 
                 <p className="text-gray-500 mb-8 max-w-xl">
-                  Our coaches are passionate professionals committed to nurturing young footballers through structured 
-                  training and mentorship. Our program emphasise physical fitness, mental strength, sportsmanship, and 
-                  leadership, helping players build confidence, resilience, and a winning mindset.
+                  Our coaches are passionate professionals committed to
+                  nurturing young footballers through structured training and
+                  mentorship. Our program emphasise physical fitness, mental
+                  strength, sportsmanship, and leadership, helping players build
+                  confidence, resilience, and a winning mindset.
                 </p>
 
                 {/* PROGRESS BARS */}

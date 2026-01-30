@@ -64,13 +64,40 @@ const Footers = () => {
               type="email" placeholder="Email" 
               className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2 text-sm focus:outline-none"
             />
-            <motion.button 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full bg-[#97991b]! hover:bg-yellow-600 cursor-pointer text-white font-medium py-2 rounded-md transition-colors text-sm flex items-center justify-center gap-2"
-            >
-              GET SMART UPDATES
-            </motion.button>
+           <motion.button
+  whileHover={{ y: -2 }}
+  whileTap={{ scale: 0.97 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="
+    group relative w-full
+    overflow-hidden
+    rounded-full
+    border border-[#97991b]
+    px-6 py-3
+    text-sm font-semibold tracking-wide
+    text-[#97991b]
+    cursor-pointer
+    transition-all duration-300
+    hover:shadow-[0_10px_30px_rgba(151,153,27,0.35)]
+  "
+>
+  {/* BACKGROUND SWEEP */}
+  <span
+    className="
+      absolute inset-0
+      bg-[#97991b]
+      -translate-x-full
+      group-hover:translate-x-0
+      transition-transform duration-300 ease-out
+    "
+  />
+
+  {/* TEXT */}
+  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+    GET SMART UPDATES
+  </span>
+</motion.button>
+
           </div>
         </div>
       </div>

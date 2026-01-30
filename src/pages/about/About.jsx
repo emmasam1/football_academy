@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import { Progress, Button, Collapse } from "antd";
 import {
@@ -18,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("History");
-  const [activeYear, setActiveYear] = useState("2022");
+  const [activeYear, setActiveYear] = useState("2025");
 
   // Mission, Vision, and History Data Structure
   const tabData = {
@@ -75,7 +72,16 @@ const About = () => {
     <div className="bg-gray-50">
       {/* ================= HERO ================= */}
       <section className="relative h-[50vh] w-full">
-        <div className='absolute inset-0 -top-16 bg-[url("/images/bg-subanner.jpg")] bg-cover bg-center' />
+        <div className='absolute inset-0 -top-16 bg-[url("/images/bg-subanner.jpg")] bg-cover bg-center'></div>
+        <div className="relative z-20 flex flex-col items-center justify-center h-full text-white px-4">
+          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-center">ABOUT JOSENIHO KIDS FOOTBALL LEAGUE</h1>
+          <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
+            <span className="text-gray-400">
+              <Link to="/">Home</Link>
+            </span>
+            <span className="text-[#e2e619]">/ About Us</span>
+          </div>
+        </div>
       </section>
 
       {/* ================= ABOUT TOP SECTION ================= */}
@@ -86,7 +92,7 @@ const About = () => {
             
             {/* LEFT TEXT BOX - Touching the image */}
             <div className="bg-blue-50/50 p-8 lg:rounded-l-2xl lg:rounded-r-none rounded-2xl">
-              <span className="inline-block mb-4 text-xs font-bold uppercase tracking-widest text-orange-600 border border-orange-200 bg-orange-50 px-3 py-1">
+              <span className="inline-block mb-4 text-xs font-bold uppercase tracking-widest text-[#97991b] border border-[#97991b] bg-orange-50 px-3 py-1">
                 Who we are
               </span>
               <h2 className="text-3xl md:text-4xl font-black leading-tight text-slate-900 mb-6">
@@ -209,7 +215,56 @@ const About = () => {
             </div>
             <div className="flex flex-col items-start lg:items-end">
               <p className="text-gray-400 mb-6 max-w-md">Our staff consists of seasoned professionals dedicated to training the next generation of football stars.</p>
-              <Link to="/contact" className="h-12 px-10 py-3 font-bold uppercase bg-[#97991b] text-white transition-colors hover:bg-[#868818]">Contact Us</Link>
+              {/* <Link to="/contact" className="h-12 px-10 py-3 font-bold uppercase bg-[#97991b] text-white transition-colors hover:bg-[#868818]">Contact Us</Link> */}
+               <Link
+                            to="/contact"
+                            className="
+                  relative inline-flex items-center gap-4
+                  border border-[#97991b]
+                  text-[#97991b]
+                  px-6 py-1 text-sm font-semibold
+                  rounded-full
+                  overflow-hidden
+                  transition-all duration-300
+                  hover:shadow-[0_8px_25px_rgba(151,153,27,0.35)]
+                  hover:-translate-y-0.5
+                  group
+                "
+                          >
+                            {/* BACKGROUND FILL ANIMATION */}
+                            <span
+                              className="
+                    absolute inset-0
+                    bg-[#97991b]
+                    -translate-x-full
+                    group-hover:translate-x-0
+                    transition-transform duration-300 ease-out
+                  "
+                            />
+              
+                            {/* TEXT */}
+                            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                             Contact Us
+                            </span>
+              
+                            {/* ARROW */}
+                            <span
+                              className="
+                    relative z-10
+                    w-8 h-8
+                    bg-[#97991b]
+                    text-white
+                    rounded-full
+                    flex items-center justify-center
+                    transition-all duration-300
+                    group-hover:bg-white
+                    group-hover:text-[#97991b]
+                    group-hover:translate-x-1
+                  "
+                            >
+                              →
+                            </span>
+                          </Link>
             </div>
           </div>
 

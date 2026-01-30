@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { AnimatePresence, motion } from "framer-motion";
 import { FiPlus, FiX, FiChevronLeft, FiChevronRight, FiClock, FiPlay, FiImage, FiVideo, FiGrid } from 'react-icons/fi';
 import { usePlayerStore } from '../../store/usePlayerStore';
+import { Link } from 'react-router-dom';
 
 const Media = () => {
   const [sortType, setSortType] = useState('Latest');
@@ -62,9 +63,11 @@ const Media = () => {
           <section className="relative h-[30vh] md:h-[50vh] flex items-center justify-center text-white">
             <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }} />
             <div className="relative z-20 text-center px-4">
-              <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic">Media Gallery</h1>
+              <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Media Gallery</h1>
               <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
-                <span className="text-gray-400">Home</span>
+                <span className="text-gray-400">
+                  <Link to="/">Home</Link>
+                </span>
                 <span className="text-[#e2e619]">/ Media</span>
               </div>
             </div>

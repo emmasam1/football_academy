@@ -1,10 +1,26 @@
-import React from 'react';
+import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiClock, FiMessageSquare, FiUser, FiChevronLeft, FiChevronRight, FiArrowRight, FiShare2 } from 'react-icons/fi';
-import { usePlayerStore } from '../../store/usePlayerStore';
+import {
+  FiClock,
+  FiMessageSquare,
+  FiUser,
+  FiChevronLeft,
+  FiChevronRight,
+  FiArrowRight,
+  FiShare2,
+} from "react-icons/fi";
+import { usePlayerStore } from "../../store/usePlayerStore";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
-  const { news, selectedNews, setSelectedNews, getPaginatedNews, newsPage, setNewsPage } = usePlayerStore();
+  const {
+    news,
+    selectedNews,
+    setSelectedNews,
+    getPaginatedNews,
+    newsPage,
+    setNewsPage,
+  } = usePlayerStore();
   const displayNews = getPaginatedNews();
 
   return (
@@ -12,55 +28,145 @@ const Blog = () => {
       <AnimatePresence mode="wait">
         {!selectedNews ? (
           /* NEWS GRID VIEW */
-          <motion.div key="list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div
+            key="list"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <section className="relative h-[30vh] md:h-[50vh] flex items-center justify-center text-white">
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }} />
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }}
+              />
               <div className="relative z-20 text-center px-4">
-                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">OUR NEWS</h1>
+                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+                  OUR NEWS
+                </h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
-                  <span className="text-gray-400">Home</span>
-                  <span className="text-yellow-600">/ News</span>
+                  <span className="text-gray-400">
+                    <Link to="/">Home</Link>
+                  </span>
+                  <span className="text-[#e2e619]">/ News</span>
                 </div>
               </div>
             </section>
 
             <div className="max-w-7xl mx-auto px-6 py-16">
               <div className="flex justify-between items-center mb-10">
-                 <h2 className="text-3xl font-black text-[#1C1F42] uppercase">Our News</h2>
-                 <div className="flex items-center gap-4">
-                    <span className="text-sm text-slate-400 font-bold">Showing 1-4 of 13 results</span>
-                    <select className="bg-white border border-slate-200 text-sm p-2 outline-none font-bold">
-                        <option>Sort by Latest</option>
-                    </select>
-                 </div>
+                <h2 className="text-3xl font-black text-[#1C1F42] uppercase">
+                  Our News
+                </h2>
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-slate-400 font-bold">
+                    Showing 1-4 of 13 results
+                  </span>
+                  <select className="bg-white border border-slate-200 text-sm p-2 outline-none font-bold">
+                    <option>Sort by Latest</option>
+                  </select>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {displayNews.map((item) => (
-                  <motion.div key={item.id} className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100">
+                  <motion.div
+                    key={item.id}
+                    className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100"
+                  >
                     <div className="relative overflow-hidden aspect-video">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                       <div className="absolute top-4 left-4 bg-[#1C1F42] text-white p-2 text-center leading-tight min-w-[50px]">
-                         <span className="block text-xl font-black">{item.date.split(' ')[0]}</span>
-                         <span className="block text-[10px] uppercase font-bold">{item.date.split(' ')[1]}</span>
+                        <span className="block text-xl font-black">
+                          {item.date.split(" ")[0]}
+                        </span>
+                        <span className="block text-[10px] uppercase font-bold">
+                          {item.date.split(" ")[1]}
+                        </span>
                       </div>
-                      <button onClick={() => setSelectedNews(item)} className="absolute top-4 right-4 bg-[#97991b] cursor-pointer text-white p-2 text-xs font-black flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Read more <FiArrowRight />
-                      </button>
+                    
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-4 text-[11px] font-bold text-blue-900 uppercase mb-3">
-                        <span className="flex items-center gap-1"><FiUser className="text-slate-400"/> {item.author}</span>
-                        <span className="flex items-center gap-1"><FiMessageSquare className="text-slate-400"/> {item.commentsCount}</span>
-                        <span className="flex items-center gap-1"><FiClock className="text-slate-400"/> {item.timeAgo}</span>
+                        <span className="flex items-center gap-1">
+                          <FiUser className="text-slate-400" /> {item.author}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <FiMessageSquare className="text-slate-400" />{" "}
+                          {item.commentsCount}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <FiClock className="text-slate-400" /> {item.timeAgo}
+                        </span>
                       </div>
-                      <h3 className="text-xl font-black text-[#1C1F42] mb-3 leading-tight group-hover:text-blue-900 transition-colors cursor-pointer" onClick={() => setSelectedNews(item)}>
+                      <h3
+                        className="text-xl font-black text-[#1C1F42] mb-3 leading-tight group-hover:text-blue-900 transition-colors cursor-pointer"
+                        onClick={() => setSelectedNews(item)}
+                      >
                         {item.title}
                       </h3>
-                      <p className="text-slate-500 text-sm leading-relaxed mb-6">{item.excerpt}</p>
-                      <button onClick={() => setSelectedNews(item)} className="flex items-center gap-2 bg-[#97991b] cursor-pointer text-white px-4 py-2 text-xs font-black uppercase tracking-wider hover:bg-[#1C1F42] transition-colors">
-                        Read more <FiArrowRight />
-                      </button>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                        {item.excerpt}
+                      </p>
+                    <button
+  onClick={() => setSelectedNews(item)}
+  className="
+    absolute top-4 right-4
+    relative inline-flex items-center gap-3
+    border border-[#97991b]
+    text-[#97991b]
+    px-4 py-1 text-xs font-bold
+    rounded-full
+    overflow-hidden
+    cursor-pointer
+
+    /* ALWAYS VISIBLE */
+    opacity-100
+
+    transition-all duration-300
+    hover:shadow-[0_8px_20px_rgba(151,153,27,0.35)]
+    hover:-translate-y-0.5
+    group
+  "
+>
+  {/* BACKGROUND FILL */}
+  <span
+    className="
+      absolute inset-0
+      bg-[#97991b]
+      -translate-x-full
+      group-hover:translate-x-0
+      transition-transform duration-300 ease-out
+    "
+  />
+
+  {/* TEXT */}
+  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+    Read more
+  </span>
+
+  {/* ICON */}
+  <span
+    className="
+      relative z-10
+      w-6 h-6
+      bg-[#97991b]
+      text-white
+      rounded-full
+      flex items-center justify-center
+      transition-all duration-300
+      group-hover:bg-white
+      group-hover:text-[#97991b]
+      group-hover:translate-x-1
+    "
+  >
+    <FiArrowRight size={12} />
+  </span>
+</button>
+
                     </div>
                   </motion.div>
                 ))}
@@ -69,30 +175,50 @@ const Blog = () => {
               {/* FIGMA STYLE PAGINATION */}
               <div className="mt-20 border-t border-slate-200 pt-10 flex flex-wrap items-center justify-between gap-6">
                 <div className="flex items-center gap-3">
-                    <span className="text-sm font-bold text-slate-500">Users per page</span>
-                    <select className="border border-slate-200 p-2 text-sm outline-none">
-                        <option>23</option>
-                    </select>
+                  <span className="text-sm font-bold text-slate-500">
+                    Users per page
+                  </span>
+                  <select className="border border-slate-200 p-2 text-sm outline-none">
+                    <option>23</option>
+                  </select>
                 </div>
                 <button className="bg-[#97991b] text-white px-8 py-3 text-sm font-black uppercase flex items-center gap-2">
-                    Next page <FiChevronRight />
+                  Next page <FiChevronRight />
                 </button>
                 <div className="flex items-center gap-2">
-                    <div className="px-4 py-2 border border-slate-200 font-bold">23</div>
-                    <span className="text-sm font-bold text-slate-400 mx-2">of 1,761</span>
-                    <button className="p-2 border border-slate-200 hover:bg-slate-50"><FiChevronLeft /></button>
-                    <button className="p-2 border border-slate-200 hover:bg-slate-50"><FiChevronRight /></button>
+                  <div className="px-4 py-2 border border-slate-200 font-bold">
+                    23
+                  </div>
+                  <span className="text-sm font-bold text-slate-400 mx-2">
+                    of 1,761
+                  </span>
+                  <button className="p-2 border border-slate-200 hover:bg-slate-50">
+                    <FiChevronLeft />
+                  </button>
+                  <button className="p-2 border border-slate-200 hover:bg-slate-50">
+                    <FiChevronRight />
+                  </button>
                 </div>
               </div>
             </div>
           </motion.div>
         ) : (
           /* NEWS DETAIL VIEW */
-          <motion.div key="detail" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}>
+          <motion.div
+            key="detail"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+          >
             <section className="relative h-[30vh] flex items-center justify-center text-white">
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }} />
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }}
+              />
               <div className="relative z-20 text-center px-4">
-                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">NEWS DETAILS</h1>
+                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+                  NEWS DETAILS
+                </h1>
                 <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
                   <span className="text-gray-400">Home</span>
                   <span className="text-gray-400">/</span>
@@ -104,22 +230,42 @@ const Blog = () => {
             <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
               {/* Left Content */}
               <div className="lg:col-span-8">
-                <button onClick={() => setSelectedNews(null)} className="flex items-center gap-2 font-black uppercase text-xs text-[#1C1F42] cursor-pointer hover:text-blue-900 mb-8">
-                    <FiChevronLeft /> Back to News
+                <button
+                  onClick={() => setSelectedNews(null)}
+                  className="flex items-center gap-2 font-black uppercase text-xs text-[#1C1F42] cursor-pointer hover:text-blue-900 mb-8"
+                >
+                  <FiChevronLeft /> Back to News
                 </button>
-                <img src={selectedNews.img} className="w-full aspect-video object-cover mb-6 rounded-sm" />
-                
+                <img
+                  src={selectedNews.img}
+                  className="w-full aspect-video object-cover mb-6 rounded-sm"
+                />
+
                 <div className="flex flex-wrap items-center gap-6 text-xs font-bold text-slate-400 uppercase border-b border-slate-100 pb-6 mb-6">
-                    <span className="flex items-center gap-2"><FiUser /> By {selectedNews.author}</span>
-                    <span className="flex items-center gap-2"><FiClock /> {selectedNews.fullDate}</span>
-                    <span className="flex items-center gap-2"><FiMessageSquare /> 2 Comments</span>
-                    <button className="ml-auto flex items-center gap-2 hover:text-yellow-600"><FiShare2 /> Share</button>
+                  <span className="flex items-center gap-2">
+                    <FiUser /> By {selectedNews.author}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <FiClock /> {selectedNews.fullDate}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <FiMessageSquare /> 2 Comments
+                  </span>
+                  <button className="ml-auto flex items-center gap-2 hover:text-yellow-600">
+                    <FiShare2 /> Share
+                  </button>
                 </div>
 
-                <h2 className="text-4xl font-black text-[#1C1F42] uppercase mb-8 leading-tight">{selectedNews.title}</h2>
+                <h2 className="text-4xl font-black text-[#1C1F42] uppercase mb-8 leading-tight">
+                  {selectedNews.title}
+                </h2>
                 <div className="text-slate-500 leading-loose text-lg space-y-6">
-                    <p>{selectedNews.content}</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+                  <p>{selectedNews.content}</p>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s...
+                  </p>
                 </div>
 
                 {/* Comments Section */}
@@ -152,34 +298,55 @@ const Blog = () => {
                         <button className="bg-[#1C1F42] text-white px-10 py-4 font-black uppercase text-sm hover:bg-[#1C1F42] transition-colors">Post Comment</button>
                     </div>
                 </div> */}
-                
               </div>
 
               {/* Sidebar */}
               <div className="lg:col-span-4 space-y-12">
                 <div className="bg-white p-8 shadow-sm border border-slate-100">
-                    <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-6 border-l-4 border-yellow-600 pl-4">Categories</h4>
-                    <ul className="space-y-4 font-bold text-sm text-slate-500">
-                        {["Tincidunt Condimentum", "Porttitor Velit", "Popular Belief", "Nisl Porttitor", "Adipiscing Elit"].map(cat => (
-                            <li key={cat} className="flex items-center gap-2 hover:text-yellow-600 cursor-pointer transition-colors">
-                                <FiArrowRight className="text-xs" /> {cat}
-                            </li>
-                        ))}
-                    </ul>
+                  <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-6 border-l-4 border-yellow-600 pl-4">
+                    Categories
+                  </h4>
+                  <ul className="space-y-4 font-bold text-sm text-slate-500">
+                    {[
+                      "Tincidunt Condimentum",
+                      "Porttitor Velit",
+                      "Popular Belief",
+                      "Nisl Porttitor",
+                      "Adipiscing Elit",
+                    ].map((cat) => (
+                      <li
+                        key={cat}
+                        className="flex items-center gap-2 hover:text-yellow-600 cursor-pointer transition-colors"
+                      >
+                        <FiArrowRight className="text-xs" /> {cat}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div className="bg-white p-8 shadow-sm border border-slate-100">
-                    <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-yellow-600 pl-4">Recent Post</h4>
-                    <div className="space-y-6">
-                        {news.map(post => (
-                            <div key={post.id} className="flex gap-4 group cursor-pointer" onClick={() => setSelectedNews(post)}>
-                                <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-sm">
-                                    <img src={post.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
-                                </div>
-                                <h5 className="font-black text-[#1C1F42] text-sm group-hover:text-yellow-600 transition-colors uppercase leading-snug">{post.title}</h5>
-                            </div>
-                        ))}
-                    </div>
+                  <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-yellow-600 pl-4">
+                    Recent Post
+                  </h4>
+                  <div className="space-y-6">
+                    {news.map((post) => (
+                      <div
+                        key={post.id}
+                        className="flex gap-4 group cursor-pointer"
+                        onClick={() => setSelectedNews(post)}
+                      >
+                        <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-sm">
+                          <img
+                            src={post.img}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                          />
+                        </div>
+                        <h5 className="font-black text-[#1C1F42] text-sm group-hover:text-yellow-600 transition-colors uppercase leading-snug">
+                          {post.title}
+                        </h5>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

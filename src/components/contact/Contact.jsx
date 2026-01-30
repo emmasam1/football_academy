@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from "framer-motion";
 import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
 import { usePlayerStore } from '../../store/usePlayerStore';
+import { Link } from 'react-router-dom';
 
 
 const Contact = () => {
@@ -52,7 +53,9 @@ const Contact = () => {
             <div className="relative z-20 text-center px-4">
               <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">OFFICIAL CONTACT</h1>
               <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
-                <span className="text-gray-400">Home</span>
+                <span className="text-gray-400">
+                  <Link to="/">Home</Link>
+                </span>
                 <span className="text-[#e2e619]">/ Contact</span>
               </div>
             </div>
@@ -135,13 +138,47 @@ const Contact = () => {
                     required
                   ></textarea>
                   
-                  <button 
-                    disabled={contactStatus === 'submitting'}
-                    type="submit" 
-                    className={`bg-yellow-500 text-white px-12 py-4 font-black uppercase text-sm tracking-widest hover:bg-[#e2e619] cursor-pointer transition-all duration-300 ${contactStatus === 'submitting' ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  >
-                    {contactStatus === 'submitting' ? 'Sending...' : 'Submit'}
-                  </button>
+                 <button
+  type="submit"
+  disabled={contactStatus === "submitting"}
+  className={`
+    relative inline-flex items-center justify-center
+    px-12 py-4
+    rounded-full
+    border border-[#97991b]
+    font-black uppercase text-sm tracking-widest
+    text-[#97991b]
+    overflow-hidden
+    transition-all duration-300
+    group
+
+    hover:shadow-[0_10px_30px_rgba(151,153,27,0.35)]
+    hover:-translate-y-0.5
+
+    ${
+      contactStatus === "submitting"
+        ? "opacity-60 cursor-not-allowed"
+        : "cursor-pointer"
+    }
+  `}
+>
+  {/* BACKGROUND FILL */}
+  <span
+    className={`
+      absolute inset-0
+      bg-[#97991b]
+      -translate-x-full
+      group-hover:translate-x-0
+      transition-transform duration-300 ease-out
+    `}
+  />
+
+  {/* TEXT */}
+  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+    {contactStatus === "submitting" ? "Sending..." : "Submit"}
+  </span>
+</button>
+
 
                   {contactStatus === 'success' && (
                     <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-green-600 font-bold">

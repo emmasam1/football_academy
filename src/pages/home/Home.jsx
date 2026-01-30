@@ -406,7 +406,7 @@ const Home = () => {
         <div className="lg:col-span-3">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold uppercase text-[#1C1F42]">
-              Fixtures & Results
+              Featured Teams
             </h2>
           
               <Link
@@ -460,42 +460,82 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {fixtures.map((match) => (
-              <div
-                key={match.id}
-                className="relative h-56 rounded-xl overflow-hidden text-white"
-              >
-                <img
-                  src={match.bg}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/60" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+  {fixtures.map((match) => (
+    <div
+      key={match.id}
+      className="
+        group relative h-[260px]
+        rounded-2xl overflow-hidden
+        shadow-lg hover:shadow-2xl
+        transition-all duration-300
+      "
+    >
+      {/* BACKGROUND IMAGE */}
+      <img
+        src={match.bg}
+        alt=""
+        className="
+          absolute inset-0 w-full h-full object-cover
+          scale-100 group-hover:scale-105
+          transition-transform duration-500
+        "
+      />
 
-                <div className="relative z-10 h-full flex flex-col justify-between p-5">
-                  <div className="text-center">
-                    <h3 className="font-semibold">{match.stadium}</h3>
-                    <p className="text-sm text-gray-200">{match.date}</p>
-                  </div>
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-col items-center gap-2">
-                      <img src={match.home.logo} className="h-18" />
-                      <span className="text-sm">{match.home.name}</span>
-                    </div>
+      {/* CONTENT */}
+      <div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
+        {/* TOP INFO */}
+        <div className="text-center">
+          <p className="text-xs uppercase tracking-widest text-gray-300">
+            {match.date}
+          </p>
+          <h3 className="text-sm font-semibold mt-1">
+            {match.stadium}
+          </h3>
+        </div>
 
-                    <span className="text-lg font-bold">VS</span>
-
-                    <div className="flex flex-col items-center gap-2">
-                      <img src={match.away.logo} className="h-18" />
-                      <span className="text-sm">{match.away.name}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* TEAMS */}
+        <div className="flex items-center justify-between">
+          {/* HOME */}
+          <div className="flex flex-col items-center gap-2 w-1/3">
+            <img
+              src={match.home.logo}
+              alt={match.home.name}
+              className="h-14 w-14 object-contain"
+            />
+            <span className="text-xs sm:text-sm font-medium text-center">
+              {match.home.name}
+            </span>
           </div>
+
+          {/* VS */}
+          <div className="flex flex-col items-center">
+            <span className="text-xs text-gray-300 tracking-widest">
+              MATCH
+            </span>
+            <span className="text-xl font-black tracking-wider">VS</span>
+          </div>
+
+          {/* AWAY */}
+          <div className="flex flex-col items-center gap-2 w-1/3">
+            <img
+              src={match.away.logo}
+              alt={match.away.name}
+              className="h-14 w-14 object-contain"
+            />
+            <span className="text-xs sm:text-sm font-medium text-center">
+              {match.away.name}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
         </div>
       </motion.section>
 

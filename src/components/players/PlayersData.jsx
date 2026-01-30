@@ -2,7 +2,7 @@ import React from 'react';
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowUpRight, FiArrowLeft, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { usePlayerStore } from '../../store/usePlayerStore';
-
+import {Link} from 'react-router-dom';
 const PlayersData = () => {
   const { 
     setSelectedPlayer, 
@@ -27,10 +27,12 @@ const PlayersData = () => {
             {selectedPlayer ? selectedPlayer.name : "Players"}
           </h1>
           <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
-            <span className="text-gray-400">Home</span>
+            <span className="text-gray-400">
+              <Link to="/">Home</Link>
+            </span>
             <span className="text-gray-400">/</span>
             <span 
-              className={`transition-colors cursor-pointer ${!selectedPlayer ? 'text-yellow-600' : 'text-gray-400 hover:text-white'}`}
+              className={`transition-colors cursor-pointer ${!selectedPlayer ? 'text-[#e2e619]' : 'text-gray-400 hover:text-white'}`}
               onClick={() => setSelectedPlayer(null)}
             >
               Players
