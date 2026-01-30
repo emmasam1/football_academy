@@ -52,7 +52,7 @@ const Navbar = () => {
       ],
     },
     { label: "Programs", path: "/program" },
-    { label: "Match Schedule", path: "/schedule" },
+    // { label: "Match Schedule", path: "/schedule" },
     {
       label: "More",
       isMore: true,

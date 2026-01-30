@@ -516,7 +516,7 @@ const Home = () => {
               </p>
 
               <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold mb-6 leading-tight">
-                About JOSENINO Kids Football League
+                About JOSENIHO Kids Football League
               </h2>
 
               <p className="text-gray-300 leading-relaxed mb-8">

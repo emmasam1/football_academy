@@ -123,7 +123,7 @@ const Blog = () => {
                 </div>
 
                 {/* Comments Section */}
-                <div className="mt-20">
+                {/* <div className="mt-20">
                     <h3 className="text-2xl font-black text-[#1C1F42] uppercase mb-10">Comments</h3>
                     <div className="space-y-8">
                         {[1, 2].map((c) => (
@@ -151,7 +151,8 @@ const Blog = () => {
                         <textarea rows="5" placeholder="Message" className="w-full bg-[#f8fafc] border border-slate-200 p-4 outline-none focus:border-blue-900 mb-6"></textarea>
                         <button className="bg-[#1C1F42] text-white px-10 py-4 font-black uppercase text-sm hover:bg-[#1C1F42] transition-colors">Post Comment</button>
                     </div>
-                </div>
+                </div> */}
+                
               </div>
 
               {/* Sidebar */}
