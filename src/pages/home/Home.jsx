@@ -314,12 +314,56 @@ const Home = () => {
                 {heroSlides[current].subtitle}
               </motion.p>
 
-              <motion.button
-                variants={textItem}
-                className="bg-yellow-500 hover:bg-[#e2e619] transition px-6 py-3 font-semibold w-fit"
+               <Link
+              to="/contact"
+              className="
+    relative inline-flex items-center gap-4
+    border border-[#97991b]
+    text-[#97991b]
+    px-6 py-1 text-sm font-semibold
+    rounded-full
+    overflow-hidden
+    transition-all duration-300
+    hover:shadow-[0_8px_25px_rgba(151,153,27,0.35)]
+    hover:-translate-y-0.5
+    group w-fit curosor-pointer
+  "
+            >
+              {/* BACKGROUND FILL ANIMATION */}
+              <span
+                className="
+      absolute inset-0
+      bg-[#97991b]
+      -translate-x-full
+      group-hover:translate-x-0
+      transition-transform duration-300 ease-out
+    "
+              />
+
+              {/* TEXT */}
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                {heroSlides[current].cta}
+              </span>
+
+              {/* ARROW */}
+              <span
+                className="
+      relative z-10
+      w-8 h-8
+      bg-[#97991b]
+      text-white
+      rounded-full
+      flex items-center justify-center
+      transition-all duration-300
+      group-hover:bg-white
+      group-hover:text-[#97991b]
+      group-hover:translate-x-1
+    "
               >
-                <Link to="/contact">{heroSlides[current].cta}</Link>
-              </motion.button>
+                →
+              </span>
+            </Link>
+              
             </motion.div>
           </motion.div>
         </AnimatePresence>
@@ -364,11 +408,55 @@ const Home = () => {
             <h2 className="text-2xl font-bold uppercase text-[#1C1F42]">
               Fixtures & Results
             </h2>
-            <Link
+          
+              <Link
               to="/schedule"
-              className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition"
+              className="
+    relative inline-flex items-center gap-4
+    border border-[#97991b]
+    text-[#97991b]
+    px-6 py-1 text-sm font-semibold
+    rounded-full
+    overflow-hidden
+    transition-all duration-300
+    hover:shadow-[0_8px_25px_rgba(151,153,27,0.35)]
+    hover:-translate-y-0.5
+    group
+  "
             >
-              All Matches →
+              {/* BACKGROUND FILL ANIMATION */}
+              <span
+                className="
+      absolute inset-0
+      bg-[#97991b]
+      -translate-x-full
+      group-hover:translate-x-0
+      transition-transform duration-300 ease-out
+    "
+              />
+
+              {/* TEXT */}
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                All Matches
+              </span>
+
+              {/* ARROW */}
+              <span
+                className="
+      relative z-10
+      w-8 h-8
+      bg-[#97991b]
+      text-white
+      rounded-full
+      flex items-center justify-center
+      transition-all duration-300
+      group-hover:bg-white
+      group-hover:text-[#97991b]
+      group-hover:translate-x-1
+    "
+              >
+                →
+              </span>
             </Link>
           </div>
 
@@ -437,13 +525,55 @@ const Home = () => {
                   : aboutText}
               </p>
 
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 bg-[#97991b]! cursor-pointer border-none! text-white! transition px-6 py-3 text-sm font-semibold rounded-none!"
+               <Link
+              to="/about"
+              className="
+    relative inline-flex items-center gap-4
+    border border-[#97991b]
+    text-[#97991b]
+    px-6 py-1 text-sm font-semibold
+    rounded-full
+    overflow-hidden
+    transition-all duration-300
+    hover:shadow-[0_8px_25px_rgba(151,153,27,0.35)]
+    hover:-translate-y-0.5
+    group
+  "
+            >
+              {/* BACKGROUND FILL ANIMATION */}
+              <span
+                className="
+      absolute inset-0
+      bg-[#97991b]
+      -translate-x-full
+      group-hover:translate-x-0
+      transition-transform duration-300 ease-out
+    "
+              />
+
+              {/* TEXT */}
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                Learn More
+              </span>
+
+              {/* ARROW */}
+              <span
+                className="
+      relative z-10
+      w-8 h-8
+      bg-[#97991b]
+      text-white
+      rounded-full
+      flex items-center justify-center
+      transition-all duration-300
+      group-hover:bg-white
+      group-hover:text-[#97991b]
+      group-hover:translate-x-1
+    "
               >
-                Read More
-                <span>→</span>
-              </Link>
+                →
+              </span>
+            </Link>
             </div>
           </div>
         </div>
@@ -530,13 +660,85 @@ const Home = () => {
         </div>
 
         <section className="py-16 bg-white max-w-7xl mx-auto px-6">
-          <div className="flex justify-between">
-            <h2 className="text-2xl font-bold mb-8 uppercase text-[#1C1F42]">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold  uppercase text-[#1C1F42]">
               News & Media Gallery
             </h2>
-            <Button className="bg-[#97991b]! text-white! px-4 py-2 text-sm rounded-none! cursor-pointer transition">
-              <Link to="/blog">View All →</Link>
-            </Button>
+            {/* <Link
+              to="/blog"
+              className="
+    relative inline-flex items-center gap-2
+    bg-[#97991b] text-white
+    px-7 py-3 text-sm font-semibold
+    rounded-full
+    overflow-hidden
+    group
+  "
+            >
+              <span className="relative z-10">View All</span>
+              <span className="relative z-10 group-hover:translate-x-1 transition">
+                →
+              </span>
+
+          
+              <span
+                className="
+    absolute right-0 top-0 h-full w-5
+    bg-[#1C1F42]
+    clip-path-[polygon(100%_0,0_50%,100%_100%)]
+  "
+              />
+            </Link> */}
+
+            <Link
+              to="/blog"
+              className="
+    relative inline-flex items-center gap-4
+    border border-[#97991b]
+    text-[#97991b]
+    px-6 py-1 text-sm font-semibold
+    rounded-full
+    overflow-hidden
+    transition-all duration-300
+    hover:shadow-[0_8px_25px_rgba(151,153,27,0.35)]
+    hover:-translate-y-0.5
+    group
+  "
+            >
+              {/* BACKGROUND FILL ANIMATION */}
+              <span
+                className="
+      absolute inset-0
+      bg-[#97991b]
+      -translate-x-full
+      group-hover:translate-x-0
+      transition-transform duration-300 ease-out
+    "
+              />
+
+              {/* TEXT */}
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                View All
+              </span>
+
+              {/* ARROW */}
+              <span
+                className="
+      relative z-10
+      w-8 h-8
+      bg-[#97991b]
+      text-white
+      rounded-full
+      flex items-center justify-center
+      transition-all duration-300
+      group-hover:bg-white
+      group-hover:text-[#97991b]
+      group-hover:translate-x-1
+    "
+              >
+                →
+              </span>
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredPosts.map((post, index) => (
