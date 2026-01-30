@@ -365,7 +365,7 @@ const Home = () => {
               Fixtures & Results
             </h2>
             <Link
-              to="/schedule"
+              to="/"
               className="bg-[#97991b]! text-white px-4 py-2 text-sm rounded-none! cursor-pointer transition"
             >
               All Matches →
@@ -428,7 +428,7 @@ const Home = () => {
               </p>
 
               <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold mb-6 leading-tight">
-                About JOSENINO Kids Football League
+                About JOSENIHO Kids Football League
               </h2>
 
               <p className="text-gray-300 leading-relaxed mb-8">
