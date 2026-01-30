@@ -35,7 +35,7 @@ const About = () => {
       icon: <BulbOutlined />,
       title: "Our Mission",
       content: "At our core, we are dedicated to shaping the future of young footballers. We believe in creating a vibrant and secure environment where talent can flourish. Through top-notch training and exhilarating competition. Our commitment includes instilling essential values like teamwork, discipline, respect, and resilience traits that extend far beyond the field.",
-      image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1600",
+      image: "/images/p1.jpeg",
     },
     Vision: {
       icon: <EyeOutlined />,
