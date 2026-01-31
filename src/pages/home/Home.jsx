@@ -410,7 +410,7 @@ const Home = () => {
             </h2>
           
               <Link
-              to="/schedule"
+              to="/"
               className="
     relative inline-flex items-center gap-4
     border border-[#97991b]
