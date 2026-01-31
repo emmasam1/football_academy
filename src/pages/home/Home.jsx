@@ -425,8 +425,8 @@ const Home = () => {
   "
             >
               {/* BACKGROUND FILL ANIMATION */}
-              <span
-                className="
+       <span
+        className="
       absolute inset-0
       bg-[#97991b]
       -translate-x-full
