@@ -551,13 +551,13 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full items-center">
             {/* LEFT CONTENT */}
             <div className="text-white max-w-xl">
-              <p className="text-sm uppercase tracking-wide mb-3 opacity-90">
-                Our History
-              </p>
-
-              <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold mb-6 leading-tight">
-                About JOSENIHO Kids Football League
+              <h2 className=" text-3xl md:text-4xl lg:text-3xl uppercase tracking-wide mb-3 opacity-90">
+                About Us
               </h2>
+
+              {/* <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold mb-6 leading-tight">
+                About JOSENIHO Kids Football League
+              </h2> */}
 
               <p className="text-gray-300 leading-relaxed mb-8">
                 {aboutText.length > 300
