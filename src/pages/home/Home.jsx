@@ -437,7 +437,7 @@ const Home = () => {
 
               {/* TEXT */}
               <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                All Matches
+                All Teams
               </span>
 
               {/* ARROW */}
