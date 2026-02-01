@@ -210,7 +210,7 @@ const Blog = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
           >
-            <section className="relative h-[30vh] flex items-center justify-center text-white">
+            <section className="relative h-[50vh] flex items-center justify-center text-white">
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }}
