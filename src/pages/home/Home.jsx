@@ -492,7 +492,7 @@ const Home = () => {
           <p className="text-xs uppercase tracking-widest text-black">
             {match.date}
           </p>
-          <h3 className="text-md font-semibold mt-1">
+          <h3 className="text-sm font-semibold mt-1">
             {match.stadium}
           </h3>
         </div>
@@ -506,7 +506,7 @@ const Home = () => {
               alt={match.home.name}
               className="h-25 w-25 object-contain"
             />
-            <span className="text-sm sm:text-sm font-medium text-center">
+            <span className="text-xs sm:text-sm font-medium text-center">
               {match.home.name}
             </span>
           </div>
@@ -526,7 +526,7 @@ const Home = () => {
               alt={match.away.name}
               className="h-25 w-25 object-contain"
             />
-            <span className="text-sm sm:text-sm font-medium text-center">
+            <span className="text-xs sm:text-sm font-medium text-center">
               {match.away.name}
             </span>
           </div>
