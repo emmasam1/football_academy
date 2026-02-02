@@ -117,7 +117,7 @@ const Coaches = () => {
                 <div className="p-5 text-white">
                   <h4 className="text-lg font-semibold">{name}</h4>
                   <p className="text-sm text-orange-500">{role}</p>
-                  <p className="text-xs text-gray-400 mt-1">{experience}</p>
+                  {/* <p className="text-xs text-gray-400 mt-1">{experience}</p> */}
 
                   <p className="text-sm text-gray-300 mt-3 line-clamp-3">
                     {bio}
@@ -158,12 +158,12 @@ const Coaches = () => {
                 />
 
                 {/* EXPERIENCE BADGE */}
-                <div className="absolute -top-6 -right-6 bg-white shadow-xl rounded-full h-32 w-32 flex flex-col items-center justify-center">
+                {/* <div className="absolute -top-6 -right-6 bg-white shadow-xl rounded-full h-32 w-32 flex flex-col items-center justify-center">
                   <p className="text-3xl font-bold text-[#e2e619]">25+</p>
                   <p className="text-xs uppercase tracking-wide text-gray-500 text-center">
                     Years of Experience
                   </p>
-                </div>
+                </div> */}
               </div>
 
               {/* CONTENT */}
