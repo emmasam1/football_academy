@@ -123,16 +123,16 @@ const About = () => {
             {/* RIGHT IMAGE BOX - Touching the text box */}
             <div className="relative">
               <img 
-                src="/images/aboutImg1.jpeg" 
+                src="/images/twentyfive.jpeg" 
                 alt="Training" 
-                className="w-full h-96 object-cover lg:rounded-r-2xl lg:rounded-l-none rounded-2xl shadow-2xl" 
+                className="w-full h-1/2 object-cover lg:rounded-r-2xl lg:rounded-l-none rounded-2xl shadow-2xl" 
               />
               
               {/* EXPERIENCE BADGE - Precisely overlapping in the middle */}
-              <div className="absolute hidden lg:flex bg-white h-24 w-24 left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl rounded-full flex flex-col items-center justify-center border-4 border-gray-50 z-10">
+              {/* <div className="absolute hidden lg:flex bg-white h-24 w-24 left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-xl rounded-full flex flex-col items-center justify-center border-4 border-gray-50 z-10">
                 <p className="text-xl font-black text-orange-600">25+</p>
                 <p className="text-[10px] font-bold uppercase text-gray-400 text-center">Experience</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
