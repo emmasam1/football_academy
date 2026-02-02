@@ -110,24 +110,24 @@ const Home = () => {
       id: 1,
       stadium: "Central Olympic Stadium",
       date: "April 02, 2019",
-      home: { name: "Istanbul", logo: "/images/club1.png" },
-      away: { name: "Italy FC.", logo: "/images/club2.png" },
+      home: { name: "Istanbul", logo: "/images/team1.png" },
+      away: { name: "Italy FC.", logo: "/images/team3.png" },
       bg: "/images/bg-mc3.jpeg",
     },
     {
       id: 2,
       stadium: "Central Olympic Stadium",
       date: "April 02, 2019",
-      home: { name: "Rayal FC", logo: "/images/club3.png" },
-      away: { name: "Italy FC.", logo: "/images/club4.png" },
+      home: { name: "Rayal FC", logo: "/images/team6.png" },
+      away: { name: "Italy FC.", logo: "/images/team7.png" },
       bg: "/images/bg-mc3.jpeg",
     },
     {
       id: 3,
       stadium: "Central Olympic Stadium",
       date: "April 02, 2019",
-      home: { name: "DC Unfo.", logo: "/images/club1.png" },
-      away: { name: "Italy FC.", logo: "/images/club4.png" },
+      home: { name: "DC Unfo.", logo: "/images/team4.png" },
+      away: { name: "Italy FC.", logo: "/images/team5.png" },
       bg: "/images/bg-mc3.jpeg",
     },
     {
@@ -472,7 +472,7 @@ const Home = () => {
       "
     >
       {/* BACKGROUND IMAGE */}
-      <img
+      {/* <img
         src={match.bg}
         alt=""
         className="
@@ -480,16 +480,16 @@ const Home = () => {
           scale-100 group-hover:scale-105
           transition-transform duration-500
         "
-      />
+      /> */}
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" /> */}
 
       {/* CONTENT */}
-      <div className="relative z-10 h-full flex flex-col justify-between p-6 text-white">
+      <div className="relative z-10 h-full flex flex-col justify-between p-6 text-black">
         {/* TOP INFO */}
         <div className="text-center">
-          <p className="text-xs uppercase tracking-widest text-gray-300">
+          <p className="text-xs uppercase tracking-widest text-black">
             {match.date}
           </p>
           <h3 className="text-sm font-semibold mt-1">
@@ -504,7 +504,7 @@ const Home = () => {
             <img
               src={match.home.logo}
               alt={match.home.name}
-              className="h-14 w-14 object-contain"
+              className="h-25 w-25 object-contain"
             />
             <span className="text-xs sm:text-sm font-medium text-center">
               {match.home.name}
@@ -513,7 +513,7 @@ const Home = () => {
 
           {/* VS */}
           <div className="flex flex-col items-center">
-            <span className="text-xs text-gray-300 tracking-widest">
+            <span className="text-xs text-black tracking-widest">
               MATCH
             </span>
             <span className="text-xl font-black tracking-wider">VS</span>
@@ -524,7 +524,7 @@ const Home = () => {
             <img
               src={match.away.logo}
               alt={match.away.name}
-              className="h-14 w-14 object-contain"
+              className="h-25 w-25 object-contain"
             />
             <span className="text-xs sm:text-sm font-medium text-center">
               {match.away.name}
