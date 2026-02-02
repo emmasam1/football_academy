@@ -488,14 +488,14 @@ const Home = () => {
       {/* CONTENT */}
       <div className="relative z-10 h-full flex flex-col justify-between p-6 text-black">
         {/* TOP INFO */}
-        <div className="text-center">
+        {/* <div className="text-center">
           <p className="text-xs uppercase tracking-widest text-black">
             {match.date}
           </p>
           <h3 className="text-sm font-semibold mt-1">
             {match.stadium}
           </h3>
-        </div>
+        </div> */}
 
         {/* TEAMS */}
         <div className="flex items-center justify-between">
