@@ -134,7 +134,7 @@ const Home = () => {
       id: 4,
       stadium: "Central Olympic Stadium",
       date: "April 02, 2019",
-      home: { name: "Istanbul", logo: "/images/club1.png" },
+      home: { name: "Istanbul", logo: "/images/team2.jpeg" },
       away: { name: "Italy FC.", logo: "/images/club2.png" },
       bg: "/images/bg-mc3.jpeg",
     },
