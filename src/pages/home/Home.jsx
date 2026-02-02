@@ -108,34 +108,34 @@ const Home = () => {
   const fixtures = [
     {
       id: 1,
-      stadium: "Central Olympic Stadium",
-      date: "April 02, 2019",
-      home: { name: "Istanbul", logo: "/images/team1.png" },
-      away: { name: "Italy FC.", logo: "/images/team3.png" },
+      stadium: "sport complex arena",
+      date: "April 02, 2026",
+      home: { name: "Camp United.", logo: "/images/team1.png" },
+      away: { name: "Young Stars Academy.", logo: "/images/team3.png" },
       bg: "/images/bg-mc3.jpeg",
     },
     {
       id: 2,
-      stadium: "Central Olympic Stadium",
-      date: "April 02, 2019",
-      home: { name: "Rayal FC", logo: "/images/team6.png" },
-      away: { name: "Italy FC.", logo: "/images/team7.png" },
+      stadium: "Sport complex",
+      date: "April 02, 2026",
+      home: { name: "Athletic Edge Academy", logo: "/images/team6.png" },
+      away: { name: "Eagle's Wing Academy", logo: "/images/team7.png" },
       bg: "/images/bg-mc3.jpeg",
     },
     {
       id: 3,
-      stadium: "Central Olympic Stadium",
-      date: "April 02, 2019",
-      home: { name: "DC Unfo.", logo: "/images/team4.png" },
-      away: { name: "Italy FC.", logo: "/images/team5.png" },
+      stadium: "Sport complex",
+      date: "April 02, 2026",
+      home: { name: "N-Youth Academy.", logo: "/images/team4.png" },
+      away: { name: "Destiny Academy.", logo: "/images/team5.png" },
       bg: "/images/bg-mc3.jpeg",
     },
     {
       id: 4,
-      stadium: "Central Olympic Stadium",
-      date: "April 02, 2019",
-      home: { name: "Istanbul", logo: "/images/team2.jpeg" },
-      away: { name: "Italy FC.", logo: "/images/club2.png" },
+      stadium: "Sport Complex",
+      date: "April 02, 2026",
+      home: { name: "Diamat FA-Abuja", logo: "/images/team2.jpeg" },
+      away: { name: "Hawks FC.", logo: "/images/team8.png" },
       bg: "/images/bg-mc3.jpeg",
     },
   ];
@@ -412,17 +412,17 @@ const Home = () => {
               <Link
               to="/"
               className="
-    relative inline-flex items-center gap-4
-    border border-[#97991b]
-    text-[#97991b]
-    px-6 py-1 text-sm font-semibold
-    rounded-full
-    overflow-hidden
-    transition-all duration-300
-    hover:shadow-[0_8px_25px_rgba(151,153,27,0.35)]
-    hover:-translate-y-0.5
-    group
-  "
+              relative inline-flex items-center gap-4
+              border border-[#97991b]
+              text-[#97991b]
+              px-6 py-1 text-sm font-semibold
+              rounded-full
+              overflow-hidden
+              transition-all duration-300
+              hover:shadow-[0_8px_25px_rgba(151,153,27,0.35)]
+              hover:-translate-y-0.5
+              group
+            "
             >
               {/* BACKGROUND FILL ANIMATION */}
        <span
@@ -492,7 +492,7 @@ const Home = () => {
           <p className="text-xs uppercase tracking-widest text-black">
             {match.date}
           </p>
-          <h3 className="text-sm font-semibold mt-1">
+          <h3 className="text-md font-semibold mt-1">
             {match.stadium}
           </h3>
         </div>
@@ -504,29 +504,29 @@ const Home = () => {
             <img
               src={match.home.logo}
               alt={match.home.name}
-              className="h-25 w-25 object-contain"
+              className="h-28 w-28 object-contain"
             />
-            <span className="text-xs sm:text-sm font-medium text-center">
+            <span className="text-sm sm:text-sm font-medium text-center">
               {match.home.name}
             </span>
           </div>
 
           {/* VS */}
-          <div className="flex flex-col items-center">
+          {/* <div className="flex flex-col items-center">
             <span className="text-xs text-black tracking-widest">
               MATCH
             </span>
             <span className="text-xl font-black tracking-wider">VS</span>
-          </div>
+          </div> */}
 
           {/* AWAY */}
           <div className="flex flex-col items-center gap-2 w-1/3">
             <img
               src={match.away.logo}
               alt={match.away.name}
-              className="h-25 w-25 object-contain"
+              className="h-28 w-28 object-contain"
             />
-            <span className="text-xs sm:text-sm font-medium text-center">
+            <span className="text-sm sm:text-sm font-medium text-center">
               {match.away.name}
             </span>
           </div>

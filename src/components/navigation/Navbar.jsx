@@ -94,7 +94,7 @@ const Navbar = () => {
     className="relative"
   >
     <motion.img
-      src="/images/logo.png"
+      src="/images/logo2.png"
       alt="clublogo"
       animate={{
         height: scrolled ? 70 : 120, // 👈 BIG when top, smaller when scroll
@@ -117,7 +117,7 @@ const Navbar = () => {
               >
                 <button
                   onClick={() => !item.children && navigate(item.path)}
-                  className={`flex items-center gap-1.5 px-3 py-2 text-[13px] font-bold uppercase tracking-wider cursor-pointer transition-colors hover:text-[#e2e619] ${
+                  className={`flex items-center gap-1.5 px-3 py-2 text-[14px] font-bold uppercase tracking-wider cursor-pointer transition-colors hover:text-[#e2e619] ${
                     location.pathname === item.path
                       ? "text-yellow-500"
                       : "text-black"

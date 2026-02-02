@@ -86,7 +86,8 @@ const PlayersData = () => {
                     className="group cursor-pointer"
                     onClick={() => setSelectedPlayer(player)}
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-slate-200">
+                    {/* <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-slate-200"> */}
+                     <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-slate-200">
                       <motion.img 
                         layoutId={`player-img-${player.id}`}
                         src={`${player.img}?q=80&w=400`} 

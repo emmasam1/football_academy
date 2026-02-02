@@ -1,3 +1,4 @@
+
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -20,8 +21,25 @@ const Blog = () => {
     getPaginatedNews,
     newsPage,
     setNewsPage,
+    newsPerPage,
+    getTotalNewsPages,
   } = usePlayerStore();
+
   const displayNews = getPaginatedNews();
+  const totalPages = getTotalNewsPages();
+  const totalResults = news.length;
+
+  // Pagination calculation for the "Showing X-Y of Z" text
+  const startResult = (newsPage - 1) * newsPerPage + 1;
+  const endResult = Math.min(newsPage * newsPerPage, totalResults);
+
+  const handleNext = () => {
+    if (newsPage < totalPages) setNewsPage(newsPage + 1);
+  };
+
+  const handlePrev = () => {
+    if (newsPage > 1) setNewsPage(newsPage - 1);
+  };
 
   return (
     <div className="bg-[#f8fafc] min-h-screen font-sans relative -top-16 py-10">
@@ -55,13 +73,13 @@ const Blog = () => {
             <div className="max-w-7xl mx-auto px-6 py-16">
               <div className="flex justify-between items-center mb-10">
                 <h2 className="text-3xl font-black text-[#1C1F42] uppercase">
-                  Our News
+                  Latest Updates
                 </h2>
                 <div className="flex items-center gap-4">
                   <span className="text-sm text-slate-400 font-bold">
-                    Showing 1-4 of 13 results
+                    Showing {startResult}-{endResult} of {totalResults} results
                   </span>
-                  <select className="bg-white border border-slate-200 text-sm p-2 outline-none font-bold">
+                  <select className="bg-white border border-slate-200 text-sm p-2 outline-none font-bold rounded-sm">
                     <option>Sort by Latest</option>
                   </select>
                 </div>
@@ -71,6 +89,7 @@ const Blog = () => {
                 {displayNews.map((item) => (
                   <motion.div
                     key={item.id}
+                    layout
                     className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100"
                   >
                     <div className="relative overflow-hidden aspect-video">
@@ -79,18 +98,18 @@ const Blog = () => {
                         alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute top-4 left-4 bg-[#1C1F42] text-white p-2 text-center leading-tight min-w-[50px]">
+                      <div className="absolute top-4 left-4 bg-[#1C1F42] text-white p-2 text-center leading-tight min-w-[50px] z-10">
                         <span className="block text-xl font-black">
                           {item.date.split(" ")[0]}
                         </span>
-                        <span className="block text-[10px] uppercase font-bold">
+                        <span className="block text-[10px] uppercase font-bold text-[#e2e619]">
                           {item.date.split(" ")[1]}
                         </span>
                       </div>
-                    
                     </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-[11px] font-bold text-blue-900 uppercase mb-3">
+                    
+                    <div className="p-6 relative">
+                      <div className="flex items-center gap-4 text-[10px] font-bold text-blue-900 uppercase mb-4">
                         <span className="flex items-center gap-1">
                           <FiUser className="text-slate-400" /> {item.author}
                         </span>
@@ -102,246 +121,148 @@ const Blog = () => {
                           <FiClock className="text-slate-400" /> {item.timeAgo}
                         </span>
                       </div>
+                      
                       <h3
-                        className="text-xl font-black text-[#1C1F42] mb-3 leading-tight group-hover:text-blue-900 transition-colors cursor-pointer"
+                        className="text-xl font-black text-[#1C1F42] mb-3 leading-tight group-hover:text-[#97991b] transition-colors cursor-pointer"
                         onClick={() => setSelectedNews(item)}
                       >
                         {item.title}
                       </h3>
-                      <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                      <p className="text-slate-500 text-sm leading-relaxed mb-10">
                         {item.excerpt}
                       </p>
-                    <button
-  onClick={() => setSelectedNews(item)}
-  className="
-    absolute top-4 right-4
-    relative inline-flex items-center gap-3
-    border border-[#97991b]
-    text-[#97991b]
-    px-4 py-1 text-xs font-bold
-    rounded-full
-    overflow-hidden
-    cursor-pointer
 
-    /* ALWAYS VISIBLE */
-    opacity-100
-
-    transition-all duration-300
-    hover:shadow-[0_8px_20px_rgba(151,153,27,0.35)]
-    hover:-translate-y-0.5
-    group
-  "
->
-  {/* BACKGROUND FILL */}
-  <span
-    className="
-      absolute inset-0
-      bg-[#97991b]
-      -translate-x-full
-      group-hover:translate-x-0
-      transition-transform duration-300 ease-out
-    "
-  />
-
-  {/* TEXT */}
-  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-    Read more
-  </span>
-
-  {/* ICON */}
-  <span
-    className="
-      relative z-10
-      w-6 h-6
-      bg-[#97991b]
-      text-white
-      rounded-full
-      flex items-center justify-center
-      transition-all duration-300
-      group-hover:bg-white
-      group-hover:text-[#97991b]
-      group-hover:translate-x-1
-    "
-  >
-    <FiArrowRight size={12} />
-  </span>
-</button>
-
+                      <button
+                        onClick={() => setSelectedNews(item)}
+                        className="relative inline-flex items-center gap-3 border border-[#97991b] text-[#97991b] px-4 py-1 text-xs font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg group"
+                      >
+                        <span className="absolute inset-0 bg-[#97991b] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-white cursor-pointer">
+                          Read more
+                        </span>
+                        <span className="relative z-10 w-6 h-6 bg-[#97991b] text-white rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-[#97991b]">
+                          <FiArrowRight size={12} />
+                        </span>
+                      </button>
                     </div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* FIGMA STYLE PAGINATION */}
-              <div className="mt-20 border-t border-slate-200 pt-10 flex flex-wrap items-center justify-between gap-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-sm font-bold text-slate-500">
-                    Users per page
-                  </span>
-                  <select className="border border-slate-200 p-2 text-sm outline-none">
-                    <option>23</option>
-                  </select>
-                </div>
-                <button className="bg-[#97991b] text-white px-8 py-3 text-sm font-black uppercase flex items-center gap-2">
+              {/* CORRECTED PAGINATION */}
+              <div className="mt-20 border-t border-slate-200 pt-10 flex flex-wrap items-center justify-end gap-6">
+                
+                <button 
+                  onClick={handleNext}
+                  disabled={newsPage === totalPages}
+                  className="bg-[#97991b] text-white px-8 py-3 text-sm font-black cursor-pointer uppercase flex items-center gap-2 hover:bg-[#7a7b16] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                   Next page <FiChevronRight />
                 </button>
+
                 <div className="flex items-center gap-2">
-                  <div className="px-4 py-2 border border-slate-200 font-bold">
-                    23
+                  <div className="px-4 py-2 border border-slate-200 font-bold bg-white text-[#1C1F42]">
+                    {newsPage}
                   </div>
-                  <span className="text-sm font-bold text-slate-400 mx-2">
-                    of 1,761
+                  <span className="text-sm font-bold text-slate-400 mx-2 uppercase tracking-widest">
+                    of {totalPages}
                   </span>
-                  <button className="p-2 border border-slate-200 hover:bg-slate-50">
-                    <FiChevronLeft />
-                  </button>
-                  <button className="p-2 border border-slate-200 hover:bg-slate-50">
-                    <FiChevronRight />
-                  </button>
+                  
+                  <div className="flex gap-1">
+                    <button 
+                      onClick={handlePrev}
+                      disabled={newsPage === 1}
+                      className="p-3 border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-30 transition-all"
+                    >
+                      <FiChevronLeft />
+                    </button>
+                    <button 
+                      onClick={handleNext}
+                      disabled={newsPage === totalPages}
+                      className="p-3 border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-30 transition-all"
+                    >
+                      <FiChevronRight />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
         ) : (
-          /* NEWS DETAIL VIEW */
+          /* NEWS DETAIL VIEW (Same as before but with minor fixes) */
           <motion.div
             key="detail"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
           >
-            <section className="relative h-[50vh] flex items-center justify-center text-white">
+            <section className="relative h-[40vh] flex items-center justify-center text-white">
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url("/images/bg-subanner.jpg")` }}
               />
               <div className="relative z-20 text-center px-4">
-                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
-                  NEWS DETAILS
+                <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter">
+                  Article Details
                 </h1>
-                <div className="mt-4 flex justify-center items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest">
-                  <span className="text-gray-400">Home</span>
-                  <span className="text-gray-400">/</span>
-                  <span className="text-yellow-600">News Details</span>
+                <div className="mt-4 flex justify-center items-center gap-2 text-xs font-bold uppercase">
+                  <span className="text-gray-400">News</span>
+                  <span className="text-[#e2e619]">/ Details</span>
                 </div>
               </div>
             </section>
 
             <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
-              {/* Left Content */}
               <div className="lg:col-span-8">
                 <button
                   onClick={() => setSelectedNews(null)}
-                  className="flex items-center gap-2 font-black uppercase text-xs text-[#1C1F42] cursor-pointer hover:text-blue-900 mb-8"
+                  className="flex items-center gap-2 font-black uppercase text-xs text-[#1C1F42] hover:text-[#97991b] mb-8 transition-colors"
                 >
                   <FiChevronLeft /> Back to News
                 </button>
                 <img
                   src={selectedNews.img}
-                  className="w-full aspect-video object-cover mb-6 rounded-sm"
+                  alt=""
+                  className="w-full aspect-video object-cover mb-8 shadow-lg"
                 />
 
-                <div className="flex flex-wrap items-center gap-6 text-xs font-bold text-slate-400 uppercase border-b border-slate-100 pb-6 mb-6">
-                  <span className="flex items-center gap-2">
-                    <FiUser /> By {selectedNews.author}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <FiClock /> {selectedNews.fullDate}
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <FiMessageSquare /> 2 Comments
-                  </span>
-                  <button className="ml-auto flex items-center gap-2 hover:text-yellow-600">
-                    <FiShare2 /> Share
-                  </button>
+                <div className="flex flex-wrap items-center gap-6 text-[10px] font-black text-slate-400 uppercase border-b border-slate-100 pb-6 mb-6">
+                  <span className="flex items-center gap-2"><FiUser className="text-[#97991b]" /> {selectedNews.author}</span>
+                  <span className="flex items-center gap-2"><FiClock className="text-[#97991b]" /> {selectedNews.fullDate}</span>
+                  <span className="flex items-center gap-2"><FiMessageSquare className="text-[#97991b]" /> {selectedNews.commentsCount} Comments</span>
+                  <button className="ml-auto flex items-center gap-2 hover:text-[#97991b] transition-colors"><FiShare2 /> Share</button>
                 </div>
 
-                <h2 className="text-4xl font-black text-[#1C1F42] uppercase mb-8 leading-tight">
+                <h2 className="text-3xl md:text-4xl font-black text-[#1C1F42] uppercase mb-8 leading-tight italic">
                   {selectedNews.title}
                 </h2>
-                <div className="text-slate-500 leading-loose text-lg space-y-6">
+                <div className="text-slate-600 leading-relaxed text-lg space-y-6">
                   <p>{selectedNews.content}</p>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s...
-                  </p>
                 </div>
-
-                {/* Comments Section */}
-                {/* <div className="mt-20">
-                    <h3 className="text-2xl font-black text-[#1C1F42] uppercase mb-10">Comments</h3>
-                    <div className="space-y-8">
-                        {[1, 2].map((c) => (
-                            <div key={c} className="flex gap-6">
-                                <div className="w-16 h-16 rounded-full overflow-hidden bg-slate-200 flex-shrink-0">
-                                    <img src={`https://i.pravatar.cc/150?u=${c}`} alt="user" />
-                                </div>
-                                <div>
-                                    <div className="flex items-center gap-4 mb-2">
-                                        <h4 className="font-black text-[#1C1F42] uppercase">Jone Due</h4>
-                                        <span className="text-xs font-bold text-blue-900">Oct 12, 2021</span>
-                                    </div>
-                                    <p className="text-slate-500 text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-16 bg-white p-10 shadow-sm border border-slate-100">
-                        <h3 className="text-2xl font-black text-[#1C1F42] uppercase mb-8">Leave a Comment</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <input type="text" placeholder="Full Name" className="w-full bg-[#f8fafc] border border-slate-200 p-4 outline-none focus:border-blue-900" />
-                            <input type="email" placeholder="Email" className="w-full bg-[#f8fafc] border border-slate-200 p-4 outline-none focus:border-blue-900" />
-                        </div>
-                        <textarea rows="5" placeholder="Message" className="w-full bg-[#f8fafc] border border-slate-200 p-4 outline-none focus:border-blue-900 mb-6"></textarea>
-                        <button className="bg-[#1C1F42] text-white px-10 py-4 font-black uppercase text-sm hover:bg-[#1C1F42] transition-colors">Post Comment</button>
-                    </div>
-                </div> */}
               </div>
 
               {/* Sidebar */}
-              <div className="lg:col-span-4 space-y-12">
-                <div className="bg-white p-8 shadow-sm border border-slate-100">
-                  <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-6 border-l-4 border-yellow-600 pl-4">
-                    Categories
-                  </h4>
+              <div className="lg:col-span-4 space-y-10">
+                <div className="bg-white p-8 border border-slate-100 shadow-sm">
+                  <h4 className="text-lg font-black text-[#1C1F42] uppercase mb-6 border-l-4 border-[#97991b] pl-4">Categories</h4>
                   <ul className="space-y-4 font-bold text-sm text-slate-500">
-                    {[
-                      "Tincidunt Condimentum",
-                      "Porttitor Velit",
-                      "Popular Belief",
-                      "Nisl Porttitor",
-                      "Adipiscing Elit",
-                    ].map((cat) => (
-                      <li
-                        key={cat}
-                        className="flex items-center gap-2 hover:text-yellow-600 cursor-pointer transition-colors"
-                      >
+                    {["League News", "Match Reports", "Youth Development", "Tournament Updates"].map((cat) => (
+                      <li key={cat} className="flex items-center gap-2 hover:text-[#97991b] cursor-pointer transition-colors">
                         <FiArrowRight className="text-xs" /> {cat}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="bg-white p-8 shadow-sm border border-slate-100">
-                  <h4 className="text-xl font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-yellow-600 pl-4">
-                    Recent Post
-                  </h4>
+                <div className="bg-white p-8 border border-slate-100 shadow-sm">
+                  <h4 className="text-lg font-black text-[#1C1F42] uppercase mb-8 border-l-4 border-[#97991b] pl-4">Recent Posts</h4>
                   <div className="space-y-6">
-                    {news.map((post) => (
-                      <div
-                        key={post.id}
-                        className="flex gap-4 group cursor-pointer"
-                        onClick={() => setSelectedNews(post)}
-                      >
-                        <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-sm">
-                          <img
-                            src={post.img}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                          />
+                    {news.slice(0, 3).map((post) => (
+                      <div key={post.id} className="flex gap-4 group cursor-pointer" onClick={() => setSelectedNews(post)}>
+                        <div className="w-16 h-16 flex-shrink-0 overflow-hidden bg-slate-100">
+                          <img src={post.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                         </div>
-                        <h5 className="font-black text-[#1C1F42] text-sm group-hover:text-yellow-600 transition-colors uppercase leading-snug">
+                        <h5 className="font-black text-[#1C1F42] text-xs group-hover:text-[#97991b] transition-colors uppercase leading-snug">
                           {post.title}
                         </h5>
                       </div>
