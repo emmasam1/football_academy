@@ -504,7 +504,7 @@ const Home = () => {
             <img
               src={match.home.logo}
               alt={match.home.name}
-              className="h-28 w-28 object-contain"
+              className="h-25 w-25 object-contain"
             />
             <span className="text-sm sm:text-sm font-medium text-center">
               {match.home.name}
@@ -524,7 +524,7 @@ const Home = () => {
             <img
               src={match.away.logo}
               alt={match.away.name}
-              className="h-28 w-28 object-contain"
+              className="h-25 w-25 object-contain"
             />
             <span className="text-sm sm:text-sm font-medium text-center">
               {match.away.name}
