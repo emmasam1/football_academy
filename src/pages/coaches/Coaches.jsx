@@ -119,9 +119,9 @@ const Coaches = () => {
                   <p className="text-sm text-orange-500">{role}</p>
                   {/* <p className="text-xs text-gray-400 mt-1">{experience}</p> */}
 
-                  <p className="text-sm text-gray-300 mt-3 line-clamp-3">
+                  {/* <p className="text-sm text-gray-300 mt-3 line-clamp-3">
                     {bio}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             );
