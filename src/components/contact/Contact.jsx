@@ -21,21 +21,21 @@ const Contact = () => {
   const enquiryCards = [
     {
       title: "League Enquiries",
-      phone: "+234 8124-490-595",
+      phone: "+234 (0) 8124 490 595",
       email: "Coachdayor@gmail.com",
-      address: "31 Scotsburn Rd, FCT, Nigeria"
+      address: "OAU QUARTERS MAITAMA,ABUJA, NIGERIA"
     },
     {
       title: "Media Enquiries",
-      phone: "+234 7034-467-923",
+      phone: "+234 (0) 7034 467 923",
       email: "soccerjoseniho@gmail.com",
-      address: "31 Scotsburn Rd, FCT, Nigeria"
+      address: "OAU QUARTERS MAITAMA,ABUJA, NIGERIA"
     },
     {
       title: "Head Office",
-      phone: "+234 8124-490-595",
+      phone: "+234 (0) 916 805 1180,",
       email: "soccerjoseniho@gmail.com",
-      address: "89 Mounthoolie Lane, Abuja, Nigeria"
+      address: "OAU QUARTERS MAITAMA,ABUJA, NIGERIA"
     }
   ];
 
